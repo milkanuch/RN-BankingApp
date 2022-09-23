@@ -1,0 +1,6 @@
+{
+  "*.{js,jsx,ts,tsx}": [
+    "bash -c tsc",
+    "npm run lint"
+  ]
+}
