@@ -36,7 +36,7 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -51,5 +51,18 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>e-Ukraine-Bold.otf</string>
+		<string>e-Ukraine-Light.otf</string>
+		<string>e-Ukraine-Medium.otf</string>
+		<string>e-Ukraine-Regular.otf</string>
+		<string>e-Ukraine-Thin.otf</string>
+		<string>e-Ukraine-UltraLight.otf</string>
+		<string>SpaceMono-Bold.ttf</string>
+		<string>SpaceMono-BoldItalic.ttf</string>
+		<string>SpaceMono-Italic.ttf</string>
+		<string>SpaceMono-Regular.ttf</string>
+	</array>
 </dict>
 </plist>

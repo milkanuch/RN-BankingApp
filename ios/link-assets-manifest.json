@@ -1,0 +1,45 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/eUkraine/e-Ukraine-Bold.otf",
+      "sha1": "5ff252e383ed4d0f25f8eaf608c5401cd5249915"
+    },
+    {
+      "path": "src/assets/fonts/eUkraine/e-Ukraine-Light.otf",
+      "sha1": "a35ee27345c04f8c0d3f216c3e8bc4b8105a3287"
+    },
+    {
+      "path": "src/assets/fonts/eUkraine/e-Ukraine-Medium.otf",
+      "sha1": "69c99c82e1ee1dbb8f02233f98ecfa72c4444908"
+    },
+    {
+      "path": "src/assets/fonts/eUkraine/e-Ukraine-Regular.otf",
+      "sha1": "f9823e381ae07aeb883a073d7c08d8afb9accb6e"
+    },
+    {
+      "path": "src/assets/fonts/eUkraine/e-Ukraine-Thin.otf",
+      "sha1": "dfa2b6b77261853c311eeed3bedacf0be52e2fd0"
+    },
+    {
+      "path": "src/assets/fonts/eUkraine/e-Ukraine-UltraLight.otf",
+      "sha1": "8326d4849f9461e5e0dbc51c2aac359d6669bcef"
+    },
+    {
+      "path": "src/assets/fonts/SpaceMono/SpaceMono-Bold.ttf",
+      "sha1": "91bc9576b93d1a2ffc75da19665a3b8b654f5d40"
+    },
+    {
+      "path": "src/assets/fonts/SpaceMono/SpaceMono-BoldItalic.ttf",
+      "sha1": "9aad4d2055e6ac52cd47f2a09ea836f697bef50b"
+    },
+    {
+      "path": "src/assets/fonts/SpaceMono/SpaceMono-Italic.ttf",
+      "sha1": "9bdbab7a60578b307d9ae6c45c859ed5ba98d762"
+    },
+    {
+      "path": "src/assets/fonts/SpaceMono/SpaceMono-Regular.ttf",
+      "sha1": "b610a073df31c21b1378d9996a80c3056ec80329"
+    }
+  ]
+}
