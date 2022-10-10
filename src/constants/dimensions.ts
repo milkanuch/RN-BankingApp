@@ -1,11 +1,20 @@
-import { Dimensions } from 'react-native';
+import { Dimensions, StatusBar } from 'react-native';
 
-export const { height, width } = Dimensions.get('window');
+const { height, width } = Dimensions.get('window');
 
-export const responsiveWidth = (value: number): number => {
+const screenHeight = Dimensions.get('screen').height;
+
+const statusBarHeight = StatusBar.currentHeight ?? 0;
+
+const сorrectHeight =
+  height - statusBarHeight + Math.abs(screenHeight - height) - 48;
+
+const responsiveWidth = (value: number): number => {
   return width * (value / 100);
 };
 
-export const responsiveHeight = (value: number): number => {
-  return height * (value / 100);
+const responsiveHeight = (value: number): number => {
+  return сorrectHeight * (value / 100);
 };
+
+export { height, width, сorrectHeight, responsiveHeight, responsiveWidth };
