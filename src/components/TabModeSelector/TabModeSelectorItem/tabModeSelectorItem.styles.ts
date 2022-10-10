@@ -17,7 +17,8 @@ const styles = StyleSheet.create({
   },
   title: {
     color: colors.black,
-    fontSize: 12,
+    fontSize: 11,
+    fontFamily: 'e-Ukraine-Regular',
   },
   selectedTitle: {
     color: colors.white,
