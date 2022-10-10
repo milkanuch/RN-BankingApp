@@ -15,7 +15,8 @@ const styles = StyleSheet.create({
     height: 15,
   },
   text: {
-    fontSize: 14,
+    fontFamily: 'e-Ukraine-Regular',
+    fontSize: 13,
     color: colors.black,
     textDecorationLine: 'none',
   },

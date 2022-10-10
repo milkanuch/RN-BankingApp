@@ -24,13 +24,15 @@ const styles = StyleSheet.create({
     borderColor: colors.black,
   },
   title: {
+    fontFamily: 'e-Ukraine-Regular',
     color: colors.black,
-    fontSize: 14,
+    fontSize: 13,
     marginBottom: 6,
   },
   hintText: {
+    fontFamily: 'e-Ukraine-Regular',
     color: colors.grey,
-    fontSize: 13,
+    fontSize: 12,
     marginRight: 10,
   },
 });

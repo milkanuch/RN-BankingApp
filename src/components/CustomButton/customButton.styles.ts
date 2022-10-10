@@ -20,8 +20,9 @@ const styles = StyleSheet.create({
     marginRight: 5,
   },
   text: {
+    fontFamily: 'e-Ukraine-Regular',
     color: colors.white,
-    fontSize: 15,
+    fontSize: 14,
   },
   whiteButtonText: {
     color: colors.black,
