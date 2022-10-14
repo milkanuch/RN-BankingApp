@@ -13,6 +13,7 @@ const TabModeSelectorItem: FC<ITabModeSelectorItemProps> = ({
   const { title, value } = data;
   const isSelected = data.value === currentValue;
   const handleOnPress = () => changeValue(value);
+
   return (
     <TouchableOpacity
       style={styles.underlayContainer}

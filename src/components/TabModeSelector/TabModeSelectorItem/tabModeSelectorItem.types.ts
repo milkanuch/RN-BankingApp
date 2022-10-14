@@ -1,10 +1,12 @@
+import { SignInMode } from '../../../screens/SignInScreen/signInScreen.types';
+
 export interface ITabModeSelectorItemProps {
-  currentValue: any;
-  changeValue: (newValue: string | number) => void;
+  currentValue: SignInMode;
+  changeValue: (newValue: SignInMode) => void;
   data: ITabModeSelectorItemData;
 }
 
 export interface ITabModeSelectorItemData {
   title: string;
-  value: string;
+  value: SignInMode;
 }
