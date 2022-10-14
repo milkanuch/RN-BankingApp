@@ -17,6 +17,7 @@ module.exports = {
       rules: {
         'react/react-in-jsx-scope': 'off',
         '@typescript-eslint/no-shadow': ['error'],
+        '@typescript-eslint/no-explicit-any': ['error'],
         'no-shadow': 'off',
         'no-undef': 'off',
         'react-native/no-unused-styles': 'error',
