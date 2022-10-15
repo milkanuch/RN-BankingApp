@@ -11,6 +11,9 @@ const styles = StyleSheet.create({
   checkBox: {
     height: responsiveHeight(6),
   },
+  header: {
+    height: responsiveHeight(20),
+  },
 });
 
 export default styles;
