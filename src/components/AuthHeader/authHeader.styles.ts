@@ -1,11 +1,10 @@
 import { StyleSheet } from 'react-native';
 
-import { colors } from '../../../constants/colors';
-import { responsiveHeight } from '../../../constants/dimensions';
+import { colors } from '../../constants/colors';
+import { responsiveHeight } from '../../constants/dimensions';
 
 const styles = StyleSheet.create({
   container: {
-    height: responsiveHeight(20),
     justifyContent: 'flex-end',
   },
   titleText: {
@@ -17,6 +16,7 @@ const styles = StyleSheet.create({
     fontFamily: 'e-Ukraine-Thin',
     fontSize: 13,
     color: colors.black,
+    paddingVertical: responsiveHeight(1),
   },
 });
 
