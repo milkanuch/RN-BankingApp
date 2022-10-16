@@ -13,6 +13,10 @@ const signInModeItems: ITabModeSelectorItemData[] = [
   },
 ];
 
+const headerTitle = 'Sign In';
+
+const headerText = 'Please enter the required login information.';
+
 const authTitles = {
   [SignInMode.WithPhoneNumber]: 'Phone number',
   [SignInMode.WithPassportNumber]: 'Passport number',
@@ -32,6 +36,8 @@ const touchIdButtonIsWhiteTheme = true;
 
 export {
   signInModeItems,
+  headerTitle,
+  headerText,
   authTitles,
   passwordTextInputTitle,
   checkBoxText,

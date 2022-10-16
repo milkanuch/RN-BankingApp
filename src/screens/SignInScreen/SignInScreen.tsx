@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import { ScrollView } from 'react-native';
 
 import CheckBox from '../../components/CheckBox/CheckBox';
@@ -8,13 +8,21 @@ import CustomTextInput from '../../components/CustomTextInput/CustomTextInput';
 
 import TabModeSelector from '../../components/TabModeSelector/TabModeSelector';
 
+import AuthHeader from '../../components/AuthHeader/AuthHeader';
+
+import {
+  AuthStackScreenTypes,
+  SignInScreenProps,
+} from '../../navigation/AuthStackNavigation/AuthStackNavigation.types';
+
 import AuthCreateAccount from './AuthCreateAccount/AuthCreateAccount';
 
 import AuthDivider from './AuthDivider/AuthDivider';
 
-import AuthHeader from './AuthHeader/AuthHeader';
 import {
   signInModeItems,
+  headerTitle,
+  headerText,
   authTitles,
   passwordTextInputTitle,
   checkBoxText,
@@ -27,19 +35,21 @@ import {
 import styles from './signInScreen.styles';
 import { SignInMode } from './signInScreen.types';
 
-const SignInScreen = () => {
+const SignInScreen: FC<SignInScreenProps> = ({ navigation }) => {
   const [signInMode, setSignInMode] = useState(SignInMode.WithPhoneNumber);
-  const [loginInput, setLoginInput] = useState('');
-  const [passwordInput, setPasswordInput] = useState('');
+  const [login, setLogin] = useState('');
+  const [password, setPassword] = useState('');
   const [savePassword, setSavePassword] = useState(false);
 
   const handleCheckBoxState = (newValue: boolean) => setSavePassword(newValue);
   const handleSignInOnPress = () => {};
-  const handleCreateAccount = () => {};
+  const handleCreateAccount = () => {
+    navigation.navigate(AuthStackScreenTypes.GeneralData);
+  };
 
   return (
     <ScrollView style={styles.screen}>
-      <AuthHeader />
+      <AuthHeader title={headerTitle} text={headerText} style={styles.header} />
       <TabModeSelector
         currentValue={signInMode}
         setNewValue={setSignInMode}
@@ -47,14 +57,14 @@ const SignInScreen = () => {
       />
       <CustomTextInput
         title={authTitles[signInMode]}
-        value={loginInput}
-        setValue={setLoginInput}
+        value={login}
+        setValue={setLogin}
       />
       <CustomTextInput
         title={passwordTextInputTitle}
         secureTextEntry={true}
-        value={passwordInput}
-        setValue={setPasswordInput}
+        value={password}
+        setValue={setPassword}
       />
       <CheckBox
         isChecked={savePassword}
