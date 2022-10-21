@@ -15,13 +15,11 @@ const Card: FC<ICardProps> = ({
   cardNumber,
   cardProvider,
   expirationDate,
-  widthScale,
   onIconPress,
   money,
   currency,
 }) => {
   const [isSecured, setSecured] = useState(true);
-  const getStyles = styles(widthScale);
   const handleLongPress = () => {
     setSecured(!isSecured);
     copyTextToClipboard(cardNumber);
@@ -30,12 +28,12 @@ const Card: FC<ICardProps> = ({
   return (
     <TouchableOpacity
       onLongPress={handleLongPress}
-      style={getStyles.container}
+      style={styles.container}
       activeOpacity={activeOpacity}>
-      <View style={getStyles.circle} />
-      <View style={getStyles.rectangle} />
-      <View style={getStyles.triangle} />
-      <View style={getStyles.cardContainer}>
+      <View style={styles.circle} />
+      <View style={styles.rectangle} />
+      <View style={styles.triangle} />
+      <View style={styles.cardContainer}>
         <CardHeader
           title={title}
           iconName={iconName}
