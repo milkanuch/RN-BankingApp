@@ -1,16 +1,25 @@
 const title = 'Sign Up';
 
-const text = 'Hey,enter ur firstname and lastname';
+const text = 'Please,enter required information.';
 
-const firstNameTextInputTitle = 'Firstname';
+const firstNameTextInput = {
+  title: 'Firstname',
+  hint: 'Dorian',
+};
 
-const lastNameTextInputTitle = 'Lastname';
+const lastNameTextInput = {
+  title: 'Lastname',
+  hint: 'Grey',
+};
 
-const phoneNumberTextInputTitlte = 'Phone number';
+const phoneNumberTextInput = {
+  title: 'Phone number',
+  hint: '+380504990423',
+};
 
 const passwordTextInputTitle = 'Password';
 
-const confirmPasswordTextInputTitle = 'Confrim Password';
+const confirmPasswordTextInputTitle = 'Confirm Password';
 
 const nextButtonTitle = 'Next';
 
@@ -21,9 +30,9 @@ const nextButtonIsWhiteTheme = true;
 export {
   title,
   text,
-  firstNameTextInputTitle,
-  lastNameTextInputTitle,
-  phoneNumberTextInputTitlte,
+  firstNameTextInput,
+  lastNameTextInput,
+  phoneNumberTextInput,
   passwordTextInputTitle,
   confirmPasswordTextInputTitle,
   nextButtonTitle,
