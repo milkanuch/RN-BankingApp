@@ -14,24 +14,42 @@ import { iconName, iconSize } from './customTextInput.settings';
 const CustomTextInput: FC<ICustomTextInputProps> = ({
   title,
   hintText,
+  placeHolder,
   secureTextEntry,
   value,
+  validation,
+  errorText,
   setValue,
   style,
 }) => {
   const [focused, setFocused] = useState(false);
+  const [isValid, setIsValid] = useState(true);
+
   const handleFocus = () => setFocused(true);
   const handleBlur = () => setFocused(false);
   const handleResetText = () => setValue('');
 
+  const handleTextValidation = (newValue: string) => {
+    if (validation) {
+      setIsValid(validation(newValue));
+    }
+    setValue(newValue);
+  };
+
   return (
     <View style={[styles.container, style]}>
       <Text style={styles.title}>{title}</Text>
-      <View style={[styles.textInputContainer, focused && styles.focused]}>
+      <View
+        style={[
+          styles.textInputContainer,
+          focused && styles.focused,
+          !isValid && styles.error,
+        ]}>
         {!!hintText && <Text style={styles.hintText}>{hintText}</Text>}
         <TextInput
           value={value}
-          onChangeText={setValue}
+          placeholder={placeHolder}
+          onChangeText={handleTextValidation}
           style={styles.textInput}
           secureTextEntry={secureTextEntry}
           selectionColor={colors.black}
@@ -46,6 +64,11 @@ const CustomTextInput: FC<ICustomTextInputProps> = ({
           />
         )}
       </View>
+      {!isValid && (
+        <Text style={styles.errorText} adjustsFontSizeToFit numberOfLines={1}>
+          {errorText}
+        </Text>
+      )}
     </View>
   );
 };
