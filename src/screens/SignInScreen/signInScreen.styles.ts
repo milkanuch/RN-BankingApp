@@ -14,6 +14,9 @@ const styles = StyleSheet.create({
   header: {
     height: responsiveHeight(20),
   },
+  error: {
+    borderColor: colors.red,
+  },
 });
 
 export default styles;

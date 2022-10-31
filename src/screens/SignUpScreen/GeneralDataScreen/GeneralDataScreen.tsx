@@ -1,6 +1,8 @@
 import React, { FC, useState } from 'react';
 import { ScrollView } from 'react-native-gesture-handler';
 
+import { SafeAreaView } from 'react-native';
+
 import CustomButton from '../../../components/CustomButton/CustomButton';
 
 import CustomTextInput from '../../../components/CustomTextInput/CustomTextInput';
@@ -15,14 +17,26 @@ import {
 } from '../../../navigation/AuthStackNavigation/AuthStackNavigation.types';
 
 import {
+  credentialsValidation,
+  passwordValidation,
+  phoneNumberValidation,
+} from '../../../helpers/validation';
+
+import {
+  credentialsErrorMessage,
+  passwordErrorMessage,
+  phoneNumberErrorMessage,
+} from '../../../constants/errorMesages';
+
+import {
   backButtonTitle,
   confirmPasswordTextInputTitle,
-  firstNameTextInputTitle,
-  lastNameTextInputTitle,
+  firstNameTextInput,
+  lastNameTextInput,
   nextButtonIsWhiteTheme,
   nextButtonTitle,
   passwordTextInputTitle,
-  phoneNumberTextInputTitlte,
+  phoneNumberTextInput,
   text,
   title,
 } from './generalDataScreen.settings';
@@ -33,53 +47,69 @@ const GeneralDataScreen: FC<GeneralDataScreenProps> = ({ navigation }) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
-  const [pasword, setPassword] = useState('');
-  const [confrimPassword, setConfirmPassword] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   const handleNextButton = () => {
     navigation.navigate(AuthStackScreenTypes.PersonalData);
   };
+
   const handleBackButton = () => {
     navigation.goBack();
   };
 
   return (
     <ScrollView style={styles.screen}>
-      <AuthHeader title={title} text={text} style={styles.header} />
-      <CustomTextInput
-        title={firstNameTextInputTitle}
-        value={firstName}
-        setValue={setFirstName}
-      />
-      <CustomTextInput
-        title={lastNameTextInputTitle}
-        value={lastName}
-        setValue={setLastName}
-      />
-      <CustomTextInput
-        title={phoneNumberTextInputTitlte}
-        value={phoneNumber}
-        setValue={setPhoneNumber}
-      />
-      <CustomTextInput
-        title={passwordTextInputTitle}
-        value={pasword}
-        setValue={setPassword}
-        secureTextEntry={true}
-      />
-      <CustomTextInput
-        title={confirmPasswordTextInputTitle}
-        value={confrimPassword}
-        setValue={setConfirmPassword}
-        secureTextEntry={true}
-      />
-      <CustomButton
-        title={nextButtonTitle}
-        onPress={handleNextButton}
-        isWhiteTheme={nextButtonIsWhiteTheme}
-      />
-      <Divider />
-      <CustomButton title={backButtonTitle} onPress={handleBackButton} />
+      <SafeAreaView>
+        <AuthHeader title={title} text={text} style={styles.header} />
+        <CustomTextInput
+          title={firstNameTextInput.title}
+          placeHolder={firstNameTextInput.hint}
+          value={firstName}
+          setValue={setFirstName}
+          validation={credentialsValidation}
+          errorText={credentialsErrorMessage}
+        />
+        <CustomTextInput
+          title={lastNameTextInput.title}
+          placeHolder={lastNameTextInput.hint}
+          value={lastName}
+          setValue={setLastName}
+          validation={credentialsValidation}
+          errorText={credentialsErrorMessage}
+        />
+        <CustomTextInput
+          title={phoneNumberTextInput.title}
+          placeHolder={phoneNumberTextInput.hint}
+          value={phoneNumber}
+          errorText={phoneNumberErrorMessage}
+          validation={phoneNumberValidation}
+          setValue={setPhoneNumber}
+        />
+        <CustomTextInput
+          title={passwordTextInputTitle}
+          value={password}
+          setValue={setPassword}
+          errorText={passwordErrorMessage}
+          validation={passwordValidation}
+          secureTextEntry={true}
+        />
+        <CustomTextInput
+          title={confirmPasswordTextInputTitle}
+          value={confirmPassword}
+          setValue={setConfirmPassword}
+          validation={passwordValidation}
+          errorText={passwordErrorMessage}
+          secureTextEntry={true}
+        />
+        <CustomButton
+          title={nextButtonTitle}
+          onPress={handleNextButton}
+          isWhiteTheme={nextButtonIsWhiteTheme}
+        />
+        <Divider />
+        <CustomButton title={backButtonTitle} onPress={handleBackButton} />
+      </SafeAreaView>
     </ScrollView>
   );
 };
