@@ -1,4 +1,4 @@
 export enum SignInMode {
   WithPhoneNumber = 'WithPhoneNumber',
-  WithPaymentBill = 'WithPaymentBill',
+  WithPassportNumber = 'WithPasswortNumber',
 }

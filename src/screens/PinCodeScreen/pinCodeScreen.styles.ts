@@ -4,15 +4,12 @@ import { colors } from '../../constants/colors';
 import { responsiveHeight } from '../../constants/dimensions';
 
 const styles = StyleSheet.create({
-  screen: {
-    backgroundColor: colors.white,
-    paddingHorizontal: 20,
-  },
-  checkBox: {
-    height: responsiveHeight(6),
-  },
-  header: {
-    height: responsiveHeight(20),
+  container: {
+    backgroundColor: colors.darkGrey,
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: responsiveHeight(4),
   },
 });
 

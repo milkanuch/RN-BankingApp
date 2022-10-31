@@ -15,10 +15,6 @@ import {
   SignInScreenProps,
 } from '../../navigation/AuthStackNavigation/AuthStackNavigation.types';
 
-import { passwordValidation } from '../../helpers/validation';
-
-import { passwordErrorMessage } from '../../constants/errorMesages';
-
 import AuthCreateAccount from './AuthCreateAccount/AuthCreateAccount';
 
 import AuthDivider from './AuthDivider/AuthDivider';
@@ -28,15 +24,12 @@ import {
   headerTitle,
   headerText,
   authTitles,
-  authHint,
   passwordTextInputTitle,
   checkBoxText,
   signInButtonTitle,
   touchIdButtonTitle,
   touchIdButtonIconName,
   touchIdButtonIsWhiteTheme,
-  authValidation,
-  auuthErrorMessages,
 } from './signInScreen.settings';
 
 import styles from './signInScreen.styles';
@@ -49,9 +42,7 @@ const SignInScreen: FC<SignInScreenProps> = ({ navigation }) => {
   const [savePassword, setSavePassword] = useState(false);
 
   const handleCheckBoxState = (newValue: boolean) => setSavePassword(newValue);
-
-  const handleSignIn = () => {};
-
+  const handleSignInOnPress = () => {};
   const handleCreateAccount = () => {
     navigation.navigate(AuthStackScreenTypes.GeneralData);
   };
@@ -66,20 +57,14 @@ const SignInScreen: FC<SignInScreenProps> = ({ navigation }) => {
       />
       <CustomTextInput
         title={authTitles[signInMode]}
-        placeHolder={authHint[signInMode]}
-        validation={authValidation[signInMode]}
-        errorText={auuthErrorMessages[signInMode]}
         value={login}
         setValue={setLogin}
-        style={styles.error}
       />
       <CustomTextInput
         title={passwordTextInputTitle}
         secureTextEntry={true}
         value={password}
         setValue={setPassword}
-        errorText={passwordErrorMessage}
-        validation={passwordValidation}
       />
       <CheckBox
         isChecked={savePassword}
@@ -87,12 +72,12 @@ const SignInScreen: FC<SignInScreenProps> = ({ navigation }) => {
         onPress={handleCheckBoxState}
         containerStyle={styles.checkBox}
       />
-      <CustomButton title={signInButtonTitle} onPress={handleSignIn} />
+      <CustomButton title={signInButtonTitle} onPress={handleSignInOnPress} />
       <AuthDivider />
       <CustomButton
         title={touchIdButtonTitle}
         iconName={touchIdButtonIconName}
-        onPress={handleSignIn}
+        onPress={handleSignInOnPress}
         isWhiteTheme={touchIdButtonIsWhiteTheme}
       />
       <AuthCreateAccount onPress={handleCreateAccount} />
