@@ -1,15 +1,20 @@
 import { StyleSheet } from 'react-native';
 
 import { colors } from '../../../constants/colors';
-import { responsiveHeight } from '../../../constants/dimensions';
 
 const styles = StyleSheet.create({
-  header_text: {
-    color: colors.white,
-    fontSize: 36,
+  container: {
+    justifyContent: 'flex-end',
   },
-  header: {
-    marginTop: responsiveHeight(6),
+  text: {
+    fontFamily: 'e-Ukraine-Thin',
+    fontSize: 13,
+    color: colors.white,
+  },
+  icon: {
+    position: 'absolute',
+    right: 0,
+    bottom: 0,
   },
 });
 

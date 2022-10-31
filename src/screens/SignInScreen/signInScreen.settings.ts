@@ -1,4 +1,13 @@
 import { ITabModeSelectorItemData } from '../../components/TabModeSelector/TabModeSelectorItem/tabModeSelectorItem.types';
+import {
+  personalDataErrorMessage,
+  phoneNumberErrorMessage,
+} from '../../constants/errorMesages';
+
+import {
+  phoneNumberValidation,
+  personalDataValidation,
+} from './../../helpers/validation';
 
 import { SignInMode } from './signInScreen.types';
 
@@ -8,8 +17,8 @@ const signInModeItems: ITabModeSelectorItemData[] = [
     value: SignInMode.WithPhoneNumber,
   },
   {
-    title: 'Passport',
-    value: SignInMode.WithPassportNumber,
+    title: 'Payment Bill',
+    value: SignInMode.WithPaymentBill,
   },
 ];
 
@@ -19,7 +28,22 @@ const headerText = 'Please enter the required login information.';
 
 const authTitles = {
   [SignInMode.WithPhoneNumber]: 'Phone number',
-  [SignInMode.WithPassportNumber]: 'Passport number',
+  [SignInMode.WithPaymentBill]: 'Payment Bill Number',
+};
+
+const authHint = {
+  [SignInMode.WithPhoneNumber]: '+380 50 499 0423',
+  [SignInMode.WithPaymentBill]: '1234567891',
+};
+
+const authValidation = {
+  [SignInMode.WithPhoneNumber]: phoneNumberValidation,
+  [SignInMode.WithPaymentBill]: personalDataValidation,
+};
+
+const auuthErrorMessages = {
+  [SignInMode.WithPhoneNumber]: phoneNumberErrorMessage,
+  [SignInMode.WithPaymentBill]: personalDataErrorMessage,
 };
 
 const passwordTextInputTitle = 'Password';
@@ -39,6 +63,9 @@ export {
   headerTitle,
   headerText,
   authTitles,
+  authHint,
+  authValidation,
+  auuthErrorMessages,
   passwordTextInputTitle,
   checkBoxText,
   signInButtonTitle,

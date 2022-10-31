@@ -35,6 +35,14 @@ const styles = StyleSheet.create({
     fontSize: 12,
     marginRight: 10,
   },
+  error: {
+    borderColor: colors.red,
+  },
+  errorText: {
+    fontSize: 11,
+    color: colors.red,
+    paddingHorizontal: responsiveHeight(1),
+  },
 });
 
 export default styles;
