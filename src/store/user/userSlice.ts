@@ -2,6 +2,8 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { AppState } from '..';
 
+import { bankApi } from './../../services/index';
+
 import { UserState } from './user.types';
 
 const initialState: UserState = {
@@ -10,6 +12,7 @@ const initialState: UserState = {
   phoneNumber: '',
   isPremium: false,
   isLogged: false,
+  isLoading: false,
 };
 
 export const userSlice = createSlice({
@@ -19,11 +22,22 @@ export const userSlice = createSlice({
     setUserIsLogged: (state, action: PayloadAction<boolean>) => {
       state.isLogged = action.payload;
     },
+    setIsLoading: (state, action: PayloadAction<boolean>) => {
+      state.isLoading = action.payload;
+    },
+  },
+  extraReducers: builder => {
+    builder.addMatcher(
+      bankApi.endpoints.userLogin.matchFulfilled,
+      (state, payload) => {
+        console.log(payload);
+      },
+    );
   },
 });
 
 export const selectIsLogged = (state: AppState) => state.user.isLogged;
 
-export const { setUserIsLogged } = userSlice.actions;
+export const { setUserIsLogged, setIsLoading } = userSlice.actions;
 
 export const { reducer: userReducer } = userSlice;
