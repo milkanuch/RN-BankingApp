@@ -30,6 +30,9 @@ const styles = StyleSheet.create({
   underlayContainer: {
     borderRadius: 12,
   },
+  disabled: {
+    opacity: 0.5,
+  },
 });
 
 export default styles;

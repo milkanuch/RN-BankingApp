@@ -56,6 +56,9 @@ const SignInScreen: FC<SignInScreenProps> = ({ navigation }) => {
     navigation.navigate(AuthStackScreenTypes.GeneralData);
   };
 
+  const isValid =
+    authValidation[signInMode](login) && passwordValidation(password);
+
   return (
     <ScrollView style={styles.screen}>
       <AuthHeader title={headerTitle} text={headerText} style={styles.header} />
@@ -87,7 +90,11 @@ const SignInScreen: FC<SignInScreenProps> = ({ navigation }) => {
         onPress={handleCheckBoxState}
         containerStyle={styles.checkBox}
       />
-      <CustomButton title={signInButtonTitle} onPress={handleSignIn} />
+      <CustomButton
+        isDisabled={!isValid}
+        title={signInButtonTitle}
+        onPress={handleSignIn}
+      />
       <AuthDivider />
       <CustomButton
         title={touchIdButtonTitle}

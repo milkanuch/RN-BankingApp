@@ -58,6 +58,13 @@ const GeneralDataScreen: FC<GeneralDataScreenProps> = ({ navigation }) => {
     navigation.goBack();
   };
 
+  const isValid =
+    credentialsValidation(firstName) &&
+    credentialsValidation(lastName) &&
+    phoneNumberValidation(phoneNumber) &&
+    passwordValidation(password) &&
+    password === confirmPassword;
+
   return (
     <ScrollView style={styles.screen}>
       <SafeAreaView>
@@ -103,6 +110,7 @@ const GeneralDataScreen: FC<GeneralDataScreenProps> = ({ navigation }) => {
           secureTextEntry={true}
         />
         <CustomButton
+          isDisabled={!isValid}
           title={nextButtonTitle}
           onPress={handleNextButton}
           isWhiteTheme={nextButtonIsWhiteTheme}

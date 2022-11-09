@@ -3,4 +3,5 @@ export interface ICustomButtonProps {
   onPress: () => void;
   iconName?: string;
   isWhiteTheme?: boolean;
+  isDisabled?: boolean;
 }

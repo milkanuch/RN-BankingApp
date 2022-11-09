@@ -43,6 +43,10 @@ const PersonalDataScreen: FC<PersonalDataScreenProps> = ({ navigation }) => {
     password: 'aXxdgdsg3!_',
   });
 
+  const isValid =
+    personalDataValidation(passportNumber) &&
+    personalDataValidation(paymentBill);
+
   console.log(data, error);
 
   if (isLoading) {
@@ -73,6 +77,7 @@ const PersonalDataScreen: FC<PersonalDataScreenProps> = ({ navigation }) => {
         setValue={setPaymentBill}
       />
       <CustomButton
+        isDisabled={!isValid}
         title={nextButtonTitle}
         onPress={handleNextButton}
         isWhiteTheme={nextButtonIsWhiteTheme}
