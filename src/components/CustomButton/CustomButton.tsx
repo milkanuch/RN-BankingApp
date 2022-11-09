@@ -13,13 +13,20 @@ const CustomButton: FC<ICustomButtonProps> = ({
   onPress,
   iconName,
   isWhiteTheme,
+  isDisabled,
 }) => {
   return (
     <TouchableOpacity
       style={styles.underlayContainer}
       onPress={onPress}
+      disabled={isDisabled}
       activeOpacity={activeOpacityValue}>
-      <View style={[styles.button, isWhiteTheme && styles.whiteButton]}>
+      <View
+        style={[
+          styles.button,
+          isWhiteTheme && styles.whiteButton,
+          isDisabled && styles.disabled,
+        ]}>
         {!!iconName && (
           <Icon style={styles.icon} name={iconName} size={iconSize} />
         )}
