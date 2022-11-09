@@ -3,20 +3,27 @@ import React, { FC } from 'react';
 
 import IconButton from '../../IconButton/IconButton';
 
-import { detailIconColor, detailIconSize } from './cardHeader.settings';
+import {
+  detailIconColor,
+  detailIconName,
+  detailIconSize,
+} from './cardHeader.settings';
 import styles from './cardHeader.styles';
 import { ICardHeaderProps } from './cardHeader.types';
 
-const CardHeader: FC<ICardHeaderProps> = ({ title, iconName, onIconPress }) => {
+const CardHeader: FC<ICardHeaderProps> = ({ title, showDetailsIconButton }) => {
+  const handleIconPress = () => {};
   return (
     <View style={styles.container}>
       <Text style={styles.text}>{title}</Text>
-      <IconButton
-        iconName={iconName}
-        color={detailIconColor}
-        size={detailIconSize}
-        onPress={onIconPress}
-      />
+      {showDetailsIconButton && (
+        <IconButton
+          iconName={detailIconName}
+          color={detailIconColor}
+          size={detailIconSize}
+          onPress={handleIconPress}
+        />
+      )}
     </View>
   );
 };

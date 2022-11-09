@@ -1,5 +1,4 @@
 export interface ICardHeaderProps {
   title: string;
-  iconName: string;
-  onIconPress: () => void;
+  showDetailsIconButton?: boolean;
 }
