@@ -5,7 +5,9 @@ import { IMoneyTextProps } from './MoneyText/moneyText.types';
 export interface ICardProps
   extends ICardHeaderProps,
     ICardFooterProps,
-    IMoneyTextProps {}
+    IMoneyTextProps {
+  blocked?: boolean;
+}
 
 export enum Currency {
   UAH = 'UAH',
