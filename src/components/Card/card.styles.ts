@@ -6,6 +6,7 @@ import { width } from '../../constants/dimensions';
 const cardWidth = width - 50;
 const aspectRatio = 1.57;
 const cardHeight = cardWidth / aspectRatio;
+const transparentBlack = 'rgba(0, 0, 0, 0.7)';
 
 const styles = StyleSheet.create({
   container: {
@@ -50,6 +51,17 @@ const styles = StyleSheet.create({
     backgroundColor: colors.light.primary[200],
     opacity: 0.1,
   },
+  blocked: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: transparentBlack,
+  },
+  blockedBackground: {},
 });
 
 export default styles;

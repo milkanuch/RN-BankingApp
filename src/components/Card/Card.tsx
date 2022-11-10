@@ -1,23 +1,31 @@
 import { TouchableOpacity, View } from 'react-native';
 import React, { FC, useState } from 'react';
 
+import Icon from 'react-native-vector-icons/MaterialIcons';
+
 import styles from './card.styles';
 import CardHeader from './CardHeader/CardHeader';
 import { ICardProps } from './card.types';
 import MoneyText from './MoneyText/MoneyText';
 import CardFooter from './CardFooter/CardFooter';
-import { activeOpacity, snackbarMessage } from './card.settings';
+import {
+  activeOpacity,
+  blockIconColor,
+  blockIconName,
+  blockIconSize,
+  snackbarMessage,
+} from './card.settings';
 import { copyTextToClipboard, showSnackBar } from './card.helper';
 
 const Card: FC<ICardProps> = ({
   title,
-  iconName,
+  showDetailsIconButton,
   cardNumber,
   cardProvider,
   expirationDate,
-  onIconPress,
   money,
   currency,
+  blocked,
 }) => {
   const [isSecured, setSecured] = useState(true);
   const handleLongPress = () => {
@@ -28,7 +36,7 @@ const Card: FC<ICardProps> = ({
   return (
     <TouchableOpacity
       onLongPress={handleLongPress}
-      style={styles.container}
+      style={[styles.container, blocked && styles.blockedBackground]}
       activeOpacity={activeOpacity}>
       <View style={styles.circle} />
       <View style={styles.rectangle} />
@@ -36,8 +44,7 @@ const Card: FC<ICardProps> = ({
       <View style={styles.cardContainer}>
         <CardHeader
           title={title}
-          iconName={iconName}
-          onIconPress={onIconPress}
+          showDetailsIconButton={showDetailsIconButton}
         />
         <MoneyText money={money} currency={currency} />
         <CardFooter
@@ -47,6 +54,15 @@ const Card: FC<ICardProps> = ({
           isSecured={isSecured}
         />
       </View>
+      {blocked && (
+        <View style={styles.blocked}>
+          <Icon
+            name={blockIconName}
+            color={blockIconColor}
+            size={blockIconSize}
+          />
+        </View>
+      )}
     </TouchableOpacity>
   );
 };
