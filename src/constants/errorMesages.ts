@@ -7,9 +7,12 @@ const credentialsErrorMessage = 'Required only letters.';
 
 const personalDataErrorMessage = 'Required at least 10 digits';
 
+const passportDataErrorMessage = 'Invalid passport number';
+
 export {
   passwordErrorMessage,
   phoneNumberErrorMessage,
   personalDataErrorMessage,
   credentialsErrorMessage,
+  passportDataErrorMessage,
 };
