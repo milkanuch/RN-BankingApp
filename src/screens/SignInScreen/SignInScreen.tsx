@@ -19,6 +19,10 @@ import { passwordValidation } from '../../helpers/validation';
 
 import { passwordErrorMessage } from '../../constants/errorMesages';
 
+import { useUserLoginMutation } from '../../services';
+
+import { showSnackBar } from '../../components/Card/card.helper';
+
 import AuthCreateAccount from './AuthCreateAccount/AuthCreateAccount';
 
 import AuthDivider from './AuthDivider/AuthDivider';
@@ -36,7 +40,8 @@ import {
   touchIdButtonIconName,
   touchIdButtonIsWhiteTheme,
   authValidation,
-  auuthErrorMessages,
+  authErrorMessages,
+  loginKey,
 } from './signInScreen.settings';
 
 import styles from './signInScreen.styles';
@@ -47,10 +52,18 @@ const SignInScreen: FC<SignInScreenProps> = ({ navigation }) => {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const [savePassword, setSavePassword] = useState(false);
+  const [signIn, { data }] = useUserLoginMutation();
 
   const handleCheckBoxState = (newValue: boolean) => setSavePassword(newValue);
 
-  const handleSignIn = () => {};
+  const handleSignIn = async () => {
+    await signIn({
+      [loginKey[signInMode]]: login,
+      password: password,
+    });
+  };
+
+  const handleTouchId = () => {};
 
   const handleCreateAccount = () => {
     navigation.navigate(AuthStackScreenTypes.GeneralData);
@@ -58,6 +71,10 @@ const SignInScreen: FC<SignInScreenProps> = ({ navigation }) => {
 
   const isValid =
     authValidation[signInMode](login) && passwordValidation(password);
+
+  if (data && data.error) {
+    showSnackBar(data.error);
+  }
 
   return (
     <ScrollView style={styles.screen}>
@@ -71,7 +88,7 @@ const SignInScreen: FC<SignInScreenProps> = ({ navigation }) => {
         title={authTitles[signInMode]}
         placeHolder={authHint[signInMode]}
         validation={authValidation[signInMode]}
-        errorText={auuthErrorMessages[signInMode]}
+        errorText={authErrorMessages[signInMode]}
         value={login}
         setValue={setLogin}
         style={styles.error}
@@ -99,7 +116,7 @@ const SignInScreen: FC<SignInScreenProps> = ({ navigation }) => {
       <CustomButton
         title={touchIdButtonTitle}
         iconName={touchIdButtonIconName}
-        onPress={handleSignIn}
+        onPress={handleTouchId}
         isWhiteTheme={touchIdButtonIsWhiteTheme}
       />
       <AuthCreateAccount onPress={handleCreateAccount} />
