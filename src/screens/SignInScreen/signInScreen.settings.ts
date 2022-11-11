@@ -36,12 +36,17 @@ const authHint = {
   [SignInMode.WithPaymentBill]: '1234567891',
 };
 
+const loginKey = {
+  [SignInMode.WithPaymentBill]: 'ipn',
+  [SignInMode.WithPhoneNumber]: 'phoneNumber',
+};
+
 const authValidation = {
   [SignInMode.WithPhoneNumber]: phoneNumberValidation,
   [SignInMode.WithPaymentBill]: personalDataValidation,
 };
 
-const auuthErrorMessages = {
+const authErrorMessages = {
   [SignInMode.WithPhoneNumber]: phoneNumberErrorMessage,
   [SignInMode.WithPaymentBill]: personalDataErrorMessage,
 };
@@ -65,11 +70,12 @@ export {
   authTitles,
   authHint,
   authValidation,
-  auuthErrorMessages,
+  authErrorMessages,
   passwordTextInputTitle,
   checkBoxText,
   signInButtonTitle,
   touchIdButtonIconName,
   touchIdButtonIsWhiteTheme,
   touchIdButtonTitle,
+  loginKey,
 };

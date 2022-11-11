@@ -3,14 +3,19 @@ import { ActivityIndicator, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 
 import AuthHeader from '../../../components/AuthHeader/AuthHeader';
+import { showSnackBar } from '../../../components/Card/card.helper';
 import CustomButton from '../../../components/CustomButton/CustomButton';
 import CustomTextInput from '../../../components/CustomTextInput/CustomTextInput';
-import { personalDataErrorMessage } from '../../../constants/errorMesages';
-import { personalDataValidation } from '../../../helpers/validation';
+import {
+  passportDataErrorMessage,
+  personalDataErrorMessage,
+} from '../../../constants/errorMesages';
+import {
+  passportValidation,
+  personalDataValidation,
+} from '../../../helpers/validation';
 import { PersonalDataScreenProps } from '../../../navigation/AuthStackNavigation/AuthStackNavigation.types';
-import { useUserLoginQuery } from '../../../services';
-import { useAppDispatch } from '../../../store';
-import { setUserIsLogged } from '../../../store/user/userSlice';
+import { useUserRegisterMutation } from '../../../services';
 import Divider from '../Divider/Divider';
 
 import {
@@ -25,29 +30,34 @@ import {
 
 import styles from './personalDataScreen.styles';
 
-const PersonalDataScreen: FC<PersonalDataScreenProps> = ({ navigation }) => {
+const PersonalDataScreen: FC<PersonalDataScreenProps> = ({
+  navigation,
+  route,
+}) => {
+  const { firstName, lastName, phoneNumber, password } = route.params;
+
   const [passportNumber, setPassportNumber] = useState('');
   const [paymentBill, setPaymentBill] = useState('');
 
-  const dispatch = useAppDispatch();
-  const handleNextButton = () => {
-    dispatch(setUserIsLogged(true));
+  const [signUp, { isLoading, data }] = useUserRegisterMutation();
+
+  const handleNextButton = async () => {
+    await signUp({
+      firstName: firstName,
+      lastName: lastName,
+      phoneNumber: phoneNumber,
+      password: password,
+      passportNumber: passportNumber,
+      ipn: paymentBill,
+    }).unwrap();
   };
 
   const handleBackButton = () => {
     navigation.goBack();
   };
 
-  const { data, error, isLoading } = useUserLoginQuery({
-    phoneNumber: '+380673113221',
-    password: 'aXxdgdsg3!_',
-  });
-
   const isValid =
-    personalDataValidation(passportNumber) &&
-    personalDataValidation(paymentBill);
-
-  console.log(data, error);
+    passportValidation(passportNumber) && personalDataValidation(paymentBill);
 
   if (isLoading) {
     return (
@@ -57,6 +67,10 @@ const PersonalDataScreen: FC<PersonalDataScreenProps> = ({ navigation }) => {
     );
   }
 
+  if (data && data.error) {
+    showSnackBar(data.error);
+  }
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <AuthHeader title={title} text={text} style={styles.header} />
@@ -64,8 +78,8 @@ const PersonalDataScreen: FC<PersonalDataScreenProps> = ({ navigation }) => {
         title={passportNumberTextInput.title}
         placeHolder={passportNumberTextInput.hint}
         value={passportNumber}
-        validation={personalDataValidation}
-        errorText={personalDataErrorMessage}
+        validation={passportValidation}
+        errorText={passportDataErrorMessage}
         setValue={setPassportNumber}
       />
       <CustomTextInput

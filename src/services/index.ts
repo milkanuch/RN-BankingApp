@@ -1,7 +1,11 @@
 import { Config } from 'react-native-config';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import { UserParams } from './bankApi.types';
+import {
+  UserLoginParams,
+  UserParams,
+  UserResponseParams,
+} from './bankApi.types';
 
 export const bankApi = createApi({
   reducerPath: 'bankApi',
@@ -9,24 +13,21 @@ export const bankApi = createApi({
     baseUrl: Config.API_URL,
   }),
   endpoints: builder => ({
-    userRegister: builder.query<{ jwt: string }, UserParams>({
-      query: ({ firstName, lastName, phoneNumber, password }) => ({
+    userRegister: builder.mutation<UserResponseParams, UserParams>({
+      query: body => ({
         url: '/register',
         method: 'POST',
-        body: { firstName, lastName, phoneNumber, password },
+        body: body,
         headers: {
           'Content-type': 'application/json',
         },
       }),
     }),
-    userLogin: builder.query<
-      { jwt: string },
-      Pick<UserParams, 'phoneNumber' | 'password'>
-    >({
-      query: ({ phoneNumber, password }) => ({
+    userLogin: builder.mutation<UserResponseParams, UserLoginParams>({
+      query: body => ({
         url: '/login',
         method: 'POST',
-        body: { phoneNumber, password },
+        body: body,
         headers: {
           'Content-type': 'application/json',
         },
@@ -35,4 +36,4 @@ export const bankApi = createApi({
   }),
 });
 
-export const { useUserRegisterQuery, useUserLoginQuery } = bankApi;
+export const { useUserRegisterMutation, useUserLoginMutation } = bankApi;

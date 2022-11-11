@@ -51,7 +51,12 @@ const GeneralDataScreen: FC<GeneralDataScreenProps> = ({ navigation }) => {
   const [confirmPassword, setConfirmPassword] = useState('');
 
   const handleNextButton = () => {
-    navigation.navigate(AuthStackScreenTypes.PersonalData);
+    navigation.navigate(AuthStackScreenTypes.PersonalData, {
+      firstName: firstName,
+      lastName: lastName,
+      phoneNumber: phoneNumber,
+      password: password,
+    });
   };
 
   const handleBackButton = () => {

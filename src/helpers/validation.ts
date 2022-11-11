@@ -7,6 +7,10 @@ const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$/;
 
 const personalDataRegex = /^\d{10}$/;
 
+const oldPassportFormat = /^[А-ЯA-Z]{2}\d{6}$/;
+const sixteenPassportFormat = /^\d{13}$/;
+const twentyPassportFormat = /^\d{9}$/;
+
 export const phoneNumberValidation = (phoneNumber: string) =>
   phoneNumberRegex.test(phoneNumber);
 
@@ -18,3 +22,8 @@ export const credentialsValidation = (personalData: string) =>
 
 export const personalDataValidation = (personalData: string) =>
   personalDataRegex.test(personalData);
+
+export const passportValidation = (passport: string) =>
+  oldPassportFormat.test(passport) ||
+  sixteenPassportFormat.test(passport) ||
+  twentyPassportFormat.test(passport);
