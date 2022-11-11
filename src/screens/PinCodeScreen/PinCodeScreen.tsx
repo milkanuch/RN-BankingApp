@@ -1,7 +1,17 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, { FC, useCallback, useEffect, useRef, useState } from 'react';
 import { Animated } from 'react-native';
 
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { isEnrolledAsync, authenticateAsync } from 'expo-local-authentication';
+
+import {
+  AuthStackScreenTypes,
+  PinCodeScreenProps,
+} from '../../navigation/AuthStackNavigation/AuthStackNavigation.types';
+
+import { setUserIsLogged } from '../../store/user/userSlice';
+
+import { useAppDispatch } from '../../store';
 
 import { PinCodeContainer } from './PinCodeContainer/PinCodeContainer';
 import PinCodeFooter from './PinCodeFooter/PinCodeFooter';
@@ -10,40 +20,52 @@ import { PinCodeKeyboard } from './PinCodeKeyboard/PinCodeKeyboard';
 import { IPinCodeFunctions } from './PinCodeKeyboard/pinCodeKeyboard.types';
 
 import styles from './pinCodeScreen.styles';
+import { PIN_CODE_OPTIONS } from './pinCodeScreen.settings';
 
-const PinCodeScreen = () => {
+const PinCodeScreen: FC<PinCodeScreenProps> = ({ navigation }) => {
+  const [pinCode, setPinCode] = useState(['', '', '', '']);
+
+  const dispatch = useAppDispatch();
+
+  const onFingerprint = useCallback(async () => {
+    const isEnrolled = await isEnrolledAsync();
+
+    if (isEnrolled) {
+      const isSuccess = await authenticateAsync(PIN_CODE_OPTIONS);
+      if (isSuccess.success) {
+        dispatch(setUserIsLogged(true));
+      }
+    }
+  }, [dispatch]);
+
+  useEffect(() => {
+    onFingerprint();
+  }, [onFingerprint]);
+
   const anim = useRef(new Animated.Value(0));
 
   const shake = useCallback(() => {
-    // makes the sequence loop
     Animated.loop(
-      // runs the animation array in sequence
       Animated.sequence([
-        // shift element to the left by 2 units
         Animated.timing(anim.current, {
           toValue: -2,
           duration: 50,
           useNativeDriver: false,
         }),
-        // shift element to the right by 2 units
         Animated.timing(anim.current, {
           toValue: 2,
           duration: 50,
           useNativeDriver: false,
         }),
-        // bring the element back to its original position
         Animated.timing(anim.current, {
           toValue: 0,
           duration: 50,
           useNativeDriver: false,
         }),
       ]),
-      // loops the above animation config 4 times
       { iterations: 4 },
     ).start();
   }, []);
-
-  const [pinCode, setPinCode] = useState(['', '', '', '']);
 
   const addNumber = (num: string) => {
     let tempCode = pinCode;
@@ -58,7 +80,6 @@ const PinCodeScreen = () => {
     if (pinCode[pinCode.length - 1] !== '') {
       tryLogin();
     }
-    console.log(tempCode);
     setPinCode([...tempCode]);
   };
 
@@ -72,13 +93,10 @@ const PinCodeScreen = () => {
         continue;
       }
     }
-    console.log(tempCode);
     setPinCode([...tempCode]);
   };
-  const onFingerprint = () => {
-    console.log('fingerprint');
-  };
-  const isEqaul = (previous: string[], temp: string[]) => {
+
+  const isEqual = (previous: string[], temp: string[]) => {
     for (let i = 0; i < previous.length; i++) {
       if (temp[i] !== previous[i]) {
         return false;
@@ -86,16 +104,21 @@ const PinCodeScreen = () => {
     }
     return true;
   };
+
   const tryLogin = () => {
     const previous = ['1', '1', '1', '1'];
-    if (!isEqaul(previous, pinCode)) {
+    if (!isEqual(previous, pinCode)) {
       shake();
       for (let i = 0; i < pinCode.length; i++) {
         pinCode[i] = '';
       }
     } else {
-      // routing...
+      dispatch(setUserIsLogged(true));
     }
+  };
+
+  const handlePhoneNumberLogin = () => {
+    navigation.navigate(AuthStackScreenTypes.SignIn);
   };
 
   const functions: IPinCodeFunctions = {
@@ -109,7 +132,7 @@ const PinCodeScreen = () => {
       <PinCodeHeader />
       <PinCodeContainer pinCode={pinCode} animation={anim} />
       <PinCodeKeyboard functions={functions} />
-      <PinCodeFooter />
+      <PinCodeFooter onPress={handlePhoneNumberLogin} />
     </SafeAreaView>
   );
 };
