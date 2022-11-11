@@ -10,6 +10,8 @@ const initialState: UserState = {
   firstName: '',
   lastName: '',
   phoneNumber: '',
+  ipn: '',
+  passportNumber: '',
   isPremium: false,
   isLogged: false,
   isLoading: false,
