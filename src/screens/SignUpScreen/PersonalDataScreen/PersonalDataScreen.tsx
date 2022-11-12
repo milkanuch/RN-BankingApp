@@ -39,7 +39,7 @@ const PersonalDataScreen: FC<PersonalDataScreenProps> = ({
   const [passportNumber, setPassportNumber] = useState('');
   const [paymentBill, setPaymentBill] = useState('');
 
-  const [signUp, { isLoading, data }] = useUserRegisterMutation();
+  const [signUp, { isLoading, data, reset }] = useUserRegisterMutation();
 
   const handleNextButton = async () => {
     await signUp({
@@ -69,6 +69,7 @@ const PersonalDataScreen: FC<PersonalDataScreenProps> = ({
 
   if (data && data.error) {
     showSnackBar(data.error);
+    reset();
   }
 
   return (

@@ -52,7 +52,7 @@ const SignInScreen: FC<SignInScreenProps> = ({ navigation }) => {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const [savePassword, setSavePassword] = useState(false);
-  const [signIn, { data }] = useUserLoginMutation();
+  const [signIn, { data, reset }] = useUserLoginMutation();
 
   const handleCheckBoxState = (newValue: boolean) => setSavePassword(newValue);
 
@@ -71,9 +71,9 @@ const SignInScreen: FC<SignInScreenProps> = ({ navigation }) => {
 
   const isValid =
     authValidation[signInMode](login) && passwordValidation(password);
-
   if (data && data.error) {
     showSnackBar(data.error);
+    reset();
   }
 
   return (
