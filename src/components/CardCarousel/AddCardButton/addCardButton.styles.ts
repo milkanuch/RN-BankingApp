@@ -1,22 +1,27 @@
 import { StyleSheet } from 'react-native';
 
-import { colors } from '../../constants/colors';
-import { width } from '../../constants/dimensions';
+import { colors } from '../../../constants/colors';
+import { width } from '../../../constants/dimensions';
 
 const cardWidth = width - 40;
 const aspectRatio = 1.57;
 const cardHeight = cardWidth / aspectRatio;
-const transparentBlack = 'rgba(0, 0, 0, 0.7)';
 
 const styles = StyleSheet.create({
   container: {
     width: cardWidth,
-    aspectRatio: aspectRatio,
-    borderRadius: 16,
+    height: cardHeight,
     marginHorizontal: 20,
     marginVertical: 20,
+    borderRadius: 16,
+    justifyContent: 'center',
+    alignItems: 'center',
     backgroundColor: colors.black,
-    overflow: 'hidden',
+  },
+  buttonContainer: {
+    padding: 10,
+    borderRadius: 1000,
+    backgroundColor: colors.grey,
   },
   triangle: {
     position: 'absolute',
@@ -46,17 +51,6 @@ const styles = StyleSheet.create({
     backgroundColor: colors.light.primary[200],
     opacity: 0.1,
   },
-  blocked: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: transparentBlack,
-  },
-  blockedBackground: {},
 });
 
 export default styles;
