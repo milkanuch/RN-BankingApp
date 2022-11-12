@@ -4,10 +4,7 @@ import React, { FC, useState } from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import styles from './card.styles';
-import CardHeader from './CardHeader/CardHeader';
 import { ICardProps } from './card.types';
-import MoneyText from './MoneyText/MoneyText';
-import CardFooter from './CardFooter/CardFooter';
 import {
   activeOpacity,
   blockIconColor,
@@ -16,6 +13,7 @@ import {
   snackbarMessage,
 } from './card.settings';
 import { copyTextToClipboard, showSnackBar } from './card.helper';
+import CardContent from './CardContent/CardContent';
 
 const Card: FC<ICardProps> = ({
   title,
@@ -41,19 +39,16 @@ const Card: FC<ICardProps> = ({
       <View style={styles.circle} />
       <View style={styles.rectangle} />
       <View style={styles.triangle} />
-      <View style={styles.cardContainer}>
-        <CardHeader
-          title={title}
-          showDetailsIconButton={showDetailsIconButton}
-        />
-        <MoneyText money={money} currency={currency} />
-        <CardFooter
-          cardNumber={cardNumber}
-          expirationDate={expirationDate}
-          cardProvider={cardProvider}
-          isSecured={isSecured}
-        />
-      </View>
+      <CardContent
+        title={title}
+        isSecured={isSecured}
+        cardNumber={cardNumber}
+        expirationDate={expirationDate}
+        cardProvider={cardProvider}
+        money={money}
+        currency={currency}
+        showDetailsIconButton={showDetailsIconButton}
+      />
       {blocked && (
         <View style={styles.blocked}>
           <Icon

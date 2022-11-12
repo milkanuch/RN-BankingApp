@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 import { colors } from '../../constants/colors';
 import { width } from '../../constants/dimensions';
 
-const cardWidth = width - 50;
+const cardWidth = width - 40;
 const aspectRatio = 1.57;
 const cardHeight = cardWidth / aspectRatio;
 const transparentBlack = 'rgba(0, 0, 0, 0.7)';
@@ -13,15 +13,10 @@ const styles = StyleSheet.create({
     width: cardWidth,
     aspectRatio: aspectRatio,
     borderRadius: 16,
-    marginHorizontal: 5,
+    marginHorizontal: 20,
     marginVertical: 20,
     backgroundColor: colors.black,
     overflow: 'hidden',
-  },
-  cardContainer: {
-    padding: 15,
-    flex: 1,
-    justifyContent: 'space-between',
   },
   triangle: {
     position: 'absolute',
