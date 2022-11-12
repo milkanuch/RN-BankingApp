@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     width: size,
     height: size,
     borderRadius: 50,
-    marginRight: 10,
+    marginHorizontal: 5,
     backgroundColor: colors.grey,
   },
   selected: {

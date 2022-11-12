@@ -2,21 +2,45 @@ import { FlatList, ListRenderItem, ViewToken } from 'react-native';
 import React, { FC, useRef, useState } from 'react';
 
 import Card from '../Card/Card';
-import { ICardProps } from '../Card/card.types';
+import { IAbstractCard, ICardProps } from '../Card/card.types';
+
+import AddCardButton from './AddCardButton/AddCardButton';
+
+import { IAddCardButtonProps } from './AddCardButton/addCardButton.types';
 
 import { ICardCarouselProps } from './cardCarousel.types';
-import { viewConfig } from './cardCarousel.settings';
+import { addCardProps, viewConfig } from './cardCarousel.settings';
 import styles from './cardCarousel.styles';
 import CardCarouselIndicator from './CardCarouselIndicator/CardCarouselIndicator';
 
-const renderItem: ListRenderItem<ICardProps> = ({ item }) => {
-  return <Card {...item} />;
+function isAddButton(data: IAbstractCard): data is IAddCardButtonProps {
+  return 'id' in data;
+}
+
+function isCard(data: IAbstractCard): data is ICardProps {
+  return 'cardNumber' in data;
+}
+
+const renderItem: ListRenderItem<IAbstractCard> = ({ item }) => {
+  if (isAddButton(item)) {
+    return <AddCardButton {...item} />;
+  }
+  if (isCard(item)) {
+    return <Card {...item} />;
+  }
+  return null;
 };
 
-const keyExtractor: (item: ICardProps, index: number) => string = (
-  item: ICardProps,
+const keyExtractor: (item: IAbstractCard, index: number) => string = (
+  item: IAbstractCard,
 ) => {
-  return item.cardNumber;
+  if (isAddButton(item)) {
+    return item.id;
+  }
+  if (isCard(item)) {
+    return item.cardNumber;
+  }
+  return '';
 };
 
 const CardCaroules: FC<ICardCarouselProps> = ({
@@ -26,6 +50,7 @@ const CardCaroules: FC<ICardCarouselProps> = ({
 }) => {
   const [index, setIndex] = useState(0);
   const viewConfigRef = useRef(viewConfig);
+  const data: IAbstractCard[] = [...cards, addCardProps];
 
   const onViewChange = ({ changed }: { changed: ViewToken[] }) => {
     if (changed[0].isViewable && changed[0].index !== null) {
@@ -39,7 +64,7 @@ const CardCaroules: FC<ICardCarouselProps> = ({
     <>
       <FlatList
         style={styles.container}
-        data={cards}
+        data={data}
         renderItem={renderItem}
         keyExtractor={keyExtractor}
         horizontal
@@ -49,7 +74,7 @@ const CardCaroules: FC<ICardCarouselProps> = ({
         viewabilityConfig={viewConfigRef.current}
       />
       {showIndicator && (
-        <CardCarouselIndicator currentIndex={index} data={cards} />
+        <CardCarouselIndicator currentIndex={index} data={data} />
       )}
     </>
   );

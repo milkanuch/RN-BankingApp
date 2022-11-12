@@ -1,6 +1,6 @@
-import { ICardProps } from '../../Card/card.types';
+import { IAbstractCard } from '../../Card/card.types';
 
 export interface ICardCarouselIndicatorProps {
-  data: ICardProps[];
+  data: IAbstractCard[];
   currentIndex: number;
 }
