@@ -32,7 +32,7 @@ const authTitles = {
 };
 
 const authHint = {
-  [SignInMode.WithPhoneNumber]: '+380 50 499 0423',
+  [SignInMode.WithPhoneNumber]: '+380 96 000 0000',
   [SignInMode.WithPaymentBill]: '1234567891',
 };
 

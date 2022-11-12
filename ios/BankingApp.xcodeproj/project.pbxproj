@@ -29,7 +29,7 @@
 /* Begin PBXContainerItemProxy section */
 		00E356F41AD99517003FC87E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			containerPortal = 83CBB9F71A601CBA00E9B192;
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
 			remoteInfo = BankingApp;
@@ -133,7 +133,7 @@
 			name = Libraries;
 			sourceTree = "<group>";
 		};
-		83CBB9F61A601CBA00E9B192 = {
+		83CBB9F61A601CBA00E9B192 /* PBXGroup */ = {
 			isa = PBXGroup;
 			children = (
 				13B07FAE1A68108700A75B9A /* BankingApp */,
@@ -170,7 +170,7 @@
 			sourceTree = "<group>";
 		};
 		7BE16C9AB5EE4F64AEB3CEA7 /* Resources */ = {
-			isa = "PBXGroup";
+			isa = PBXGroup;
 			children = (
 				68BAF132558E46DABC4A5B63 /* e-Ukraine-Bold.otf */,
 				F34302DCF3D24D46A7F75027 /* e-Ukraine-Light.otf */,
@@ -236,14 +236,14 @@
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		83CBB9F71A601CBA00E9B192 /* Project object */ = {
+		83CBB9F71A601CBA00E9B192 = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1210;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
-						TestTargetID = 13B07F861A680F5B00A75B9A;
+						TestTargetID = 13B07F861A680F5B00A75B9A /* BankingApp */;
 					};
 					13B07F861A680F5B00A75B9A = {
 						LastSwiftMigration = 1120;
@@ -258,7 +258,7 @@
 				en,
 				Base,
 			);
-			mainGroup = 83CBB9F61A601CBA00E9B192;
+			mainGroup = 83CBB9F61A601CBA00E9B192 /* PBXGroup */;
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -487,7 +487,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = BankingAppTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -511,7 +511,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = BankingAppTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -627,7 +627,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,
 					"$(inherited)",
@@ -692,7 +692,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,
 					"$(inherited)",
@@ -747,5 +747,5 @@
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 83CBB9F71A601CBA00E9B192 /* Project object */;
+	rootObject = 83CBB9F71A601CBA00E9B192;
 }

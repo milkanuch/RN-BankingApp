@@ -6,12 +6,14 @@ export enum AuthStackScreenTypes {
   SignIn = 'SignIn',
   GeneralData = 'GeneralData',
   PersonalData = 'PersonalData',
+  PinCode = 'PinCode',
 }
 
 export type AuthStackScreenParamsList = {
   [AuthStackScreenTypes.SignIn]: undefined;
   [AuthStackScreenTypes.GeneralData]: undefined;
   [AuthStackScreenTypes.PersonalData]: IPersonalDataScreenParams;
+  [AuthStackScreenTypes.PinCode]: undefined;
 };
 
 export type SignInScreenProps = StackScreenProps<
@@ -27,4 +29,9 @@ export type GeneralDataScreenProps = StackScreenProps<
 export type PersonalDataScreenProps = StackScreenProps<
   AuthStackScreenParamsList,
   AuthStackScreenTypes.PersonalData
+>;
+
+export type PinCodeScreenProps = StackScreenProps<
+  AuthStackScreenParamsList,
+  AuthStackScreenTypes.PinCode
 >;

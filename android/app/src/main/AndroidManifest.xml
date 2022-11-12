@@ -2,6 +2,9 @@
   package="com.bankingapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Added permissions -->
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
 
     <application
       android:name=".MainApplication"

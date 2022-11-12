@@ -52,6 +52,8 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>UIAppFonts</key>
+	<key>NSFaceIDUsageDescription</key>
+	<string>Allow $(PRODUCT_NAME) to use FaceID</string>
 	<array>
 		<string>e-Ukraine-Bold.otf</string>
 		<string>e-Ukraine-Light.otf</string>

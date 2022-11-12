@@ -14,7 +14,7 @@ const lastNameTextInput = {
 
 const phoneNumberTextInput = {
   title: 'Phone number',
-  hint: '+380504990423',
+  hint: '+380 96 000 0000',
 };
 
 const passwordTextInputTitle = 'Password';
