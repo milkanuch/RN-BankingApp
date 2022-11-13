@@ -1,29 +1,19 @@
-const title = 'Sign Up';
+export const title = 'Sign Up';
 
-const text = 'Please, enter your passport number and payment bill';
+export const text = 'Please, enter your passport number and payment bill';
 
-const passportNumberTextInput = {
+export const passportNumberTextInput = {
   title: 'Passport number',
   hint: '1234567891',
 };
 
-const paymentBillTextInput = {
+export const paymentBillTextInput = {
   title: 'Payment bill',
   hint: '1234567891',
 };
 
-const nextButtonTitle = 'Next';
+export const nextButtonTitle = 'Next';
 
-const backButtonTitle = 'Back';
+export const backButtonTitle = 'Back';
 
-const nextButtonIsWhiteTheme = true;
-
-export {
-  title,
-  text,
-  passportNumberTextInput,
-  paymentBillTextInput,
-  nextButtonTitle,
-  backButtonTitle,
-  nextButtonIsWhiteTheme,
-};
+export const nextButtonIsWhiteTheme = true;

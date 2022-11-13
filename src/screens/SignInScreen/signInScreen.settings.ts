@@ -11,7 +11,7 @@ import {
 
 import { SignInMode } from './signInScreen.types';
 
-const signInModeItems: ITabModeSelectorItemData[] = [
+export const signInModeItems: ITabModeSelectorItemData[] = [
   {
     title: 'Phone',
     value: SignInMode.WithPhoneNumber,
@@ -22,60 +22,41 @@ const signInModeItems: ITabModeSelectorItemData[] = [
   },
 ];
 
-const headerTitle = 'Sign In';
+export const headerTitle = 'Sign In';
 
-const headerText = 'Please enter the required login information.';
+export const headerText = 'Please enter the required login information.';
 
-const authTitles = {
+export const authTitles = {
   [SignInMode.WithPhoneNumber]: 'Phone number',
   [SignInMode.WithPaymentBill]: 'Payment Bill Number',
 };
 
-const authHint = {
+export const authHint = {
   [SignInMode.WithPhoneNumber]: '+380 96 000 0000',
   [SignInMode.WithPaymentBill]: '1234567891',
 };
 
-const loginKey = {
+export const loginKey = {
   [SignInMode.WithPaymentBill]: 'ipn',
   [SignInMode.WithPhoneNumber]: 'phoneNumber',
 };
 
-const authValidation = {
+export const authValidation = {
   [SignInMode.WithPhoneNumber]: phoneNumberValidation,
   [SignInMode.WithPaymentBill]: personalDataValidation,
 };
 
-const authErrorMessages = {
+export const authErrorMessages = {
   [SignInMode.WithPhoneNumber]: phoneNumberErrorMessage,
   [SignInMode.WithPaymentBill]: personalDataErrorMessage,
 };
 
-const passwordTextInputTitle = 'Password';
+export const passwordTextInputTitle = 'Password';
 
-const checkBoxText = 'Save password';
+export const checkBoxText = 'Save password';
 
-const signInButtonTitle = 'Sign In';
+export const signInButtonTitle = 'Sign In';
 
-const touchIdButtonTitle = 'Touch ID';
+export const createAccountButtonTitle = 'Create account';
 
-const touchIdButtonIconName = 'fingerprint';
-
-const touchIdButtonIsWhiteTheme = true;
-
-export {
-  signInModeItems,
-  headerTitle,
-  headerText,
-  authTitles,
-  authHint,
-  authValidation,
-  authErrorMessages,
-  passwordTextInputTitle,
-  checkBoxText,
-  signInButtonTitle,
-  touchIdButtonIconName,
-  touchIdButtonIsWhiteTheme,
-  touchIdButtonTitle,
-  loginKey,
-};
+export const createAccountButtonIsWhiteTheme = true;

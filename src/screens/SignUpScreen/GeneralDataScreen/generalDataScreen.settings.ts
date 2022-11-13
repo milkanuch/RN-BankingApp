@@ -1,41 +1,28 @@
-const title = 'Sign Up';
+export const title = 'Sign Up';
 
-const text = 'Please,enter required information.';
+export const text = 'Please,enter required information.';
 
-const firstNameTextInput = {
+export const firstNameTextInput = {
   title: 'Firstname',
   hint: 'Dorian',
 };
 
-const lastNameTextInput = {
+export const lastNameTextInput = {
   title: 'Lastname',
   hint: 'Grey',
 };
 
-const phoneNumberTextInput = {
+export const phoneNumberTextInput = {
   title: 'Phone number',
   hint: '+380 96 000 0000',
 };
 
-const passwordTextInputTitle = 'Password';
+export const passwordTextInputTitle = 'Password';
 
-const confirmPasswordTextInputTitle = 'Confirm Password';
+export const confirmPasswordTextInputTitle = 'Confirm Password';
 
-const nextButtonTitle = 'Next';
+export const nextButtonTitle = 'Next';
 
-const backButtonTitle = 'Back';
+export const backButtonTitle = 'Back';
 
-const nextButtonIsWhiteTheme = true;
-
-export {
-  title,
-  text,
-  firstNameTextInput,
-  lastNameTextInput,
-  phoneNumberTextInput,
-  passwordTextInputTitle,
-  confirmPasswordTextInputTitle,
-  nextButtonTitle,
-  backButtonTitle,
-  nextButtonIsWhiteTheme,
-};
+export const nextButtonIsWhiteTheme = true;
