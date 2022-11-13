@@ -6,6 +6,9 @@ import AuthHeader from '../../../components/AuthHeader/AuthHeader';
 import { showSnackBar } from '../../../components/Card/card.helper';
 import CustomButton from '../../../components/CustomButton/CustomButton';
 import CustomTextInput from '../../../components/CustomTextInput/CustomTextInput';
+
+import { setUserIsLogged } from '../../../store/user/userSlice';
+
 import {
   passportDataErrorMessage,
   personalDataErrorMessage,
@@ -16,6 +19,7 @@ import {
 } from '../../../helpers/validation';
 import { PersonalDataScreenProps } from '../../../navigation/AuthStackNavigation/AuthStackNavigation.types';
 import { useUserRegisterMutation } from '../../../services';
+import { useAppDispatch } from '../../../store';
 import Divider from '../Divider/Divider';
 
 import {
@@ -39,10 +43,12 @@ const PersonalDataScreen: FC<PersonalDataScreenProps> = ({
   const [passportNumber, setPassportNumber] = useState('');
   const [paymentBill, setPaymentBill] = useState('');
 
-  const [signUp, { isLoading, data, reset }] = useUserRegisterMutation();
+  const [signUp, { isLoading }] = useUserRegisterMutation();
+
+  const dispatch = useAppDispatch();
 
   const handleNextButton = async () => {
-    await signUp({
+    const res = await signUp({
       firstName: firstName,
       lastName: lastName,
       phoneNumber: phoneNumber,
@@ -50,6 +56,12 @@ const PersonalDataScreen: FC<PersonalDataScreenProps> = ({
       passportNumber: passportNumber,
       ipn: paymentBill,
     }).unwrap();
+
+    if (res.error) {
+      showSnackBar(res.error);
+    } else {
+      dispatch(setUserIsLogged(true));
+    }
   };
 
   const handleBackButton = () => {
@@ -65,11 +77,6 @@ const PersonalDataScreen: FC<PersonalDataScreenProps> = ({
         <ActivityIndicator />
       </View>
     );
-  }
-
-  if (data && data.error) {
-    showSnackBar(data.error);
-    reset();
   }
 
   return (
