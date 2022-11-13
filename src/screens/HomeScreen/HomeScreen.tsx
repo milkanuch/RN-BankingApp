@@ -5,6 +5,7 @@ import CardCaroules from '../../components/CardCarousel/CardCaroules';
 
 import {
   CardProvider,
+  CardType,
   Currency,
   ICardProps,
 } from '../../components/Card/card.types';
@@ -14,7 +15,7 @@ import styles from './homeScreen.styles';
 const cards: ICardProps[] = [
   {
     cardNumber: '1234 9999 4355 3353',
-    title: 'Card 1',
+    cardType: CardType.Debit,
     showDetailsIconButton: true,
     cardProvider: CardProvider.Visa,
     expirationDate: new Date(Date.now()),
@@ -24,7 +25,7 @@ const cards: ICardProps[] = [
   },
   {
     cardNumber: '2956 9999 4355 3353',
-    title: 'Card 2',
+    cardType: CardType.Credit,
     showDetailsIconButton: true,
     cardProvider: CardProvider.Mastercard,
     expirationDate: new Date(Date.now()),
