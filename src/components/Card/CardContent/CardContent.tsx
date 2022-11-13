@@ -10,7 +10,7 @@ import styles from './cardContent.styles';
 import { ICardContentProps } from './cardContent.types';
 
 const CardContent: FC<ICardContentProps> = ({
-  title,
+  cardType,
   showDetailsIconButton,
   money,
   currency,
@@ -21,7 +21,10 @@ const CardContent: FC<ICardContentProps> = ({
 }) => {
   return (
     <View style={styles.container}>
-      <CardHeader title={title} showDetailsIconButton={showDetailsIconButton} />
+      <CardHeader
+        cardType={cardType}
+        showDetailsIconButton={showDetailsIconButton}
+      />
       <MoneyText money={money} currency={currency} />
       <CardFooter
         cardNumber={cardNumber}

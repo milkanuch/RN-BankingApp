@@ -16,7 +16,7 @@ import { copyTextToClipboard, showSnackBar } from './card.helper';
 import CardContent from './CardContent/CardContent';
 
 const Card: FC<ICardProps> = ({
-  title,
+  cardType,
   showDetailsIconButton,
   cardNumber,
   cardProvider,
@@ -40,7 +40,7 @@ const Card: FC<ICardProps> = ({
       <View style={styles.rectangle} />
       <View style={styles.triangle} />
       <CardContent
-        title={title}
+        cardType={cardType}
         isSecured={isSecured}
         cardNumber={cardNumber}
         expirationDate={expirationDate}
