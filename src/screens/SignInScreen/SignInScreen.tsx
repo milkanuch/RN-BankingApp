@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-import { ScrollView } from 'react-native';
+import { ActivityIndicator, ScrollView, View } from 'react-native';
 
 import CheckBox from '../../components/CheckBox/CheckBox';
 import CustomButton from '../../components/CustomButton/CustomButton';
@@ -23,7 +23,9 @@ import { useUserLoginMutation } from '../../services';
 
 import { showSnackBar } from '../../components/Card/card.helper';
 
-import AuthCreateAccount from './AuthCreateAccount/AuthCreateAccount';
+import { useAppDispatch } from '../../store';
+
+import { setUserIsLogged } from '../../store/user/userSlice';
 
 import AuthDivider from './AuthDivider/AuthDivider';
 
@@ -36,9 +38,8 @@ import {
   passwordTextInputTitle,
   checkBoxText,
   signInButtonTitle,
-  touchIdButtonTitle,
-  touchIdButtonIconName,
-  touchIdButtonIsWhiteTheme,
+  createAccountButtonTitle,
+  createAccountButtonIsWhiteTheme,
   authValidation,
   authErrorMessages,
   loginKey,
@@ -52,29 +53,42 @@ const SignInScreen: FC<SignInScreenProps> = ({ navigation }) => {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const [savePassword, setSavePassword] = useState(false);
-  const [signIn, { data, reset }] = useUserLoginMutation();
+
+  const [signIn, { isLoading }] = useUserLoginMutation();
+
+  const dispatch = useAppDispatch();
 
   const handleCheckBoxState = (newValue: boolean) => setSavePassword(newValue);
 
   const handleSignIn = async () => {
-    await signIn({
+    const res = await signIn({
       [loginKey[signInMode]]: login,
       password: password,
     });
-  };
 
-  const handleTouchId = () => {};
+    if ('data' in res) {
+      if (res.data.error) {
+        showSnackBar(res.data.error);
+      } else {
+        dispatch(setUserIsLogged(true));
+      }
+    }
+  };
 
   const handleCreateAccount = () => {
     navigation.navigate(AuthStackScreenTypes.GeneralData);
   };
 
+  if (isLoading) {
+    return (
+      <View style={styles.container}>
+        <ActivityIndicator />
+      </View>
+    );
+  }
+
   const isValid =
     authValidation[signInMode](login) && passwordValidation(password);
-  if (data && data.error) {
-    showSnackBar(data.error);
-    reset();
-  }
 
   return (
     <ScrollView style={styles.screen}>
@@ -114,12 +128,10 @@ const SignInScreen: FC<SignInScreenProps> = ({ navigation }) => {
       />
       <AuthDivider />
       <CustomButton
-        title={touchIdButtonTitle}
-        iconName={touchIdButtonIconName}
-        onPress={handleTouchId}
-        isWhiteTheme={touchIdButtonIsWhiteTheme}
+        title={createAccountButtonTitle}
+        onPress={handleCreateAccount}
+        isWhiteTheme={createAccountButtonIsWhiteTheme}
       />
-      <AuthCreateAccount onPress={handleCreateAccount} />
     </ScrollView>
   );
 };
