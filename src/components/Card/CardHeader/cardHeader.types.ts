@@ -1,4 +1,6 @@
+import { CardType } from '../card.types';
+
 export interface ICardHeaderProps {
-  title: string;
+  cardType: CardType;
   showDetailsIconButton?: boolean;
 }

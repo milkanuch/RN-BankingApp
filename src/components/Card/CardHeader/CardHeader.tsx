@@ -11,11 +11,14 @@ import {
 import styles from './cardHeader.styles';
 import { ICardHeaderProps } from './cardHeader.types';
 
-const CardHeader: FC<ICardHeaderProps> = ({ title, showDetailsIconButton }) => {
+const CardHeader: FC<ICardHeaderProps> = ({
+  cardType,
+  showDetailsIconButton,
+}) => {
   const handleIconPress = () => {};
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>{title}</Text>
+      <Text style={styles.text}>{`${cardType} Card`}</Text>
       {showDetailsIconButton && (
         <IconButton
           iconName={detailIconName}

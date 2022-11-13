@@ -1,3 +1,5 @@
+import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
+
 export enum BottomTabsScreenTypes {
   HomeStack = 'HomeStack',
 }
@@ -5,3 +7,8 @@ export enum BottomTabsScreenTypes {
 export type BottomTabsParamsList = {
   [BottomTabsScreenTypes.HomeStack]: undefined;
 };
+
+export type BottomTypeProps = BottomTabNavigationProp<
+  BottomTabsParamsList,
+  BottomTabsScreenTypes.HomeStack
+>;

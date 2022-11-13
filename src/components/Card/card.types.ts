@@ -21,3 +21,8 @@ export enum CardProvider {
   Visa = 'Visa',
   Mastercard = 'Mastercard',
 }
+
+export enum CardType {
+  Debit = 'Debit',
+  Credit = 'Credit',
+}

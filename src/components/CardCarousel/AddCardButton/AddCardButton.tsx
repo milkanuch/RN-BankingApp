@@ -5,6 +5,13 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 
 import { View } from 'react-native';
 
+import { useNavigation } from '@react-navigation/native';
+
+import {
+  HomeStackScreenTypes,
+  NewCardScreenProps,
+} from '../../../navigation/HomeStackNavigation/homeStackNavigation.types';
+
 import styles from './addCardButton.styles';
 import { IAddCardButtonProps } from './addCardButton.types';
 import {
@@ -15,7 +22,11 @@ import {
 } from './addCardButton.settings';
 
 const AddCardButton: FC<IAddCardButtonProps> = () => {
-  const handleOnPress = () => {};
+  const navigation = useNavigation<NewCardScreenProps>();
+  console.log(navigation);
+  const handleOnPress = () => {
+    navigation.push(HomeStackScreenTypes.NewCard);
+  };
   return (
     <View style={styles.container}>
       <View style={styles.circle} />
