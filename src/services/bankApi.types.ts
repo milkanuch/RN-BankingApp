@@ -11,6 +11,7 @@ export interface UserLoginParams {
   password: string;
 }
 export interface UserResponseParams {
-  jwt: string;
+  access_token: string;
+  refresh_token: string;
   error: string | null | undefined;
 }
