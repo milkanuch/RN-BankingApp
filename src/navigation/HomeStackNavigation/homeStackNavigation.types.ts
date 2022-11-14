@@ -6,6 +6,10 @@ import { BottomTypeProps } from '../AppNavigation/appNavigation.types';
 export enum HomeStackScreenTypes {
   Home = 'Home',
   NewCard = 'NewCard',
+  Transfer = 'Transfer',
+  IncomуExpense = 'IncomуExpense',
+  CardSettings = 'CardSettings',
+  Profile = 'Profile',
 }
 
 export type HomeStackParamsList = {
