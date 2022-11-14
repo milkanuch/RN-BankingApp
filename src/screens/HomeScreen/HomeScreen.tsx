@@ -1,7 +1,7 @@
 import { View } from 'react-native';
 import React from 'react';
 
-import CardCaroules from '../../components/CardCarousel/CardCaroules';
+import CardCaroules from '../../components/CardCarousel/CardCarousel';
 
 import {
   CardProvider,
