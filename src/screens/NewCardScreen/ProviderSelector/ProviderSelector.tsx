@@ -16,6 +16,7 @@ const ProviderSelector: FC<IProviderSelectorProps> = ({
     <View style={styles.container}>
       {cardProviders.map(providerItem => (
         <ProviderSelectorItem
+          key={providerItem}
           provider={providerItem}
           selected={currentProvider === providerItem}
           onPress={setProvider}
