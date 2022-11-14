@@ -26,3 +26,17 @@ export interface NewCardParams {
   type: string;
   currency: string;
 }
+
+export interface CardResponseParams {
+  cardNumber: string;
+  creationTime: Date;
+  expirationTime: Date;
+  cvvCode: string;
+  pinCode: string;
+  cardType: string;
+  currencyName: string;
+  provider: string;
+  sum: number;
+  sumLimit: number;
+  isBlocked: boolean;
+}
