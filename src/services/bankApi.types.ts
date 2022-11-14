@@ -15,3 +15,14 @@ export interface UserResponseParams {
   refresh_token: string;
   error: string | null | undefined;
 }
+
+export interface NewCardResponseParams {
+  cardNumber: string;
+  error: string | null | undefined;
+}
+
+export interface NewCardParams {
+  provider: string;
+  type: string;
+  currency: string;
+}
