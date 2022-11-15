@@ -1,11 +1,13 @@
-import { View } from 'react-native';
-import React, { useState } from 'react';
+import { ActivityIndicator, View } from 'react-native';
+import React, { FC, useCallback, useEffect, useState } from 'react';
 
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { ScrollView } from 'react-native-gesture-handler';
 
-import { CardResponseParams } from '../../services/bankApi.types';
+import { QueryStatus } from '@reduxjs/toolkit/dist/query';
+
+import { TransactionParams } from '../../services/bankApi.types';
 
 import TitleText from '../../components/TitleText/TitleText';
 
@@ -25,14 +27,21 @@ import {
   moneyErrorMessage,
 } from '../../constants/errorMesages';
 
-import TransferCardCarousel from './TransferCardCarousel/TransferCardCarousel';
+import { useGetAllCardsQuery, useTransactionMutation } from '../../services';
 
-import styles from './moneyTransferScreen.styles';
+import { getItem } from '../../store/bankStore/store';
+
+import {
+  TransferScreenProps,
+  TransferStackScreenTypes,
+} from '../../navigation/TransferStackNavigation/transferStackNavigation.types';
+
 import {
   buttonText,
   cardCarouselTitle,
   cardNumberContentType,
   cardNumberTitle,
+  errorText,
   messageTitle,
   moneyKeyboardType,
   moneyTitle,
@@ -40,43 +49,32 @@ import {
   screenTitle,
 } from './moneyTransferScreen.settings';
 
-const cards: CardResponseParams[] = [
-  {
-    cardNumber: '1111222233334444',
-    creationTime: new Date(Date.now()),
-    expirationTime: new Date(Date.now()),
-    cvvCode: '435',
-    pinCode: '1244',
-    cardType: 'Credit',
-    currencyName: 'UAH',
-    provider: 'Visa',
-    sum: 10000,
-    sumLimit: 20000,
-    isBlocked: false,
-  },
-  {
-    cardNumber: '9999222233334444',
-    creationTime: new Date(Date.now()),
-    expirationTime: new Date(Date.now()),
-    cvvCode: '435',
-    pinCode: '1244',
-    cardType: 'Credit',
-    currencyName: 'UAH',
-    provider: 'Visa',
-    sum: 10000,
-    sumLimit: 20000,
-    isBlocked: false,
-  },
-];
+import TransferCardCarousel from './TransferCardCarousel/TransferCardCarousel';
 
-export default function MoneyTransferScreen() {
+import styles from './moneyTransferScreen.styles';
+
+const MoneyTransferScreen: FC<TransferScreenProps> = ({ navigation }) => {
   const [selectedCardIndex, selectCard] = useState(0);
   const [receiverCard, setReceiverCard] = useState('');
   const [receiverName, setReceiverName] = useState('');
   const [amountOfMoney, setAmountOfMoney] = useState('');
   const [messageText, setMessageText] = useState('');
-  const selectedCard = cards[selectedCardIndex];
-  selectedCard;
+  const [fetchingToken, setFetchingToken] = useState(true);
+  const [accessToken, setAccessToken] = useState('');
+
+  const fetchToken = useCallback(async () => {
+    const token = await getItem('AccessToken');
+    if (token) {
+      setFetchingToken(false);
+      setAccessToken(token);
+    }
+  }, []);
+  useEffect(() => {
+    fetchToken();
+  }, [fetchToken]);
+
+  const { data: cardsData, isLoading: isLoadingCards } =
+    useGetAllCardsQuery(accessToken);
 
   const handleSetMoney = (value: string) => {
     if (Number.isNaN(+value)) {
@@ -85,24 +83,74 @@ export default function MoneyTransferScreen() {
     setAmountOfMoney(value.replace(/^0+/, ''));
   };
 
-  const handleSend = () => {};
+  const [
+    sendTransaction,
+    {
+      isLoading: isLoadingTransaction,
+      isSuccess,
+      isError,
+      reset,
+      status,
+      data: transactionSendData,
+    },
+  ] = useTransactionMutation();
+
+  const handleSend = () => {
+    if (!cardsData) {
+      return;
+    }
+    const selectedCard = cardsData.ok[selectedCardIndex];
+    const transactionData: TransactionParams = {
+      accessToken: accessToken,
+      senderCardNumber: selectedCard.cardNumber,
+      receiverCardNumber: receiverCard,
+      receiverName: receiverName,
+      sum: +amountOfMoney,
+      purpose: messageText,
+    };
+    try {
+      sendTransaction(transactionData).unwrap();
+    } catch (error) {}
+  };
 
   const isValid =
     cardNumberValidation(receiverCard) &&
     credentialsValidation(receiverName) &&
     moneyValidation(amountOfMoney);
 
+  if (isLoadingCards || isLoadingTransaction || fetchingToken) {
+    return (
+      <View style={styles.loadingContainer}>
+        <ActivityIndicator />
+      </View>
+    );
+  }
+
+  if (isSuccess || isError) {
+    const message =
+      status === QueryStatus.fulfilled
+        ? transactionSendData!.message
+        : errorText;
+    const isSuccessClone = isSuccess;
+    reset();
+    navigation.navigate(TransferStackScreenTypes.TransferStatus, {
+      isSuccess: isSuccessClone,
+      message: message!,
+    });
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <TitleText text={screenTitle} />
         <TitleText text={cardCarouselTitle} subtitle />
-        <TransferCardCarousel cards={cards} onChange={selectCard} />
+        <TransferCardCarousel cards={cardsData?.ok} onChange={selectCard} />
         <CustomTextInput
           value={receiverCard}
           setValue={setReceiverCard}
           title={cardNumberTitle}
           style={styles.textInputContainer}
+          keyboardType={moneyKeyboardType}
           textContentType={cardNumberContentType}
           validation={cardNumberValidation}
           errorText={cardNumberErrorMessage}
@@ -140,4 +188,6 @@ export default function MoneyTransferScreen() {
       </ScrollView>
     </SafeAreaView>
   );
-}
+};
+
+export default MoneyTransferScreen;

@@ -15,6 +15,8 @@ import { showSnackBar } from '../../components/Card/card.helper';
 
 import { colors } from '../../constants/colors';
 
+import { getItem } from '../../store/bankStore/store';
+
 import ProviderSelector from './ProviderSelector/ProviderSelector';
 import styles from './newCardScreen.styles';
 import CurrencySelector from './CurrencySelector/CurrencySelector';
@@ -38,14 +40,15 @@ const NewCardScreen = () => {
   const [createNewCard, { data, isError, reset, isLoading }] =
     useNewCardMutation();
 
-  const handleOnPress = () => {
+  const handleOnPress = async () => {
+    const accessToken = await getItem('AccessToken');
     const newCardParams: NewCardParams = {
+      accessToken: accessToken,
       provider: currentProvider,
       type: currentCardType,
       currency: currentCurrency,
     };
-
-    createNewCard(newCardParams).unwrap();
+    await createNewCard(newCardParams).unwrap();
   };
 
   if (isError) {
