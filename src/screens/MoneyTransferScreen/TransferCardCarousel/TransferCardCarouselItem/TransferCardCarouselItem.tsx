@@ -32,7 +32,7 @@ const TransferCardCarouselItem: FC<ITransferCardCarouselItemProps> = ({
           {cardLastNumbers + ' ' + type}
         </Text>
         <Text adjustsFontSizeToFit numberOfLines={1} style={styles.moneyText}>
-          {sum + ' ' + currencies[currency]}
+          {sum.toFixed(2) + ' ' + currencies[currency]}
         </Text>
       </View>
     </View>

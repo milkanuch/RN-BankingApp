@@ -11,6 +11,11 @@ const styles = StyleSheet.create({
   textInputContainer: {
     marginHorizontal: 20,
   },
+  loadingContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });
 
 export default styles;

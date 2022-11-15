@@ -15,3 +15,5 @@ export const moneyKeyboardType = 'number-pad';
 export const messageTitle = 'Message';
 
 export const buttonText = 'Send';
+
+export const errorText = 'Transaction Failed';

@@ -15,8 +15,8 @@ import styles from './transferCardCarousel.styles';
 const renderItem: ListRenderItem<CardResponseParams> = ({ item }) => (
   <TransferCardCarouselItem
     cardNumber={item.cardNumber}
-    provider={item.provider}
-    type={item.cardType}
+    provider={item.providerEntity.providerName}
+    type={item.cardType.name}
     sum={item.sum}
     currency={item.currencyName}
   />
@@ -27,7 +27,7 @@ const keyExtractor: (item: CardResponseParams, index: number) => string = (
 ) => item.cardNumber;
 
 const TransferCardCarousel: FC<ITransferCardCarouselProps> = ({
-  cards,
+  cards = [],
   onChange,
 }) => {
   const viewConfigRef = useRef(viewConfig);
@@ -38,7 +38,6 @@ const TransferCardCarousel: FC<ITransferCardCarouselProps> = ({
     }
   };
   const onViewChangedRef = useRef(onViewChange);
-
   return (
     <View style={styles.container}>
       <FlatList
