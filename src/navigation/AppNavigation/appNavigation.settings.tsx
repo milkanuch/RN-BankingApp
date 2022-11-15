@@ -29,7 +29,7 @@ export const TRANSFER_STACK_OPTION: BottomTabNavigationOptions = {
   ),
 };
 
-export const INCOME_EXPENSE_STACK_OPTION: BottomTabNavigationOptions = {
+export const INCOME_EXPENSES_STACK_OPTION: BottomTabNavigationOptions = {
   headerShown: false,
   tabBarShowLabel: false,
   tabBarIcon: ({ focused }) => (

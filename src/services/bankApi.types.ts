@@ -10,6 +10,7 @@ export interface UserLoginParams {
   phoneNumber?: string;
   password: string;
 }
+
 export interface UserResponseParams {
   access_token: string;
   refresh_token: string;
@@ -39,4 +40,8 @@ export interface CardResponseParams {
   sum: number;
   sumLimit: number;
   isBlocked: boolean;
+}
+
+export interface UserRefreshParams {
+  refresh_token: string;
 }

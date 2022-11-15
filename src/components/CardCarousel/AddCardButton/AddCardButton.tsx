@@ -23,6 +23,7 @@ import {
 
 const AddCardButton: FC<IAddCardButtonProps> = () => {
   const navigation = useNavigation<NewCardScreenProps>();
+
   const handleOnPress = () => {
     navigation.push(HomeStackScreenTypes.NewCard);
   };

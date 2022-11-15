@@ -5,7 +5,7 @@ import HomeStackNavigation from './HomeStackNavigation/HomeStackNavigation';
 import {
   CARD_SETTINGS_STACK_OPTION,
   HOME_STACK_OPTIONS,
-  INCOME_EXPENSE_STACK_OPTION,
+  INCOME_EXPENSES_STACK_OPTION,
   PROFILE_STACK_OPTION,
   TRANSFER_STACK_OPTION,
 } from './AppNavigation/appNavigation.settings';
@@ -15,7 +15,7 @@ import {
   BottomTabsScreenTypes,
 } from './AppNavigation/appNavigation.types';
 import TransferStackNavigation from './TransferStackNavigation/TransferStackNavigation';
-import IncomeExpenseStackNavigation from './IncomyExpenseStackNavigation/IncomeExpenseStackNavigation';
+import IncomeExpensesStackNavigation from './IncomeExpensesStackNavigation/IncomeExpensesStackNavigation';
 import CardSettingsStackNavigation from './CardSettingsStackNavigation/CardSettingsStackNavigation';
 import ProfileStackNavigation from './ProfileStackNavigation/ProfileStackNavigation';
 
@@ -30,22 +30,22 @@ const BottomNavigation = () => {
         options={HOME_STACK_OPTIONS}
       />
       <BottomTab.Screen
-        name={BottomTabsScreenTypes.MoneyTransfer}
+        name={BottomTabsScreenTypes.MoneyTransferStack}
         component={TransferStackNavigation}
         options={TRANSFER_STACK_OPTION}
       />
       <BottomTab.Screen
-        name={BottomTabsScreenTypes.IncomeExpense}
-        component={IncomeExpenseStackNavigation}
-        options={INCOME_EXPENSE_STACK_OPTION}
+        name={BottomTabsScreenTypes.IncomeExpensesStack}
+        component={IncomeExpensesStackNavigation}
+        options={INCOME_EXPENSES_STACK_OPTION}
       />
       <BottomTab.Screen
-        name={BottomTabsScreenTypes.CardSettings}
+        name={BottomTabsScreenTypes.CardSettingsStack}
         component={CardSettingsStackNavigation}
         options={CARD_SETTINGS_STACK_OPTION}
       />
       <BottomTab.Screen
-        name={BottomTabsScreenTypes.Profile}
+        name={BottomTabsScreenTypes.ProfileStack}
         component={ProfileStackNavigation}
         options={PROFILE_STACK_OPTION}
       />

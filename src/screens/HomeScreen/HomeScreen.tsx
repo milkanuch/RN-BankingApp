@@ -2,6 +2,7 @@ import { View } from 'react-native';
 import React from 'react';
 
 import CardCaroules from '../../components/CardCarousel/CardCarousel';
+import FrequentlyUsedFunctions from '../../components/FrequentlyUsedFunctions/FrequentlyUsedFunctions';
 
 import {
   CardProvider,
@@ -39,6 +40,7 @@ const HomeScreen = () => {
   return (
     <View style={styles.screen}>
       <CardCaroules cards={cards} showIndicator />
+      <FrequentlyUsedFunctions />
     </View>
   );
 };

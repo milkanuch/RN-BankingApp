@@ -20,6 +20,7 @@ module.exports = {
         '@typescript-eslint/no-explicit-any': ['error'],
         'no-shadow': 'off',
         'no-undef': 'off',
+        'no-console': 2,
         'react-native/no-unused-styles': 'error',
         'react-native/split-platform-components': 'error',
         'react-native/no-inline-styles': 'error',

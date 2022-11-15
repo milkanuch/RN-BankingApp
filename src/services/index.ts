@@ -6,6 +6,7 @@ import {
   NewCardResponseParams,
   UserLoginParams,
   UserParams,
+  UserRefreshParams,
   UserResponseParams,
 } from './bankApi.types';
 
@@ -38,6 +39,26 @@ export const bankApi = createApi({
     newCard: builder.mutation<NewCardResponseParams, NewCardParams>({
       query: body => ({
         url: '/user/newcard',
+        method: 'POST',
+        body: body,
+        headers: {
+          'Content-type': 'application/json',
+        },
+      }),
+    }),
+    userRefresh: builder.query<UserResponseParams, UserRefreshParams>({
+      query: body => ({
+        url: '/refresh_token',
+        method: 'POST',
+        body: body,
+        headers: {
+          'Content-type': 'application/json',
+        },
+      }),
+    }),
+    userLogout: builder.query<UserResponseParams, UserRefreshParams>({
+      query: body => ({
+        url: '/refresh_token/logout',
         method: 'POST',
         body: body,
         headers: {

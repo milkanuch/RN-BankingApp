@@ -27,6 +27,8 @@ import { useAppDispatch } from '../../store';
 
 import { setUserIsLogged } from '../../store/user/userSlice';
 
+import { setItem } from '../../store/bankStore/store';
+
 import AuthDivider from './AuthDivider/AuthDivider';
 
 import {
@@ -70,6 +72,8 @@ const SignInScreen: FC<SignInScreenProps> = ({ navigation }) => {
       if (res.data.error) {
         showSnackBar(res.data.error);
       } else {
+        setItem('AccessToken', res.data.access_token);
+        setItem('RefreshToken', res.data.refresh_token);
         dispatch(setUserIsLogged(true));
       }
     }

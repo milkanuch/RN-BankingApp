@@ -5,3 +5,5 @@ export const PIN_CODE_OPTIONS: LocalAuthenticationOptions = {
   disableDeviceFallback: true,
   cancelLabel: 'Use Pin-Code',
 };
+
+export const PIN_CODE_LENGTH = 4;
