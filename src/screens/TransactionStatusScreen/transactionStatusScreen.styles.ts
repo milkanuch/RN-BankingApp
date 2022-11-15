@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 import { colors } from '../../constants/colors';
-import { responsiveHeight } from '../../constants/dimensions';
+import { responsiveHeight, width } from '../../constants/dimensions';
 
 const styles = StyleSheet.create({
   container: {
@@ -19,6 +19,12 @@ const styles = StyleSheet.create({
     fontSize: responsiveHeight(2.5),
     color: colors.white,
     textAlign: 'center',
+  },
+  buttonContainer: {
+    marginHorizontal: 20,
+    position: 'absolute',
+    bottom: 20,
+    width: width - 40,
   },
 });
 
