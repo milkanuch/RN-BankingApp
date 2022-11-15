@@ -2,8 +2,11 @@ import { Config } from 'react-native-config';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 import {
+  AllCardsResponseParams,
   NewCardParams,
   NewCardResponseParams,
+  TransactionParams,
+  TransactionResponseParams,
   UserLoginParams,
   UserParams,
   UserRefreshParams,
@@ -12,6 +15,7 @@ import {
 
 export const bankApi = createApi({
   reducerPath: 'bankApi',
+  tagTypes: ['Cards'],
   baseQuery: fetchBaseQuery({
     baseUrl: Config.API_URL,
   }),
@@ -37,12 +41,13 @@ export const bankApi = createApi({
       }),
     }),
     newCard: builder.mutation<NewCardResponseParams, NewCardParams>({
-      query: body => ({
+      query: ({ accessToken, currency, provider, type }) => ({
         url: '/user/newcard',
         method: 'POST',
-        body: body,
+        body: { currency, provider, type },
         headers: {
           'Content-type': 'application/json',
+          Authorization: `Bearer ${accessToken}`,
         },
       }),
     }),
@@ -67,6 +72,55 @@ export const bankApi = createApi({
         },
       }),
     }),
+    transaction: builder.mutation<TransactionResponseParams, TransactionParams>(
+      {
+        query: ({
+          accessToken,
+          senderCardNumber,
+          receiverCardNumber,
+          receiverName,
+          sum,
+          purpose,
+        }) => ({
+          url: '/user/transactions/new',
+          method: 'POST',
+          body: {
+            senderCardNumber,
+            receiverCardNumber,
+            receiverName,
+            sum,
+            purpose,
+          },
+          headers: {
+            'Content-type': 'application/json',
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }),
+        invalidatesTags: ['Cards'],
+      },
+    ),
+    getAllCards: builder.query<AllCardsResponseParams, String>({
+      query: accessToken => {
+        return {
+          url: '/user/cards/',
+          method: 'GET',
+          headers: {
+            'Content-type': 'application/json',
+            Authorization: `Bearer ${accessToken}`,
+          },
+        };
+      },
+      providesTags: result =>
+        result
+          ? [
+              ...result.ok.map(({ cardNumber }) => ({
+                type: 'Cards' as const,
+                cardNumber,
+              })),
+              { type: 'Cards', id: 'LIST' },
+            ]
+          : [{ type: 'Cards', id: 'LIST' }],
+    }),
   }),
 });
 
@@ -74,4 +128,6 @@ export const {
   useUserRegisterMutation,
   useUserLoginMutation,
   useNewCardMutation,
+  useTransactionMutation,
+  useGetAllCardsQuery,
 } = bankApi;

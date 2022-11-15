@@ -26,6 +26,7 @@ export interface NewCardParams {
   provider: string;
   type: string;
   currency: string;
+  accessToken?: string;
 }
 
 export interface CardResponseParams {
@@ -34,14 +35,32 @@ export interface CardResponseParams {
   expirationTime: Date;
   cvvCode: string;
   pinCode: string;
-  cardType: string;
+  cardType: { id: number; name: string };
   currencyName: string;
-  provider: string;
+  providerEntity: { id: number; providerName: string; code: string };
   sum: number;
   sumLimit: number;
   isBlocked: boolean;
 }
 
+export interface AllCardsResponseParams {
+  ok: CardResponseParams[];
+}
+
 export interface UserRefreshParams {
   refresh_token: string;
+}
+
+export interface TransactionParams {
+  accessToken?: string;
+  senderCardNumber: string;
+  receiverCardNumber: string;
+  receiverName: string;
+  sum: number;
+  purpose: string;
+}
+
+export interface TransactionResponseParams {
+  message?: string;
+  error?: string;
 }
