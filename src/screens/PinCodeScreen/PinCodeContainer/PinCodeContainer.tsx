@@ -4,6 +4,8 @@ import React, { FC } from 'react';
 import styles from './pinCodeContainer.style';
 import { IPinCodeContainerProps } from './pinCodeContainer.types';
 
+const RENDER_DOTS = ['', '', '', ''];
+
 export const PinCodeContainer: FC<IPinCodeContainerProps> = ({
   pinCode,
   animation,
@@ -13,10 +15,10 @@ export const PinCodeContainer: FC<IPinCodeContainerProps> = ({
       <Text style={styles.text}>Enter your Pin-Code</Text>
       <Animated.View style={{ transform: [{ translateX: animation.current }] }}>
         <View style={styles.codeContainer}>
-          {pinCode.map((p, index) => {
+          {RENDER_DOTS.map((_, index) => {
             return (
               <View
-                style={[styles.codeEmpty, !!p && styles.codeFull]}
+                style={[styles.codeEmpty, !!pinCode[index] && styles.codeFull]}
                 key={index.toString()}
               />
             );

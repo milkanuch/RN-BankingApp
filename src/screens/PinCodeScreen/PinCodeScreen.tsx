@@ -1,8 +1,6 @@
-import React, { FC, useCallback, useEffect, useRef, useState } from 'react';
-import { Animated } from 'react-native';
+import React, { FC, useCallback, useEffect, useState } from 'react';
 
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { isEnrolledAsync, authenticateAsync } from 'expo-local-authentication';
 
 import {
   AuthStackScreenTypes,
@@ -13,6 +11,12 @@ import { setUserIsLogged } from '../../store/user/userSlice';
 
 import { useAppDispatch } from '../../store';
 
+import { useFingerPrint } from '../../hooks/useFingerPrint';
+
+import { useShakeAnimation } from '../../hooks/useShakeAnimation';
+
+import { getItem, setItem } from '../../store/bankStore/store';
+
 import { PinCodeContainer } from './PinCodeContainer/PinCodeContainer';
 import PinCodeFooter from './PinCodeFooter/PinCodeFooter';
 import PinCodeHeader from './PinCodeHeader/PinCodeHeader';
@@ -20,100 +24,62 @@ import { PinCodeKeyboard } from './PinCodeKeyboard/PinCodeKeyboard';
 import { IPinCodeFunctions } from './PinCodeKeyboard/pinCodeKeyboard.types';
 
 import styles from './pinCodeScreen.styles';
-import { PIN_CODE_OPTIONS } from './pinCodeScreen.settings';
+import { PIN_CODE_LENGTH } from './pinCodeScreen.settings';
+import { isEqual } from './pinCodeScreen.utils';
 
 const PinCodeScreen: FC<PinCodeScreenProps> = ({ navigation }) => {
-  const [pinCode, setPinCode] = useState(['', '', '', '']);
-
   const dispatch = useAppDispatch();
 
-  const onFingerprint = useCallback(async () => {
-    const isEnrolled = await isEnrolledAsync();
+  const [pinCode, setPinCode] = useState<string[]>([]);
+  const [confirmationPin, setConfirmationPin] = useState<string[]>([]);
+  const [isRegister, setIsRegister] = useState(true);
 
-    if (isEnrolled) {
-      const isSuccess = await authenticateAsync(PIN_CODE_OPTIONS);
-      if (isSuccess.success) {
-        dispatch(setUserIsLogged(true));
-      }
+  const { animation, shake } = useShakeAnimation();
+  const { onFingerprint } = useFingerPrint();
+
+  const fetchPinCode = useCallback(async () => {
+    const tempCode = await getItem('PinCode');
+    if (tempCode) {
+      setPinCode([...tempCode]);
+      setIsRegister(false);
     }
-  }, [dispatch]);
-
-  useEffect(() => {
-    onFingerprint();
-  }, [onFingerprint]);
-
-  const anim = useRef(new Animated.Value(0));
-
-  const shake = useCallback(() => {
-    Animated.loop(
-      Animated.sequence([
-        Animated.timing(anim.current, {
-          toValue: -2,
-          duration: 50,
-          useNativeDriver: false,
-        }),
-        Animated.timing(anim.current, {
-          toValue: 2,
-          duration: 50,
-          useNativeDriver: false,
-        }),
-        Animated.timing(anim.current, {
-          toValue: 0,
-          duration: 50,
-          useNativeDriver: false,
-        }),
-      ]),
-      { iterations: 4 },
-    ).start();
   }, []);
 
-  const addNumber = (num: string) => {
-    let tempCode = pinCode;
-    for (let i = 0; i < tempCode.length; i++) {
-      if (tempCode[i] === '') {
-        tempCode[i] = num;
-        break;
+  const tryLogin = useCallback(() => {
+    if (confirmationPin.length === PIN_CODE_LENGTH) {
+      if (isEqual(pinCode, confirmationPin)) {
+        dispatch(setUserIsLogged(true));
+        if (isRegister) {
+          setItem('PinCode', confirmationPin.join(''));
+        }
       } else {
-        continue;
+        setConfirmationPin([]);
+        shake();
       }
     }
-    if (pinCode[pinCode.length - 1] !== '') {
-      tryLogin();
+  }, [confirmationPin, pinCode, isRegister, dispatch, shake]);
+
+  useEffect(() => {
+    fetchPinCode();
+  }, [fetchPinCode]);
+
+  useEffect(() => {
+    tryLogin();
+  }, [confirmationPin, tryLogin]);
+
+  const addNumber = (num: string) => {
+    if (pinCode.length < PIN_CODE_LENGTH) {
+      setPinCode(prev => [...prev, num]);
+    } else if (confirmationPin.length < PIN_CODE_LENGTH) {
+      setConfirmationPin(prev => [...prev, num]);
     }
-    setPinCode([...tempCode]);
   };
 
   const removeNumber = () => {
-    let tempCode = pinCode;
-    for (let i = tempCode.length - 1; i >= 0; i--) {
-      if (tempCode[i] !== '') {
-        tempCode[i] = '';
-        break;
-      } else {
-        continue;
-      }
-    }
-    setPinCode([...tempCode]);
-  };
-
-  const isEqual = (previous: string[], temp: string[]) => {
-    for (let i = 0; i < previous.length; i++) {
-      if (temp[i] !== previous[i]) {
-        return false;
-      }
-    }
-    return true;
-  };
-
-  const tryLogin = () => {
-    const previous = ['1', '1', '1', '1'];
-    if (!isEqual(previous, pinCode)) {
-      shake();
-      for (let i = 0; i < pinCode.length; i++) {
-        pinCode[i] = '';
-      }
-    } else {
-      dispatch(setUserIsLogged(true));
+    if (confirmationPin.length) {
+      setConfirmationPin(prev => [...prev.slice(0, -1)]);
+    } else if (pinCode.length < PIN_CODE_LENGTH) {
+      setPinCode(prev => [...prev.slice(0, -1)]);
     }
   };
 
@@ -130,7 +96,10 @@ const PinCodeScreen: FC<PinCodeScreenProps> = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
       <PinCodeHeader />
-      <PinCodeContainer pinCode={pinCode} animation={anim} />
+      <PinCodeContainer
+        pinCode={pinCode.length === PIN_CODE_LENGTH ? confirmationPin : pinCode}
+        animation={animation}
+      />
       <PinCodeKeyboard functions={functions} />
       <PinCodeFooter onPress={handlePhoneNumberLogin} />
     </SafeAreaView>
