@@ -1,14 +1,14 @@
 export const transferButtonTitle = 'Transfer';
 export const transferButtonIcon = 'arrowup';
-export const transferButtonOnPress = () => console.log('Transfer');
+export const transferButtonOnPress = () => {};
 
 export const depositButtonTitle = 'Deposit';
 export const depositButtonIcon = 'arrowdown';
-export const depositButtonOnPress = () => console.log('Deposit');
+export const depositButtonOnPress = () => {};
 
 export const detailsButtonTitle = 'Details';
 export const detailsButtonIcon = 'bars';
-export const detailsButtonOnPress = () => console.log('Details');
+export const detailsButtonOnPress = () => {};
 
 export const buttons = [
   {
