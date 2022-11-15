@@ -2,6 +2,7 @@ export const colors = {
   light: {
     primary: {
       200: '#F9F9FB',
+      400: '#f2f2f2',
     },
   },
   grey: '#898989',
