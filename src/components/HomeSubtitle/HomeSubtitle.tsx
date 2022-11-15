@@ -30,7 +30,7 @@ const HomeSubtitle: FC<IHomeSubtitleProps> = ({
       )}
       {!!buttonTitle && (
         <TouchableOpacity onPress={onPress}>
-          <Text>{buttonTitle}</Text>
+          <Text style={styles.buttonTitle}>{buttonTitle}</Text>
         </TouchableOpacity>
       )}
     </View>
