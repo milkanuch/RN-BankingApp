@@ -1,5 +1,6 @@
-import { View } from 'react-native';
 import React from 'react';
+
+import { ScrollView } from 'react-native';
 
 import CardCaroules from '../../components/CardCarousel/CardCarousel';
 import FrequentlyUsedFunctions from '../../components/FrequentlyUsedFunctions/FrequentlyUsedFunctions';
@@ -10,6 +11,10 @@ import {
   Currency,
   ICardProps,
 } from '../../components/Card/card.types';
+
+import DepositWithdrawlsSection from '../../components/DepositWithdrawlsSection/DepositWithdrawlsSection';
+
+import { IDepositWithdrawlsSectionProps } from '../../components/DepositWithdrawlsSection/depositWithdrawlsSection.types';
 
 import styles from './homeScreen.styles';
 
@@ -36,12 +41,54 @@ const cards: ICardProps[] = [
   },
 ];
 
+const transactions: IDepositWithdrawlsSectionProps = {
+  transactions: [
+    {
+      cardProvider: 'VISA card',
+      date: '2022.11.14',
+      total: 25000,
+      currency: 'UAH',
+    },
+    {
+      cardProvider: 'VISA card',
+      date: '2022.11.14',
+      total: 25000,
+      currency: 'UAH',
+    },
+    {
+      cardProvider: 'VISA card',
+      date: '2022.11.14',
+      total: 25000,
+      currency: 'UAH',
+    },
+    {
+      cardProvider: 'VISA card',
+      date: '2022.11.14',
+      total: 25000,
+      currency: 'UAH',
+    },
+    {
+      cardProvider: 'VISA card',
+      date: '2022.11.14',
+      total: 25000,
+      currency: 'UAH',
+    },
+    {
+      cardProvider: 'VISA card last',
+      date: '2022.11.14',
+      total: 25000,
+      currency: 'UAH',
+    },
+  ],
+};
+
 const HomeScreen = () => {
   return (
-    <View style={styles.screen}>
+    <ScrollView style={styles.screen} nestedScrollEnabled>
       <CardCaroules cards={cards} showIndicator />
       <FrequentlyUsedFunctions />
-    </View>
+      <DepositWithdrawlsSection {...transactions} />
+    </ScrollView>
   );
 };
 
