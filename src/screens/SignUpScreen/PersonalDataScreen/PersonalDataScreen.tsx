@@ -7,8 +7,6 @@ import { showSnackBar } from '../../../components/Card/card.helper';
 import CustomButton from '../../../components/CustomButton/CustomButton';
 import CustomTextInput from '../../../components/CustomTextInput/CustomTextInput';
 
-import { setUserIsLogged } from '../../../store/user/userSlice';
-
 import {
   passportDataErrorMessage,
   personalDataErrorMessage,
@@ -17,9 +15,12 @@ import {
   passportValidation,
   personalDataValidation,
 } from '../../../helpers/validation';
-import { PersonalDataScreenProps } from '../../../navigation/AuthStackNavigation/AuthStackNavigation.types';
+import {
+  AuthStackScreenTypes,
+  PersonalDataScreenProps,
+} from '../../../navigation/AuthStackNavigation/AuthStackNavigation.types';
 import { useUserRegisterMutation } from '../../../services';
-import { useAppDispatch } from '../../../store';
+import { setItem } from '../../../store/bankStore/store';
 import Divider from '../Divider/Divider';
 
 import {
@@ -45,8 +46,6 @@ const PersonalDataScreen: FC<PersonalDataScreenProps> = ({
 
   const [signUp, { isLoading }] = useUserRegisterMutation();
 
-  const dispatch = useAppDispatch();
-
   const handleNextButton = async () => {
     const res = await signUp({
       firstName: firstName,
@@ -60,7 +59,9 @@ const PersonalDataScreen: FC<PersonalDataScreenProps> = ({
     if (res.error) {
       showSnackBar(res.error);
     } else {
-      dispatch(setUserIsLogged(true));
+      setItem('AccessToken', res.access_token);
+      setItem('RefreshToken', res.refresh_token);
+      navigation.navigate(AuthStackScreenTypes.PinCode);
     }
   };
 

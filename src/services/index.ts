@@ -4,6 +4,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import {
   UserLoginParams,
   UserParams,
+  UserRefreshParams,
   UserResponseParams,
 } from './bankApi.types';
 
@@ -26,6 +27,26 @@ export const bankApi = createApi({
     userLogin: builder.mutation<UserResponseParams, UserLoginParams>({
       query: body => ({
         url: '/login',
+        method: 'POST',
+        body: body,
+        headers: {
+          'Content-type': 'application/json',
+        },
+      }),
+    }),
+    userRefresh: builder.query<UserResponseParams, UserRefreshParams>({
+      query: body => ({
+        url: '/refresh_token',
+        method: 'POST',
+        body: body,
+        headers: {
+          'Content-type': 'application/json',
+        },
+      }),
+    }),
+    userLogout: builder.query<UserResponseParams, UserRefreshParams>({
+      query: body => ({
+        url: '/refresh_token/logout',
         method: 'POST',
         body: body,
         headers: {
