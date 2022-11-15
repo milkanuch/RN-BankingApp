@@ -21,6 +21,8 @@ const CustomTextInput: FC<ICustomTextInputProps> = ({
   errorText,
   setValue,
   style,
+  keyboardType,
+  textContentType,
 }) => {
   const [focused, setFocused] = useState(false);
   const [isValid, setIsValid] = useState(true);
@@ -35,6 +37,9 @@ const CustomTextInput: FC<ICustomTextInputProps> = ({
     }
     setValue(newValue);
   };
+
+  const showClear =
+    !!value.length && !(value === '0' && keyboardType === 'number-pad');
 
   return (
     <View style={[styles.container, style]}>
@@ -55,8 +60,10 @@ const CustomTextInput: FC<ICustomTextInputProps> = ({
           selectionColor={colors.black}
           onFocus={handleFocus}
           onBlur={handleBlur}
+          keyboardType={keyboardType}
+          textContentType={textContentType}
         />
-        {!!value.length && (
+        {showClear && (
           <IconButton
             iconName={iconName}
             size={iconSize}

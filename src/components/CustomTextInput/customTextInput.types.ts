@@ -1,6 +1,6 @@
-import { ViewStyle } from 'react-native';
+import { TextInputProps, ViewStyle } from 'react-native';
 
-export interface ICustomTextInputProps {
+export interface ICustomTextInputProps extends TextInputProps {
   title?: string;
   hintText?: string;
   placeHolder?: string;

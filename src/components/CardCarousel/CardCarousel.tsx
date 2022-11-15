@@ -43,7 +43,7 @@ const keyExtractor: (item: IAbstractCard, index: number) => string = (
   return '';
 };
 
-const CardCaroules: FC<ICardCarouselProps> = ({
+const CardCarousel: FC<ICardCarouselProps> = ({
   cards,
   onChange,
   showIndicator,
@@ -80,4 +80,4 @@ const CardCaroules: FC<ICardCarouselProps> = ({
   );
 };
 
-export default CardCaroules;
+export default CardCarousel;

@@ -1,7 +1,19 @@
-import { View } from 'react-native';
+import { ActivityIndicator, View } from 'react-native';
 import React, { useState } from 'react';
 
+import Snackbar from 'react-native-snackbar';
+
+import { SafeAreaView } from 'react-native-safe-area-context';
+
 import TitleText from '../../components/TitleText/TitleText';
+
+import { useNewCardMutation } from '../../services';
+
+import { NewCardParams } from '../../services/bankApi.types';
+
+import { showSnackBar } from '../../components/Card/card.helper';
+
+import { colors } from '../../constants/colors';
 
 import ProviderSelector from './ProviderSelector/ProviderSelector';
 import styles from './newCardScreen.styles';
@@ -12,8 +24,10 @@ import {
   buttonText,
   cardTypeSubtitle,
   currencySubtitle,
+  failText,
   providerSubtitle,
   screenTitle,
+  successText,
 } from './newCardScreen.settings';
 
 const NewCardScreen = () => {
@@ -21,10 +35,45 @@ const NewCardScreen = () => {
   const [currentCurrency, setCurrency] = useState('UAH');
   const [currentCardType, setCardType] = useState('Debit');
 
-  const handleOnPress = () => {};
+  const [createNewCard, { data, isError, reset, isLoading }] =
+    useNewCardMutation();
+
+  const handleOnPress = () => {
+    const newCardParams: NewCardParams = {
+      provider: currentProvider,
+      type: currentCardType,
+      currency: currentCurrency,
+    };
+
+    createNewCard(newCardParams).unwrap();
+  };
+
+  if (isError) {
+    showSnackBar(failText);
+    reset();
+  }
+
+  if (data && data.error) {
+    showSnackBar(data.error);
+    reset();
+  } else if (data) {
+    Snackbar.show({
+      text: successText,
+      backgroundColor: colors.green,
+    });
+    reset();
+  }
+
+  if (isLoading) {
+    return (
+      <View style={styles.loadingContainer}>
+        <ActivityIndicator />
+      </View>
+    );
+  }
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <TitleText text={screenTitle} />
       <TitleText text={providerSubtitle} subtitle />
       <ProviderSelector
@@ -42,7 +91,7 @@ const NewCardScreen = () => {
         setCardType={setCardType}
       />
       <CreateCardButton title={buttonText} onPress={handleOnPress} />
-    </View>
+    </SafeAreaView>
   );
 };
 

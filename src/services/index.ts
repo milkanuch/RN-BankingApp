@@ -2,6 +2,8 @@ import { Config } from 'react-native-config';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 import {
+  NewCardParams,
+  NewCardResponseParams,
   UserLoginParams,
   UserParams,
   UserRefreshParams,
@@ -34,6 +36,16 @@ export const bankApi = createApi({
         },
       }),
     }),
+    newCard: builder.mutation<NewCardResponseParams, NewCardParams>({
+      query: body => ({
+        url: '/user/newcard',
+        method: 'POST',
+        body: body,
+        headers: {
+          'Content-type': 'application/json',
+        },
+      }),
+    }),
     userRefresh: builder.query<UserResponseParams, UserRefreshParams>({
       query: body => ({
         url: '/refresh_token',
@@ -51,10 +63,15 @@ export const bankApi = createApi({
         body: body,
         headers: {
           'Content-type': 'application/json',
+          Authorization: 'Bearer',
         },
       }),
     }),
   }),
 });
 
-export const { useUserRegisterMutation, useUserLoginMutation } = bankApi;
+export const {
+  useUserRegisterMutation,
+  useUserLoginMutation,
+  useNewCardMutation,
+} = bankApi;

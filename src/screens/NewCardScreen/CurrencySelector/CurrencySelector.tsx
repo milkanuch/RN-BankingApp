@@ -16,6 +16,7 @@ const CurrencySelector: FC<ICurrencySelectorProps> = ({
     <View style={styles.container}>
       {currencies.map(currency => (
         <CurrencySelectorItem
+          key={currency}
           currency={currency}
           selected={currentCurrency === currency}
           onPress={setCurrency}

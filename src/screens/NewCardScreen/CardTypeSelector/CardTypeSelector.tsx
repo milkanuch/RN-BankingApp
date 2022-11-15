@@ -16,6 +16,7 @@ const CardTypeSelector: FC<ICardTypeSelectorProps> = ({
     <View style={styles.container}>
       {cardTypes.map(cardType => (
         <CardTypeSelectorItem
+          key={cardType}
           cardType={cardType}
           selected={currentCardType === cardType}
           onPress={setCardType}
