@@ -10,8 +10,13 @@ export interface UserLoginParams {
   phoneNumber?: string;
   password: string;
 }
+
 export interface UserResponseParams {
   access_token: string;
   refresh_token: string;
   error: string | null | undefined;
+}
+
+export interface UserRefreshParams {
+  refresh_token: string;
 }

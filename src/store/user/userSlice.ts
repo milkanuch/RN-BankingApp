@@ -2,6 +2,8 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { AppState } from '..';
 
+import { setItem } from '../bankStore/store';
+
 import { bankApi } from './../../services/index';
 
 import { UserState } from './user.types';
@@ -31,8 +33,8 @@ export const userSlice = createSlice({
   extraReducers: builder => {
     builder.addMatcher(
       bankApi.endpoints.userLogin.matchFulfilled,
-      (state, payload) => {
-        console.log(payload);
+      (state, { payload }) => {
+        setItem('Token', payload.access_token);
       },
     );
   },
