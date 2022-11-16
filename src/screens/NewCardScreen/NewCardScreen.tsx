@@ -9,7 +9,7 @@ import TitleText from '../../components/TitleText/TitleText';
 
 import { useNewCardMutation } from '../../services';
 
-import { NewCardParams } from '../../services/bankApi.types';
+import { INewCardParams } from '../../services/bankApi.types';
 
 import { showSnackBar } from '../../components/Card/card.helper';
 
@@ -42,8 +42,8 @@ const NewCardScreen = () => {
 
   const handleOnPress = async () => {
     const accessToken = await getItem('AccessToken');
-    const newCardParams: NewCardParams = {
-      accessToken: accessToken,
+    const newCardParams: INewCardParams = {
+      accessToken,
       provider: currentProvider,
       type: currentCardType,
       currency: currentCurrency,

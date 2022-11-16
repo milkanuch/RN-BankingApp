@@ -76,7 +76,7 @@ const transactions: IDepositWithdrawlsSectionProps = {
     {
       cardProvider: 'VISA card last',
       date: '2022.11.14',
-      total: 25000,
+      total: -25000,
       currency: 'UAH',
     },
   ],

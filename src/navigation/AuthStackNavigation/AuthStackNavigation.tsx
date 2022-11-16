@@ -25,11 +25,6 @@ const AuthStackNavigation = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name={AuthStackScreenTypes.PinCode}
-        component={PinCodeScreen}
-        options={PINCODE_SCREEN_OPTIONS}
-      />
-      <Stack.Screen
         name={AuthStackScreenTypes.SignIn}
         component={SignInScreen}
         options={SIGNIN_SCREEN_OPTIONS}
@@ -43,6 +38,11 @@ const AuthStackNavigation = () => {
         name={AuthStackScreenTypes.PersonalData}
         component={PersonalDataScreen}
         options={PERSONAL_DATA_SCREEN_OPTIONS}
+      />
+      <Stack.Screen
+        name={AuthStackScreenTypes.PinCode}
+        component={PinCodeScreen}
+        options={PINCODE_SCREEN_OPTIONS}
       />
     </Stack.Navigator>
   );
