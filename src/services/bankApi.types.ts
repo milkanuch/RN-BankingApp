@@ -73,3 +73,12 @@ export interface ITransactionResponseParams {
   message?: string;
   error?: string;
 }
+
+export interface IUserTransactionResponseParams {
+  id: number;
+  provider: string;
+  currency: string;
+  time: Date;
+  sum: number;
+  profit: boolean;
+}
