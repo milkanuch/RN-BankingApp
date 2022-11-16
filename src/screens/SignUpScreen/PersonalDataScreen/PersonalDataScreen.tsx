@@ -48,11 +48,11 @@ const PersonalDataScreen: FC<PersonalDataScreenProps> = ({
 
   const handleNextButton = async () => {
     const res = await signUp({
-      firstName: firstName,
-      lastName: lastName,
-      phoneNumber: phoneNumber,
-      password: password,
-      passportNumber: passportNumber,
+      firstName,
+      lastName,
+      phoneNumber,
+      password,
+      passportNumber,
       ipn: paymentBill,
     }).unwrap();
 
