@@ -2,8 +2,6 @@ import { Text, TextInput, View } from 'react-native';
 
 import { FC, useState } from 'react';
 
-import { colors } from '../../constants/colors';
-
 import IconButton from '../IconButton/IconButton';
 
 import { ICustomTextInputProps } from './customTextInput.types';
@@ -57,7 +55,6 @@ const CustomTextInput: FC<ICustomTextInputProps> = ({
           onChangeText={handleTextValidation}
           style={styles.textInput}
           secureTextEntry={secureTextEntry}
-          selectionColor={colors.black}
           onFocus={handleFocus}
           onBlur={handleBlur}
           keyboardType={keyboardType}
