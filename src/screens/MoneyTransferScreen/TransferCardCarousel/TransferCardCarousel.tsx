@@ -3,7 +3,7 @@ import React, { FC, useRef } from 'react';
 
 import { FlatList } from 'react-native-gesture-handler';
 
-import { CardResponseParams } from '../../../services/bankApi.types';
+import { ICardResponseParams } from '../../../services/bankApi.types';
 
 import { viewConfig } from '../../../components/CardCarousel/cardCarousel.settings';
 
@@ -12,7 +12,7 @@ import TransferCardCarouselItem from './TransferCardCarouselItem/TransferCardCar
 
 import styles from './transferCardCarousel.styles';
 
-const renderItem: ListRenderItem<CardResponseParams> = ({ item }) => (
+const renderItem: ListRenderItem<ICardResponseParams> = ({ item }) => (
   <TransferCardCarouselItem
     cardNumber={item.cardNumber}
     provider={item.providerEntity.providerName}
@@ -22,8 +22,8 @@ const renderItem: ListRenderItem<CardResponseParams> = ({ item }) => (
   />
 );
 
-const keyExtractor: (item: CardResponseParams, index: number) => string = (
-  item: CardResponseParams,
+const keyExtractor: (item: ICardResponseParams, index: number) => string = (
+  item: ICardResponseParams,
 ) => item.cardNumber;
 
 const TransferCardCarousel: FC<ITransferCardCarouselProps> = ({

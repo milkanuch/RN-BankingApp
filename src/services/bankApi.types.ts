@@ -1,35 +1,44 @@
-import { User } from './../store/user/user.types';
-
-export interface UserParams
-  extends Omit<User, 'isPremium' | 'isLogged' | 'isLoading'> {
+export interface IUserParams {
+  firstName: string;
+  lastName: string;
+  phoneNumber: string;
   password: string;
+  passportNumber: string;
+  ipn: string;
 }
 
-export interface UserLoginParams {
+export interface IUserLoginParams {
   ipn?: string;
   phoneNumber?: string;
   password: string;
 }
 
-export interface UserResponseParams {
+export interface IUserInfoResponseParamas {
+  firstName: string;
+  lastName: string;
+}
+
+export interface IUserResponseParams {
   access_token: string;
   refresh_token: string;
+  refresh_expire_date: string;
+  access_expire_date: string;
   error: string | null | undefined;
 }
 
-export interface NewCardResponseParams {
+export interface INewCardResponseParams {
   cardNumber: string;
   error: string | null | undefined;
 }
 
-export interface NewCardParams {
+export interface INewCardParams {
   provider: string;
   type: string;
   currency: string;
   accessToken?: string;
 }
 
-export interface CardResponseParams {
+export interface ICardResponseParams {
   cardNumber: string;
   creationTime: Date;
   expirationTime: Date;
@@ -43,15 +52,15 @@ export interface CardResponseParams {
   isBlocked: boolean;
 }
 
-export interface AllCardsResponseParams {
-  ok: CardResponseParams[];
+export interface IAllCardsResponseParams {
+  ok: ICardResponseParams[];
 }
 
-export interface UserRefreshParams {
-  refresh_token: string;
+export interface IUserRefreshParams {
+  refreshToken: string;
 }
 
-export interface TransactionParams {
+export interface ITransactionParams {
   accessToken?: string;
   senderCardNumber: string;
   receiverCardNumber: string;
@@ -60,7 +69,7 @@ export interface TransactionParams {
   purpose: string;
 }
 
-export interface TransactionResponseParams {
+export interface ITransactionResponseParams {
   message?: string;
   error?: string;
 }
