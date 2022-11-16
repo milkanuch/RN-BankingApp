@@ -3,16 +3,22 @@ import React, { FC } from 'react';
 
 import styles from './pinCodeContainer.style';
 import { IPinCodeContainerProps } from './pinCodeContainer.types';
-
-const RENDER_DOTS = ['', '', '', ''];
+import {
+  EnterPinCodeText,
+  RENDER_DOTS,
+  RepeatPinCodeText,
+} from './pinCodeContainer.settings';
 
 export const PinCodeContainer: FC<IPinCodeContainerProps> = ({
+  isLogin,
   pinCode,
   animation,
 }) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Enter your Pin-Code</Text>
+      <Text style={styles.text}>
+        {isLogin ? EnterPinCodeText : RepeatPinCodeText}
+      </Text>
       <Animated.View style={{ transform: [{ translateX: animation.current }] }}>
         <View style={styles.codeContainer}>
           {RENDER_DOTS.map((_, index) => {
