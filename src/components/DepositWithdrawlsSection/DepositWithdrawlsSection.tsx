@@ -16,13 +16,18 @@ import {
 const DepositWithdrawlsSection: FC<IDepositWithdrawlsSectionProps> = ({
   transactions,
 }) => {
+  const transactionsData = transactions.map(transaction => ({
+    cardProvider: transaction.provider,
+    date: new Date(transaction.time),
+    total: transaction.sum,
+    currency: transaction.currency,
+  }));
   return (
     <View style={styles.section}>
       <HomeSubtitle title={title} onPress={onPress} buttonTitle={buttonTitle} />
       <View style={styles.container}>
-        {transactions ? (
-          transactions
-            .reverse()
+        {transactionsData ? (
+          transactionsData
             .filter((item, index) => index < 5)
             .map((item, index) => (
               <DepositWithdrawlsSectionItem

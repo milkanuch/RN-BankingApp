@@ -48,9 +48,19 @@ const CardCarousel: FC<ICardCarouselProps> = ({
   onChange,
   showIndicator,
 }) => {
+  const cardsProps = cards.map(card => ({
+    cardNumber: card.cardNumber,
+    cardProvider: card.providerEntity.providerName,
+    cardType: card.cardType.name,
+    showDetailsIconButton: true,
+    expirationDate: new Date(card.expirationTime),
+    money: card.sum,
+    currency: card.currencyName,
+    blocked: card.isBlocked,
+  }));
   const [index, setIndex] = useState(0);
   const viewConfigRef = useRef(viewConfig);
-  const data: IAbstractCard[] = [...cards, addCardProps];
+  const data: IAbstractCard[] = [...cardsProps, addCardProps];
 
   const onViewChange = ({ changed }: { changed: ViewToken[] }) => {
     if (changed[0].isViewable && changed[0].index !== null) {

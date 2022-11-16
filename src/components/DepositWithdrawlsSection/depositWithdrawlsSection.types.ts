@@ -1,5 +1,5 @@
-import { IDepositWithdrawlsSectionItemProps } from './DepositWithdrawlsSectionItem/depositWithdrawlsSectionItem.types';
+import { IUserTransactionResponseParams } from '../../services/bankApi.types';
 
 export interface IDepositWithdrawlsSectionProps {
-  transactions: IDepositWithdrawlsSectionItemProps[];
+  transactions: IUserTransactionResponseParams[];
 }

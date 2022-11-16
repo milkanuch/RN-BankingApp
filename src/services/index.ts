@@ -14,6 +14,7 @@ import {
   IUserParams,
   IUserRefreshParams,
   IUserResponseParams,
+  IUserTransactionResponseParams,
 } from './bankApi.types';
 
 const anonymousEndpoints = [
@@ -25,7 +26,7 @@ const anonymousEndpoints = [
 
 export const bankApi = createApi({
   reducerPath: 'bankApi',
-  tagTypes: ['Cards'],
+  tagTypes: ['Cards', 'Transactions'],
   baseQuery: fetchBaseQuery({
     baseUrl: Config.API_URL,
     prepareHeaders: async (headers, { endpoint }) => {
@@ -120,7 +121,7 @@ export const bankApi = createApi({
           'Content-type': 'application/json',
         },
       }),
-      invalidatesTags: ['Cards'],
+      invalidatesTags: ['Cards', 'Transactions'],
     }),
     getAllCards: builder.query<IAllCardsResponseParams, void>({
       query: () => {
@@ -143,6 +144,28 @@ export const bankApi = createApi({
             ]
           : [{ type: 'Cards', id: 'LIST' }],
     }),
+    getAllUserTransactions: builder.query<
+      IUserTransactionResponseParams[],
+      void
+    >({
+      query: () => ({
+        url: '/user/transactions/all',
+        method: 'GET',
+        headers: {
+          'Content-type': 'application/json',
+        },
+      }),
+      providesTags: result =>
+        result
+          ? [
+              ...result.map(({ id }) => ({
+                type: 'Transactions' as const,
+                id,
+              })),
+              { type: 'Transactions', id: 'LIST' },
+            ]
+          : [{ type: 'Transactions', id: 'LIST' }],
+    }),
   }),
 });
 
@@ -155,4 +178,5 @@ export const {
   useNewCardMutation,
   useTransactionMutation,
   useGetAllCardsQuery,
+  useGetAllUserTransactionsQuery,
 } = bankApi;
