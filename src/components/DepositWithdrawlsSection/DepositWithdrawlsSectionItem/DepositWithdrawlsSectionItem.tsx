@@ -17,7 +17,7 @@ const DepositWithdrawlsSectionItem: FC<IDepositWithdrawlsSectionItemProps> = ({
       <View style={styles.container}>
         <View style={styles.card}>
           <Text style={styles.cardProvider}>{cardProvider}</Text>
-          <Text style={styles.date}>{date}</Text>
+          <Text style={styles.date}>{date.toLocaleDateString()}</Text>
         </View>
         <View style={styles.money}>
           <Text style={styles.total}>{total < 0 ? total : '+' + total}</Text>
