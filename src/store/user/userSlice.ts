@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { AppState } from '..';
 
-import { setItem } from '../bankStore/store';
+import { deleteItem, setItem } from '../bankStore/store';
 
 import { bankApi } from './../../services/index';
 
@@ -12,8 +12,6 @@ const initialState: UserState = {
   firstName: '',
   lastName: '',
   phoneNumber: '',
-  ipn: '',
-  passportNumber: '',
   isPremium: false,
   isLogged: false,
   isLoading: false,
@@ -33,10 +31,28 @@ export const userSlice = createSlice({
   extraReducers: builder => {
     builder.addMatcher(
       bankApi.endpoints.userLogin.matchFulfilled,
-      (state, { payload }) => {
-        setItem('Token', payload.access_token);
+      (_, { payload }) => {
+        setItem('AccessToken', payload.access_token);
+        setItem('RefreshToken', payload.refresh_token);
+        setItem('AccessExpireDate', payload.access_expire_date);
+        setItem('RefreshExpireDate', payload.refresh_expire_date);
       },
     );
+    builder.addMatcher(
+      bankApi.endpoints.userRefresh.matchFulfilled,
+      (_, { payload }) => {
+        setItem('AccessToken', payload.access_token);
+        setItem('RefreshToken', payload.refresh_token);
+        setItem('AccessExpireDate', payload.access_expire_date);
+        setItem('RefreshExpireDate', payload.refresh_expire_date);
+      },
+    );
+    builder.addMatcher(bankApi.endpoints.userLogout.matchPending, () => {
+      deleteItem('AccessToken');
+      deleteItem('RefreshToken');
+      deleteItem('AccessExpireDate');
+      deleteItem('RefreshExpireDate');
+    });
   },
 });
 
