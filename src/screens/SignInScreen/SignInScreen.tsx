@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useCallback, useEffect, useState } from 'react';
 import { ActivityIndicator, ScrollView, View } from 'react-native';
 
 import CheckBox from '../../components/CheckBox/CheckBox';
@@ -27,7 +27,7 @@ import { useAppDispatch } from '../../store';
 
 import { setUserIsLogged } from '../../store/user/userSlice';
 
-import { setItem } from '../../store/bankStore/store';
+import { getItem, setItem } from '../../store/bankStore/store';
 
 import AuthDivider from './AuthDivider/AuthDivider';
 
@@ -49,23 +49,36 @@ import {
 
 import styles from './signInScreen.styles';
 import { SignInMode } from './signInScreen.types';
+import { isExpiredDate } from './signInScreen.utils';
 
 const SignInScreen: FC<SignInScreenProps> = ({ navigation }) => {
   const [signInMode, setSignInMode] = useState(SignInMode.WithPhoneNumber);
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const [savePassword, setSavePassword] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const [signIn, { isLoading }] = useUserLoginMutation();
 
-  const dispatch = useAppDispatch();
+  const fetchPinCode = useCallback(async () => {
+    const refreshExperiDate = await getItem('RefreshExpireDate');
 
-  const handleCheckBoxState = (newValue: boolean) => setSavePassword(newValue);
+    if (refreshExperiDate && isExpiredDate(refreshExperiDate)) {
+      navigation.navigate(AuthStackScreenTypes.PinCode);
+    }
+    setIsLoaded(true);
+  }, [navigation]);
+
+  useEffect(() => {
+    fetchPinCode();
+  }, [fetchPinCode]);
+
+  const dispatch = useAppDispatch();
 
   const handleSignIn = async () => {
     const res = await signIn({
       [loginKey[signInMode]]: login,
-      password: password,
+      password,
     });
 
     if ('data' in res) {
@@ -83,7 +96,9 @@ const SignInScreen: FC<SignInScreenProps> = ({ navigation }) => {
     navigation.navigate(AuthStackScreenTypes.GeneralData);
   };
 
-  if (isLoading) {
+  const handleCheckBoxState = (newValue: boolean) => setSavePassword(newValue);
+
+  if (isLoading || !isLoaded) {
     return (
       <View style={styles.container}>
         <ActivityIndicator />
