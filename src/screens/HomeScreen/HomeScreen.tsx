@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ActivityIndicator, ScrollView, View } from 'react-native';
+import { ScrollView } from 'react-native';
 
 import CardCaroules from '../../components/CardCarousel/CardCarousel';
 import FrequentlyUsedFunctions from '../../components/FrequentlyUsedFunctions/FrequentlyUsedFunctions';
@@ -12,6 +12,8 @@ import {
   useGetAllUserTransactionsQuery,
 } from '../../services';
 
+import AppLoadingScreen from '../AppLoadingScreen/AppLoadingScreen';
+
 import styles from './homeScreen.styles';
 
 const HomeScreen = () => {
@@ -20,11 +22,7 @@ const HomeScreen = () => {
     useGetAllUserTransactionsQuery();
 
   if (fetchingCards || fetchingTransactions) {
-    return (
-      <View>
-        <ActivityIndicator />
-      </View>
-    );
+    return <AppLoadingScreen />;
   }
 
   return (

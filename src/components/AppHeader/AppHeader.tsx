@@ -1,4 +1,4 @@
-import { ActivityIndicator, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import React from 'react';
 
 import { useUserInfoQuery, useUserLogoutMutation } from '../../services';
@@ -35,11 +35,7 @@ const AppHeader = () => {
   const handleUserButton = () => {};
 
   if (isLoading) {
-    return (
-      <View style={styles.container}>
-        <ActivityIndicator />
-      </View>
-    );
+    return null;
   }
 
   return (

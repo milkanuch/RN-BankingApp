@@ -1,5 +1,5 @@
 import React, { FC, useCallback, useEffect, useState } from 'react';
-import { ActivityIndicator, ScrollView, View } from 'react-native';
+import { ScrollView } from 'react-native';
 
 import CheckBox from '../../components/CheckBox/CheckBox';
 import CustomButton from '../../components/CustomButton/CustomButton';
@@ -28,6 +28,8 @@ import { useAppDispatch } from '../../store';
 import { setUserIsLogged } from '../../store/user/userSlice';
 
 import { getItem, setItem } from '../../store/bankStore/store';
+
+import AppLoadingScreen from '../AppLoadingScreen/AppLoadingScreen';
 
 import AuthDivider from './AuthDivider/AuthDivider';
 
@@ -99,11 +101,7 @@ const SignInScreen: FC<SignInScreenProps> = ({ navigation }) => {
   const handleCheckBoxState = (newValue: boolean) => setSavePassword(newValue);
 
   if (isLoading || !isLoaded) {
-    return (
-      <View style={styles.container}>
-        <ActivityIndicator />
-      </View>
-    );
+    return <AppLoadingScreen />;
   }
 
   const isValid =

@@ -1,6 +1,5 @@
 import { FC, useState } from 'react';
-import { ActivityIndicator, View } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
+import { ScrollView } from 'react-native';
 
 import AuthHeader from '../../../components/AuthHeader/AuthHeader';
 import { showSnackBar } from '../../../components/Card/card.helper';
@@ -21,6 +20,7 @@ import {
 } from '../../../navigation/AuthStackNavigation/AuthStackNavigation.types';
 import { useUserRegisterMutation } from '../../../services';
 import { setItem } from '../../../store/bankStore/store';
+import AppLoadingScreen from '../../AppLoadingScreen/AppLoadingScreen';
 import Divider from '../Divider/Divider';
 
 import {
@@ -73,11 +73,7 @@ const PersonalDataScreen: FC<PersonalDataScreenProps> = ({
     passportValidation(passportNumber) && personalDataValidation(paymentBill);
 
   if (isLoading) {
-    return (
-      <View style={styles.container}>
-        <ActivityIndicator />
-      </View>
-    );
+    return <AppLoadingScreen />;
   }
 
   return (
