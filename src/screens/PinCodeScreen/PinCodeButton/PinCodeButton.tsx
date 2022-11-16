@@ -12,10 +12,11 @@ const PinCodeButton: FC<IPinCodeButtonProps> = ({
   title,
   iconName,
   onPress,
+  isDisabled,
 }) => {
   return (
     <View>
-      <TouchableOpacity onPress={onPress}>
+      <TouchableOpacity onPress={onPress} disabled={isDisabled}>
         <View style={[styles.container, !!iconName && styles.iconContainer]}>
           {iconName ? (
             <Icon name={iconName} size={40} color={colors.white} />

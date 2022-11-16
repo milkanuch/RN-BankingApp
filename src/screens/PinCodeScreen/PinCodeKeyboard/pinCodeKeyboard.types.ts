@@ -6,4 +6,5 @@ export interface IPinCodeFunctions {
   addNumber: (number: string) => void;
   removeNumber: () => void;
   onFingerprint: () => void;
+  isTouchIdDisabled: boolean;
 }
