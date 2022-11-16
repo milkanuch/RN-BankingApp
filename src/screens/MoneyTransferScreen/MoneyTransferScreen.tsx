@@ -1,5 +1,5 @@
 import { ActivityIndicator, View } from 'react-native';
-import React, { FC, useCallback, useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -7,7 +7,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 
 import { QueryStatus } from '@reduxjs/toolkit/dist/query';
 
-import { TransactionParams } from '../../services/bankApi.types';
+import { ITransactionParams } from '../../services/bankApi.types';
 
 import TitleText from '../../components/TitleText/TitleText';
 
@@ -28,8 +28,6 @@ import {
 } from '../../constants/errorMesages';
 
 import { useGetAllCardsQuery, useTransactionMutation } from '../../services';
-
-import { getItem } from '../../store/bankStore/store';
 
 import {
   TransferScreenProps,
@@ -55,26 +53,12 @@ import styles from './moneyTransferScreen.styles';
 
 const MoneyTransferScreen: FC<TransferScreenProps> = ({ navigation }) => {
   const [selectedCardIndex, selectCard] = useState(0);
-  const [receiverCard, setReceiverCard] = useState('');
+  const [receiverCardNumber, setReceiverCardNumber] = useState('');
   const [receiverName, setReceiverName] = useState('');
   const [amountOfMoney, setAmountOfMoney] = useState('');
   const [messageText, setMessageText] = useState('');
-  const [fetchingToken, setFetchingToken] = useState(true);
-  const [accessToken, setAccessToken] = useState('');
 
-  const fetchToken = useCallback(async () => {
-    const token = await getItem('AccessToken');
-    if (token) {
-      setFetchingToken(false);
-      setAccessToken(token);
-    }
-  }, []);
-  useEffect(() => {
-    fetchToken();
-  }, [fetchToken]);
-
-  const { data: cardsData, isLoading: isLoadingCards } =
-    useGetAllCardsQuery(accessToken);
+  const { data: cardsData, isLoading: isLoadingCards } = useGetAllCardsQuery();
 
   const handleSetMoney = (value: string) => {
     if (Number.isNaN(+value)) {
@@ -95,48 +79,47 @@ const MoneyTransferScreen: FC<TransferScreenProps> = ({ navigation }) => {
     },
   ] = useTransactionMutation();
 
-  const handleSend = () => {
+  useEffect(() => {
+    if (isSuccess || isError) {
+      const message =
+        status === QueryStatus.fulfilled
+          ? transactionSendData!.message
+          : errorText;
+      navigation.navigate(TransferStackScreenTypes.TransferStatus, {
+        isSuccess,
+        message,
+      });
+    }
+  }, [isSuccess, isError, status, transactionSendData, reset, navigation]);
+
+  const handleSend = async () => {
     if (!cardsData) {
       return;
     }
     const selectedCard = cardsData.ok[selectedCardIndex];
-    const transactionData: TransactionParams = {
-      accessToken: accessToken,
+    const transactionData: ITransactionParams = {
       senderCardNumber: selectedCard.cardNumber,
-      receiverCardNumber: receiverCard,
-      receiverName: receiverName,
+      receiverCardNumber,
+      receiverName,
       sum: +amountOfMoney,
       purpose: messageText,
     };
     try {
-      sendTransaction(transactionData).unwrap();
+      await sendTransaction(transactionData).unwrap();
     } catch (error) {}
   };
 
   const isValid =
-    cardNumberValidation(receiverCard) &&
+    cardNumberValidation(receiverCardNumber) &&
     credentialsValidation(receiverName) &&
     moneyValidation(amountOfMoney);
 
-  if (isLoadingCards || isLoadingTransaction || fetchingToken) {
+  if (isLoadingCards || isLoadingTransaction) {
     return (
       <View style={styles.loadingContainer}>
         <ActivityIndicator />
       </View>
     );
-  }
-
-  if (isSuccess || isError) {
-    const message =
-      status === QueryStatus.fulfilled
-        ? transactionSendData!.message
-        : errorText;
-    const isSuccessClone = isSuccess;
-    reset();
-    navigation.navigate(TransferStackScreenTypes.TransferStatus, {
-      isSuccess: isSuccessClone,
-      message: message!,
-    });
   }
 
   return (
@@ -146,8 +129,8 @@ const MoneyTransferScreen: FC<TransferScreenProps> = ({ navigation }) => {
         <TitleText text={cardCarouselTitle} subtitle />
         <TransferCardCarousel cards={cardsData?.ok} onChange={selectCard} />
         <CustomTextInput
-          value={receiverCard}
-          setValue={setReceiverCard}
+          value={receiverCardNumber}
+          setValue={setReceiverCardNumber}
           title={cardNumberTitle}
           style={styles.textInputContainer}
           keyboardType={moneyKeyboardType}
