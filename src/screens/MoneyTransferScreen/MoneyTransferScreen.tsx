@@ -1,4 +1,4 @@
-import { ActivityIndicator, View } from 'react-native';
+import { View } from 'react-native';
 import React, { FC, useEffect, useState } from 'react';
 
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -33,6 +33,8 @@ import {
   TransferScreenProps,
   TransferStackScreenTypes,
 } from '../../navigation/TransferStackNavigation/transferStackNavigation.types';
+
+import AppLoadingScreen from '../AppLoadingScreen/AppLoadingScreen';
 
 import {
   buttonText,
@@ -115,11 +117,7 @@ const MoneyTransferScreen: FC<TransferScreenProps> = ({ navigation }) => {
     moneyValidation(amountOfMoney);
 
   if (isLoadingCards || isLoadingTransaction) {
-    return (
-      <View style={styles.loadingContainer}>
-        <ActivityIndicator />
-      </View>
-    );
+    return <AppLoadingScreen />;
   }
 
   return (

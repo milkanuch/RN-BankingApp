@@ -2,11 +2,10 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { AppState } from '..';
 
-import { deleteItem, setItem } from '../bankStore/store';
-
 import { bankApi } from './../../services/index';
 
 import { UserState } from './user.types';
+import { deleteUserTokens, setUsersTokens } from './userSlice.utils';
 
 const initialState: UserState = {
   firstName: '',
@@ -32,26 +31,38 @@ export const userSlice = createSlice({
     builder.addMatcher(
       bankApi.endpoints.userLogin.matchFulfilled,
       (_, { payload }) => {
-        setItem('AccessToken', payload.access_token);
-        setItem('RefreshToken', payload.refresh_token);
-        setItem('AccessExpireDate', payload.access_expire_date);
-        setItem('RefreshExpireDate', payload.refresh_expire_date);
+        setUsersTokens(
+          payload.access_token,
+          payload.refresh_token,
+          payload.access_expire_date,
+          payload.refresh_expire_date,
+        );
+      },
+    );
+    builder.addMatcher(
+      bankApi.endpoints.userRegister.matchFulfilled,
+      (_, { payload }) => {
+        setUsersTokens(
+          payload.access_token,
+          payload.refresh_token,
+          payload.access_expire_date,
+          payload.refresh_expire_date,
+        );
       },
     );
     builder.addMatcher(
       bankApi.endpoints.userRefresh.matchFulfilled,
       (_, { payload }) => {
-        setItem('AccessToken', payload.access_token);
-        setItem('RefreshToken', payload.refresh_token);
-        setItem('AccessExpireDate', payload.access_expire_date);
-        setItem('RefreshExpireDate', payload.refresh_expire_date);
+        setUsersTokens(
+          payload.access_token,
+          payload.refresh_token,
+          payload.access_expire_date,
+          payload.refresh_expire_date,
+        );
       },
     );
     builder.addMatcher(bankApi.endpoints.userLogout.matchPending, () => {
-      deleteItem('AccessToken');
-      deleteItem('RefreshToken');
-      deleteItem('AccessExpireDate');
-      deleteItem('RefreshExpireDate');
+      deleteUserTokens();
     });
   },
 });

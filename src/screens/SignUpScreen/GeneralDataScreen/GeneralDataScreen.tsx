@@ -1,7 +1,6 @@
 import React, { FC, useState } from 'react';
-import { ScrollView } from 'react-native-gesture-handler';
 
-import { SafeAreaView } from 'react-native';
+import { SafeAreaView, ScrollView } from 'react-native';
 
 import CustomButton from '../../../components/CustomButton/CustomButton';
 

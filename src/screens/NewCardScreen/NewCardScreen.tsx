@@ -1,9 +1,7 @@
-import { ActivityIndicator, View } from 'react-native';
+import { SafeAreaView } from 'react-native';
 import React, { useState } from 'react';
 
 import Snackbar from 'react-native-snackbar';
-
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 import TitleText from '../../components/TitleText/TitleText';
 
@@ -16,6 +14,8 @@ import { showSnackBar } from '../../components/Card/card.helper';
 import { colors } from '../../constants/colors';
 
 import { getItem } from '../../store/bankStore/store';
+
+import AppLoadingScreen from '../AppLoadingScreen/AppLoadingScreen';
 
 import ProviderSelector from './ProviderSelector/ProviderSelector';
 import styles from './newCardScreen.styles';
@@ -68,11 +68,7 @@ const NewCardScreen = () => {
   }
 
   if (isLoading) {
-    return (
-      <View style={styles.loadingContainer}>
-        <ActivityIndicator />
-      </View>
-    );
+    return <AppLoadingScreen />;
   }
 
   return (

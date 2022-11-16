@@ -2,8 +2,6 @@ import React, { FC, useCallback, useEffect, useState } from 'react';
 
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { ActivityIndicator, View } from 'react-native';
-
 import {
   AuthStackScreenTypes,
   PinCodeScreenProps,
@@ -22,6 +20,8 @@ import { getItem, setItem } from '../../store/bankStore/store';
 import { useUserRefreshMutation } from '../../services';
 
 import useRefreshToken from '../../hooks/useRefreshToken';
+
+import AppLoadingScreen from '../AppLoadingScreen/AppLoadingScreen';
 
 import { PinCodeContainer } from './PinCodeContainer/PinCodeContainer';
 import PinCodeFooter from './PinCodeFooter/PinCodeFooter';
@@ -92,11 +92,7 @@ const PinCodeScreen: FC<PinCodeScreenProps> = ({ navigation }) => {
   }, [confirmationPin, tryLogin]);
 
   if (!isLoaded) {
-    return (
-      <View style={styles.container}>
-        <ActivityIndicator />
-      </View>
-    );
+    return <AppLoadingScreen />;
   }
 
   const addNumber = (num: string) => {
