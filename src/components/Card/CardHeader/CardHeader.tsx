@@ -1,7 +1,14 @@
 import { View, Text } from 'react-native';
 import React, { FC } from 'react';
 
+import { useNavigation } from '@react-navigation/native';
+
 import IconButton from '../../IconButton/IconButton';
+
+import {
+  CardSettingsScreenProps,
+  HomeStackScreenTypes,
+} from '../../../navigation/HomeStackNavigation/homeStackNavigation.types';
 
 import {
   detailIconColor,
@@ -15,7 +22,11 @@ const CardHeader: FC<ICardHeaderProps> = ({
   cardType,
   showDetailsIconButton,
 }) => {
-  const handleIconPress = () => {};
+  const navigation = useNavigation<CardSettingsScreenProps>();
+
+  const handleIconPress = () => {
+    navigation.navigate(HomeStackScreenTypes.CardSettings);
+  };
   return (
     <View style={styles.container}>
       <Text style={styles.text}>{`${cardType} Card`}</Text>
