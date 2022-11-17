@@ -23,6 +23,16 @@ const styles = StyleSheet.create({
     marginHorizontal: 30,
     backgroundColor: colors.white,
     borderRadius: 10,
+    justifyContent: 'center',
+    minHeight: responsiveHeight(18.5),
+  },
+  emptyTransactionsContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    minHeight: responsiveHeight(15.8),
+  },
+  emptyTransactions: {
+    fontSize: 20,
   },
 });
 
