@@ -5,7 +5,7 @@ export const formatDate = (date: Date) => {
   });
 };
 
-const formatedCardNumber = (cardNumber: string): string => {
+export const formatedCardNumber = (cardNumber: string): string => {
   const parts = cardNumber.split(' ');
   if (parts.length === 4) {
     return cardNumber;
