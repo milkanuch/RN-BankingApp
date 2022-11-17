@@ -16,19 +16,21 @@ import {
 const DepositWithdrawlsSection: FC<IDepositWithdrawlsSectionProps> = ({
   transactions,
 }) => {
-  const transactionsData = transactions.map(transaction => ({
+  const transactionsData = transactions?.map(transaction => ({
     cardProvider: transaction.provider,
     date: new Date(transaction.time),
-    total: transaction.sum,
+    total: transaction.profit
+      ? `+${transaction.sum.toFixed(2)}`
+      : (-transaction.sum).toFixed(2),
     currency: transaction.currency,
   }));
   return (
     <View style={styles.section}>
       <HomeSubtitle title={title} onPress={onPress} buttonTitle={buttonTitle} />
       <View style={styles.container}>
-        {transactionsData ? (
+        {transactionsData && !!transactions.length ? (
           transactionsData
-            .filter((item, index) => index < 5)
+            .filter((_, index) => index < 5)
             .map((item, index) => (
               <DepositWithdrawlsSectionItem
                 cardProvider={item.cardProvider}
@@ -39,7 +41,11 @@ const DepositWithdrawlsSection: FC<IDepositWithdrawlsSectionProps> = ({
               />
             ))
         ) : (
-          <Text>Transaction doesn`t exist</Text>
+          <View style={styles.emptyTransactionsContainer}>
+            <Text style={styles.emptyTransactions}>
+              Transaction doesn`t exist
+            </Text>
+          </View>
         )}
       </View>
     </View>

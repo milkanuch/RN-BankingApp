@@ -1,6 +1,6 @@
 export interface IDepositWithdrawlsSectionItemProps {
   cardProvider: string;
   date: Date;
-  total: number;
+  total: string;
   currency: string;
 }
