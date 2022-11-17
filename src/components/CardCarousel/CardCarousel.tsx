@@ -48,7 +48,7 @@ const CardCarousel: FC<ICardCarouselProps> = ({
   onChange,
   showIndicator,
 }) => {
-  const cardsProps = cards.map(card => ({
+  const cardsProps = cards?.map(card => ({
     cardNumber: card.cardNumber,
     cardProvider: card.providerEntity.providerName,
     cardType: card.cardType.name,
@@ -68,6 +68,7 @@ const CardCarousel: FC<ICardCarouselProps> = ({
       onChange && onChange(changed[0].index);
     }
   };
+
   const onViewChangedRef = useRef(onViewChange);
 
   return (

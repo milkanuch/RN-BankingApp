@@ -1,6 +1,8 @@
 import { Text, View } from 'react-native';
 import React from 'react';
 
+import { useNavigation } from '@react-navigation/native';
+
 import { useUserInfoQuery, useUserLogoutMutation } from '../../services';
 
 import { useAppDispatch } from '../../store';
@@ -8,6 +10,11 @@ import { useAppDispatch } from '../../store';
 import { setUserIsLogged } from '../../store/user/userSlice';
 
 import useRefreshToken from '../../hooks/useRefreshToken';
+
+import {
+  AppHeaderProps,
+  HomeStackScreenTypes,
+} from '../../navigation/HomeStackNavigation/homeStackNavigation.types';
 
 import styles from './appHeader.styles';
 import {
@@ -26,13 +33,16 @@ const AppHeader = () => {
   const [logout] = useUserLogoutMutation();
 
   const dispatch = useAppDispatch();
+  const navigation = useNavigation<AppHeaderProps>();
 
   const handleLogoutButton = () => {
     dispatch(setUserIsLogged(false));
     logout({ refreshToken });
   };
 
-  const handleUserButton = () => {};
+  const handleUserButton = () => {
+    navigation.navigate(HomeStackScreenTypes.Profile);
+  };
 
   if (isLoading) {
     return null;

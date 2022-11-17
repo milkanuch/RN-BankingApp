@@ -15,9 +15,21 @@ export enum HomeStackScreenTypes {
 export type HomeStackParamsList = {
   [HomeStackScreenTypes.Home]: undefined;
   [HomeStackScreenTypes.NewCard]: undefined;
+  [HomeStackScreenTypes.CardSettings]: undefined;
+  [HomeStackScreenTypes.Profile]: undefined;
 };
 
 export type NewCardScreenProps = CompositeNavigationProp<
+  BottomTypeProps,
+  StackNavigationProp<HomeStackParamsList>
+>;
+
+export type CardSettingsScreenProps = CompositeNavigationProp<
+  BottomTypeProps,
+  StackNavigationProp<HomeStackParamsList>
+>;
+
+export type AppHeaderProps = CompositeNavigationProp<
   BottomTypeProps,
   StackNavigationProp<HomeStackParamsList>
 >;

@@ -1,10 +1,7 @@
-import { View, Text } from 'react-native';
 import React from 'react';
 
+import TitleText from '../../components/TitleText/TitleText';
+
 export default function ProfileScreen() {
-  return (
-    <View>
-      <Text>ProfileScreen</Text>
-    </View>
-  );
+  return <TitleText text="Comming Soon..." />;
 }

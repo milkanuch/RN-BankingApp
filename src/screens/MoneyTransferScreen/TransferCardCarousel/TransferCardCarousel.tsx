@@ -37,6 +37,7 @@ const TransferCardCarousel: FC<ITransferCardCarouselProps> = ({
       onChange && onChange(changed[0].index);
     }
   };
+
   const onViewChangedRef = useRef(onViewChange);
   return (
     <View style={styles.container}>
