@@ -1,9 +1,7 @@
 import { View } from 'react-native';
 import React, { FC, useEffect, useState } from 'react';
 
-import { SafeAreaView } from 'react-native-safe-area-context';
-
-import { ScrollView } from 'react-native-gesture-handler';
+import { RefreshControl, ScrollView } from 'react-native-gesture-handler';
 
 import { QueryStatus } from '@reduxjs/toolkit/dist/query';
 
@@ -60,7 +58,19 @@ const MoneyTransferScreen: FC<TransferScreenProps> = ({ navigation }) => {
   const [amountOfMoney, setAmountOfMoney] = useState('');
   const [messageText, setMessageText] = useState('');
 
-  const { data: cardsData, isLoading: isLoadingCards } = useGetAllCardsQuery();
+  const {
+    data: cardsData,
+    isLoading: isLoadingCards,
+    refetch: refetchCardsData,
+    isFetching: isRefetchingCardsData,
+  } = useGetAllCardsQuery();
+
+  const refreshControl = (
+    <RefreshControl
+      refreshing={isRefetchingCardsData}
+      onRefresh={refetchCardsData}
+    />
+  );
 
   const handleSetMoney = (value: string) => {
     if (Number.isNaN(+value)) {
@@ -121,7 +131,7 @@ const MoneyTransferScreen: FC<TransferScreenProps> = ({ navigation }) => {
   }
 
   return (
-    <SafeAreaView style={styles.container}>
+    <ScrollView style={styles.container} refreshControl={refreshControl}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <TitleText text={screenTitle} />
         <TitleText text={cardCarouselTitle} subtitle />
@@ -167,7 +177,7 @@ const MoneyTransferScreen: FC<TransferScreenProps> = ({ navigation }) => {
           />
         </View>
       </ScrollView>
-    </SafeAreaView>
+    </ScrollView>
   );
 };
 
