@@ -3,6 +3,8 @@ import { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs';
 import IconFontisto from 'react-native-vector-icons/Fontisto';
 import IconFeather from 'react-native-vector-icons/Feather';
 
+import { DefaultTheme } from '@react-navigation/native';
+
 import { colors } from '../../constants/colors';
 
 export const HOME_STACK_OPTIONS: BottomTabNavigationOptions = {
@@ -62,4 +64,12 @@ export const PROFILE_STACK_OPTION: BottomTabNavigationOptions = {
       size={25}
     />
   ),
+};
+
+export const appTheme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    background: colors.light.primary[200],
+  },
 };
