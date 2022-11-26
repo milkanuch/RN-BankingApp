@@ -14,6 +14,7 @@ const HomeSubtitle: FC<IHomeSubtitleProps> = ({
   buttonTitle,
   iconName,
   iconSize,
+  disabled,
   onPress,
 }) => {
   const size = iconSize ?? 24;
@@ -29,7 +30,7 @@ const HomeSubtitle: FC<IHomeSubtitleProps> = ({
         />
       )}
       {!!buttonTitle && (
-        <TouchableOpacity onPress={onPress}>
+        <TouchableOpacity onPress={onPress} disabled={disabled}>
           <Text style={styles.buttonTitle}>{buttonTitle}</Text>
         </TouchableOpacity>
       )}
