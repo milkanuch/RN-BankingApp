@@ -33,7 +33,7 @@ const AppHeader = () => {
   const [logout] = useUserLogoutMutation();
 
   const dispatch = useAppDispatch();
-  const navigation = useNavigation<AppHeaderProps>();
+  const { navigate } = useNavigation<AppHeaderProps>();
 
   const handleLogoutButton = () => {
     dispatch(setUserIsLogged(false));
@@ -41,7 +41,7 @@ const AppHeader = () => {
   };
 
   const handleUserButton = () => {
-    navigation.navigate(HomeStackScreenTypes.Profile);
+    navigate(HomeStackScreenTypes.Profile);
   };
 
   if (isLoading) {
@@ -60,7 +60,9 @@ const AppHeader = () => {
         <View>
           <Text style={styles.dateFont}>{date}</Text>
           <Text style={styles.congratulations}>
-            {congratulations + data?.firstName + '!'}
+            {data && data?.firstName
+              ? `${congratulations} ${data?.firstName}!`
+              : `${congratulations} , stop... Who are you?`}
           </Text>
         </View>
       </View>

@@ -1,21 +1,26 @@
 import { Text, View } from 'react-native';
 import React, { FC } from 'react';
 
+import { useNavigation } from '@react-navigation/native';
+
 import HomeSubtitle from '../HomeSubtitle/HomeSubtitle';
+
+import {
+  DepositWidthdrawlsProps,
+  HomeStackScreenTypes,
+} from '../../navigation/HomeStackNavigation/homeStackNavigation.types';
 
 import styles from './depositWithdrawlsSection.styles';
 
 import { IDepositWithdrawlsSectionProps } from './depositWithdrawlsSection.types';
 import DepositWithdrawlsSectionItem from './DepositWithdrawlsSectionItem/DepositWithdrawlsSectionItem';
-import {
-  buttonTitle,
-  onPress,
-  title,
-} from './depositWithdrawlsSection.settings';
+import { buttonTitle, title } from './depositWithdrawlsSection.settings';
 
 const DepositWithdrawlsSection: FC<IDepositWithdrawlsSectionProps> = ({
   transactions,
 }) => {
+  const { navigate } = useNavigation<DepositWidthdrawlsProps>();
+
   const transactionsData = transactions?.map(transaction => ({
     cardProvider: transaction.provider,
     date: new Date(transaction.time),
@@ -24,9 +29,19 @@ const DepositWithdrawlsSection: FC<IDepositWithdrawlsSectionProps> = ({
       : (-transaction.sum).toFixed(2),
     currency: transaction.currency,
   }));
+
+  const handleViewAllTransactions = () => {
+    navigate(HomeStackScreenTypes.AllTransfers);
+  };
+
   return (
     <View style={styles.section}>
-      <HomeSubtitle title={title} onPress={onPress} buttonTitle={buttonTitle} />
+      <HomeSubtitle
+        title={title}
+        onPress={handleViewAllTransactions}
+        buttonTitle={buttonTitle}
+        disabled={transactionsData && transactions.length < 5}
+      />
       <View style={styles.container}>
         {transactionsData && !!transactions.length ? (
           transactionsData
@@ -43,7 +58,7 @@ const DepositWithdrawlsSection: FC<IDepositWithdrawlsSectionProps> = ({
         ) : (
           <View style={styles.emptyTransactionsContainer}>
             <Text style={styles.emptyTransactions}>
-              Transaction doesn`t exist
+              Transactions doesn`t exist
             </Text>
           </View>
         )}

@@ -5,6 +5,11 @@ import { useNavigation } from '@react-navigation/native';
 
 import { showSnackBar } from '../../Card/card.helper';
 
+import {
+  BottomTabsScreenTypes,
+  FrequentlyUsedButtonProps,
+} from '../../../navigation/AppNavigation/appNavigation.types';
+
 import styles from './frequentlyUsedButtons.styles';
 import FrequentlyUsedButton from './FrequentlyUsedButton/FrequentlyUsedButton';
 import {
@@ -15,22 +20,22 @@ import {
   transferButtonIcon,
   transferButtonTitle,
 } from './frequentlyUsedButtons.settings';
-import {
-  FrequentlyUsedButtonProps,
-  FrequentlyUsedButtonTypes,
-} from './frequentlyUsedButtons.types';
 
 const FrequentlyUsedButtons = () => {
-  const navigation = useNavigation<FrequentlyUsedButtonProps>();
+  const { navigate } = useNavigation<FrequentlyUsedButtonProps>();
+
   const handelTransferButton = () => {
-    navigation.navigate(FrequentlyUsedButtonTypes.MoneyTransferStack);
+    navigate(BottomTabsScreenTypes.MoneyTransferStack);
   };
+
   const handelDepositButton = () => {
     showSnackBar('Comming soon...');
   };
+
   const handelDetailsButton = () => {
-    showSnackBar('Comming soon...');
+    navigate(BottomTabsScreenTypes.IncomeExpensesStack);
   };
+
   return (
     <View style={styles.container}>
       <FrequentlyUsedButton

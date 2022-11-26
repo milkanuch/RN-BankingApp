@@ -22,11 +22,12 @@ const CardHeader: FC<ICardHeaderProps> = ({
   cardType,
   showDetailsIconButton,
 }) => {
-  const navigation = useNavigation<CardSettingsScreenProps>();
+  const { navigate } = useNavigation<CardSettingsScreenProps>();
 
   const handleIconPress = () => {
-    navigation.navigate(HomeStackScreenTypes.CardSettings);
+    navigate(HomeStackScreenTypes.CardSettings);
   };
+
   return (
     <View style={styles.container}>
       <Text style={styles.text}>{`${cardType} Card`}</Text>
