@@ -6,9 +6,10 @@ import { BottomTypeProps } from '../AppNavigation/appNavigation.types';
 export enum HomeStackScreenTypes {
   Home = 'Home',
   NewCard = 'NewCard',
-  Transfer = 'Transfer',
+  HomeTransfer = 'HomeTransfer',
   IncomуExpense = 'IncomуExpense',
   CardSettings = 'CardSettings',
+  AllTransfers = 'AllTransfers',
   Profile = 'Profile',
 }
 
@@ -16,7 +17,9 @@ export type HomeStackParamsList = {
   [HomeStackScreenTypes.Home]: undefined;
   [HomeStackScreenTypes.NewCard]: undefined;
   [HomeStackScreenTypes.CardSettings]: undefined;
+  [HomeStackScreenTypes.AllTransfers]: undefined;
   [HomeStackScreenTypes.Profile]: undefined;
+  [HomeStackScreenTypes.IncomуExpense]: undefined;
 };
 
 export type NewCardScreenProps = CompositeNavigationProp<
@@ -30,6 +33,11 @@ export type CardSettingsScreenProps = CompositeNavigationProp<
 >;
 
 export type AppHeaderProps = CompositeNavigationProp<
+  BottomTypeProps,
+  StackNavigationProp<HomeStackParamsList>
+>;
+
+export type DepositWidthdrawlsProps = CompositeNavigationProp<
   BottomTypeProps,
   StackNavigationProp<HomeStackParamsList>
 >;
