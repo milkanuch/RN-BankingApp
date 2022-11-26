@@ -2,6 +2,12 @@ import { StyleSheet } from 'react-native';
 
 import { colors } from '../../../constants/colors';
 
+import {
+  eUkraineThin,
+  eUkraineRegular,
+  eUkraineBold,
+} from './../../../constants/fonts';
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -21,21 +27,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   date: {
-    fontFamily: 'e-Ukraine-Thin',
+    fontFamily: eUkraineThin,
   },
   cardProvider: {
     fontStyle: 'italic',
     fontWeight: 'bold',
-    fontFamily: 'e-Ukraine-Regular',
+    fontFamily: eUkraineRegular,
   },
   total: {
     color: colors.black,
-    fontFamily: 'e-Ukraine-Regular',
+    fontFamily: eUkraineRegular,
   },
   currency: {
     color: colors.black,
-    fontWeight: 'bold',
-    fontFamily: 'e-Ukraine-Regular',
+    fontFamily: eUkraineBold,
     marginLeft: 5,
   },
 });

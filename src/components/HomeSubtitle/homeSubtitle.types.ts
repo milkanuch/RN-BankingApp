@@ -3,5 +3,6 @@ export interface IHomeSubtitleProps {
   buttonTitle?: string;
   iconName?: string;
   iconSize?: number;
+  disabled?: boolean;
   onPress: () => void;
 }

@@ -1,4 +1,6 @@
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
+import { CompositeNavigationProp } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 
 export enum BottomTabsScreenTypes {
   HomeStack = 'HomeStack',
@@ -19,4 +21,9 @@ export type BottomTabsParamsList = {
 export type BottomTypeProps = BottomTabNavigationProp<
   BottomTabsParamsList,
   BottomTabsScreenTypes.HomeStack
+>;
+
+export type FrequentlyUsedButtonProps = CompositeNavigationProp<
+  BottomTypeProps,
+  StackNavigationProp<BottomTabsParamsList>
 >;

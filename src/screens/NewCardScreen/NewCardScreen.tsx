@@ -33,9 +33,9 @@ import {
 } from './newCardScreen.settings';
 
 const NewCardScreen = () => {
-  const [currentProvider, setProvider] = useState('Visa');
-  const [currentCurrency, setCurrency] = useState('UAH');
-  const [currentCardType, setCardType] = useState('Debit');
+  const [provider, setProvider] = useState('Visa');
+  const [currency, setCurrency] = useState('UAH');
+  const [type, setCardType] = useState('Debit');
 
   const [createNewCard, { data, isError, reset, isLoading }] =
     useNewCardMutation();
@@ -44,9 +44,9 @@ const NewCardScreen = () => {
     const accessToken = await getItem('AccessToken');
     const newCardParams: INewCardParams = {
       accessToken,
-      provider: currentProvider,
-      type: currentCardType,
-      currency: currentCurrency,
+      provider,
+      type,
+      currency,
     };
     await createNewCard(newCardParams).unwrap();
   };
@@ -75,20 +75,11 @@ const NewCardScreen = () => {
     <SafeAreaView style={styles.container}>
       <TitleText text={screenTitle} />
       <TitleText text={providerSubtitle} subtitle />
-      <ProviderSelector
-        currentProvider={currentProvider}
-        setProvider={setProvider}
-      />
+      <ProviderSelector currentProvider={provider} setProvider={setProvider} />
       <TitleText text={currencySubtitle} subtitle />
-      <CurrencySelector
-        currentCurrency={currentCurrency}
-        setCurrency={setCurrency}
-      />
+      <CurrencySelector currentCurrency={currency} setCurrency={setCurrency} />
       <TitleText text={cardTypeSubtitle} subtitle />
-      <CardTypeSelector
-        currentCardType={currentCardType}
-        setCardType={setCardType}
-      />
+      <CardTypeSelector currentCardType={type} setCardType={setCardType} />
       <CreateCardButton title={buttonText} onPress={handleOnPress} />
     </SafeAreaView>
   );

@@ -1,7 +1,7 @@
 import { Text, TouchableOpacity } from 'react-native';
 import React, { FC } from 'react';
 
-import styles from './pinCodeFooter.style';
+import styles from './pinCodeFooter.styles';
 import { IPinCodeFooterProps } from './pinCodeFooter.types';
 
 const PinCodeFooter: FC<IPinCodeFooterProps> = ({ onPress }) => {
