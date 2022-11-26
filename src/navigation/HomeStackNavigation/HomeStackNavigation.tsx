@@ -4,6 +4,10 @@ import HomeScreen from '../../screens/HomeScreen/HomeScreen';
 
 import NewCardScreen from '../../screens/NewCardScreen/NewCardScreen';
 
+import CardSettingsScreen from '../../screens/CardSettingsScreen/CardSettingsScreen';
+
+import AllTransactionsScreen from '../../screens/AllTransactionsScreen/AllTransactionsScreen';
+
 import {
   HomeStackParamsList,
   HomeStackScreenTypes,
@@ -22,6 +26,16 @@ const HomeStackNavigation = () => {
       <Stack.Screen
         name={HomeStackScreenTypes.Home}
         component={HomeScreen}
+        options={HOME_SCREEN_OPTIONS}
+      />
+      <Stack.Screen
+        name={HomeStackScreenTypes.CardSettings}
+        component={CardSettingsScreen}
+        options={HOME_SCREEN_OPTIONS}
+      />
+      <Stack.Screen
+        name={HomeStackScreenTypes.AllTransfers}
+        component={AllTransactionsScreen}
         options={HOME_SCREEN_OPTIONS}
       />
       <Stack.Screen
