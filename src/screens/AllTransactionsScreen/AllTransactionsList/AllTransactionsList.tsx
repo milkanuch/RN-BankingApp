@@ -3,14 +3,14 @@ import { ListRenderItem } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 
 import { IUserTransactionResponseParams } from '../../../services/bankApi.types';
-import AlllTransactionsItem from '../AllTransactionsItem/AlllTransactionsItem';
+import AllTransactionsItem from '../AllTransactionsItem/AllTransactionsItem';
 
 import { IAllTransactionListProps } from './allTransactionsList.types';
 
 const renderItem: ListRenderItem<IUserTransactionResponseParams> = ({
   item,
 }) => (
-  <AlllTransactionsItem
+  <AllTransactionsItem
     currency={item.currency}
     sum={item.sum}
     provider={item.provider}
