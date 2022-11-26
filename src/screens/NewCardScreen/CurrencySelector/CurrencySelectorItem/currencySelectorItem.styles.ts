@@ -3,6 +3,7 @@ import { StyleSheet } from 'react-native';
 import { colors } from '../../../../constants/colors';
 
 import { responsiveWidth } from '../../../../constants/dimensions';
+import { eUkraineRegular } from '../../../../constants/fonts';
 
 const styles = StyleSheet.create({
   container: {
@@ -20,7 +21,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.black,
   },
   text: {
-    fontFamily: 'e-Ukraine-Regular',
+    fontFamily: eUkraineRegular,
     color: colors.black,
   },
   selectedText: {

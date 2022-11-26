@@ -2,6 +2,8 @@ import { StyleSheet } from 'react-native';
 
 import { colors } from '../../../constants/colors';
 
+import { eUkraineRegular } from './../../../constants/fonts';
+
 const styles = StyleSheet.create({
   container: {
     paddingVertical: 14.25,
@@ -18,7 +20,7 @@ const styles = StyleSheet.create({
   title: {
     color: colors.black,
     fontSize: 11,
-    fontFamily: 'e-Ukraine-Regular',
+    fontFamily: eUkraineRegular,
   },
   selectedTitle: {
     color: colors.white,

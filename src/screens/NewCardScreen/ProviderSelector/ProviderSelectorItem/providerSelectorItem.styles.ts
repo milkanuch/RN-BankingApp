@@ -5,6 +5,7 @@ import {
   responsiveHeight,
   responsiveWidth,
 } from '../../../../constants/dimensions';
+import { eUkraineRegular } from '../../../../constants/fonts';
 
 const containerWidth = responsiveWidth(50) - 40;
 const containerHeight = responsiveHeight(15);
@@ -27,7 +28,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: colors.black,
-    fontFamily: 'e-Ukraine-Regular',
+    fontFamily: eUkraineRegular,
     fontSize: 20,
   },
   selectedText: {

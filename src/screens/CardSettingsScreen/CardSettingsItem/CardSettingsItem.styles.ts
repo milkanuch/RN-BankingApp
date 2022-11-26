@@ -2,6 +2,8 @@ import { StyleSheet } from 'react-native';
 
 import { responsiveHeight } from '../../../constants/dimensions';
 
+import { eUkraineBold, eUkraineRegular } from './../../../constants/fonts';
+
 import { colors } from './../../../constants/colors';
 
 const styles = StyleSheet.create({
@@ -13,13 +15,13 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 14,
-    fontFamily: 'e-Ukraine-Bold',
+    fontFamily: eUkraineBold,
     color: colors.black,
   },
   contentText: {
     paddingVertical: 8,
     fontSize: 12,
-    fontFamily: 'e-Ukraine-Regular',
+    fontFamily: eUkraineRegular,
   },
   wrapper: {
     flexDirection: 'row',

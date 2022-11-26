@@ -5,6 +5,7 @@ import {
   responsiveHeight,
   responsiveWidth,
 } from '../../../constants/dimensions';
+import { eUkraineRegular } from '../../../constants/fonts';
 
 const styles = StyleSheet.create({
   container: {
@@ -19,7 +20,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.grey,
   },
   text: {
-    fontFamily: 'e-Ukraine-Regular',
+    fontFamily: eUkraineRegular,
     fontSize: 14,
     color: colors.grey,
   },

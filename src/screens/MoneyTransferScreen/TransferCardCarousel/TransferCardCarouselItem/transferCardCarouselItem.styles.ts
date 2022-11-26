@@ -3,6 +3,7 @@ import { StyleSheet } from 'react-native';
 import { colors } from '../../../../constants/colors';
 
 import { width } from '../../../../constants/dimensions';
+import { eUkraineRegular } from '../../../../constants/fonts';
 
 const containerWidth = width - 40;
 
@@ -25,12 +26,12 @@ const styles = StyleSheet.create({
   text: {
     color: colors.grey,
     fontSize: 14,
-    fontFamily: 'e-Ukraine-Regular',
+    fontFamily: eUkraineRegular,
   },
   moneyText: {
     color: colors.black,
     fontSize: 17,
-    fontFamily: 'e-Ukraine-Regular',
+    fontFamily: eUkraineRegular,
   },
 });
 

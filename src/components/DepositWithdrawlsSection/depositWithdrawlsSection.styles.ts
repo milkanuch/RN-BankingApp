@@ -2,6 +2,7 @@ import { StyleSheet } from 'react-native';
 
 import { colors } from '../../constants/colors';
 import { responsiveHeight } from '../../constants/dimensions';
+import { eUkraineLight } from '../../constants/fonts';
 
 const styles = StyleSheet.create({
   section: {
@@ -14,7 +15,7 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
     alignSelf: 'baseline',
     color: colors.darkGrey,
-    fontFamily: 'e-Ukraine-Light',
+    fontFamily: eUkraineLight,
   },
   container: {
     elevation: 10,

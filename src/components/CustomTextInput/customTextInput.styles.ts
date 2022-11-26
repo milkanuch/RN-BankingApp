@@ -3,6 +3,8 @@ import { StyleSheet } from 'react-native';
 import { colors } from '../../constants/colors';
 import { responsiveHeight } from '../../constants/dimensions';
 
+import { eUkraineRegular } from './../../constants/fonts';
+
 const styles = StyleSheet.create({
   container: {
     height: responsiveHeight(13),
@@ -24,13 +26,13 @@ const styles = StyleSheet.create({
     borderColor: colors.black,
   },
   title: {
-    fontFamily: 'e-Ukraine-Regular',
+    fontFamily: eUkraineRegular,
     color: colors.black,
     fontSize: 13,
     marginBottom: 6,
   },
   hintText: {
-    fontFamily: 'e-Ukraine-Regular',
+    fontFamily: eUkraineRegular,
     color: colors.grey,
     fontSize: 12,
     marginRight: 10,

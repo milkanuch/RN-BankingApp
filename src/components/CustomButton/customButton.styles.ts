@@ -3,6 +3,8 @@ import { StyleSheet } from 'react-native';
 import { colors } from '../../constants/colors';
 import { responsiveHeight } from '../../constants/dimensions';
 
+import { eUkraineRegular } from './../../constants/fonts';
+
 const styles = StyleSheet.create({
   button: {
     height: responsiveHeight(7),
@@ -20,7 +22,7 @@ const styles = StyleSheet.create({
     marginRight: 5,
   },
   text: {
-    fontFamily: 'e-Ukraine-Regular',
+    fontFamily: eUkraineRegular,
     color: colors.white,
     fontSize: 14,
   },

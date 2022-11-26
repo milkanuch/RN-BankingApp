@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 import { colors } from '../../constants/colors';
+import { eUkraineLight } from '../../constants/fonts';
 
 const styles = StyleSheet.create({
   scren: {
@@ -11,7 +12,7 @@ const styles = StyleSheet.create({
     color: colors.black,
     marginLeft: 20,
     marginTop: 5,
-    fontFamily: 'e-Ukraine-Light',
+    fontFamily: eUkraineLight,
   },
 });
 
