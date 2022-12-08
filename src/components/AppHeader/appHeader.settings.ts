@@ -1,4 +1,7 @@
-export const date = `${new Date().getUTCFullYear()}.${new Date().getUTCMonth()}.${new Date().getUTCDate()}`;
+export const date = `${new Date().getUTCFullYear()}.${
+  new Date().getUTCMonth() + 1
+}.${new Date().getUTCDate()}`;
+
 export const congratulations = 'Hi, ';
 
 export const userIconName = 'user';
