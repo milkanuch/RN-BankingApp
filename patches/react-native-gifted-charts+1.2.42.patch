@@ -1,0 +1,99 @@
+diff --git a/node_modules/react-native-gifted-charts/src/BarChart/Animated2DWithGradient.tsx b/node_modules/react-native-gifted-charts/src/BarChart/Animated2DWithGradient.tsx
+index 9557d91..91342e2 100644
+--- a/node_modules/react-native-gifted-charts/src/BarChart/Animated2DWithGradient.tsx
++++ b/node_modules/react-native-gifted-charts/src/BarChart/Animated2DWithGradient.tsx
+@@ -1,3 +1,4 @@
++// @ts-nocheck
+ import React, {useEffect, useState} from 'react';
+ import {
+   View,
+diff --git a/node_modules/react-native-gifted-charts/src/BarChart/RenderBars.tsx b/node_modules/react-native-gifted-charts/src/BarChart/RenderBars.tsx
+index 2e807d2..2a5282f 100644
+--- a/node_modules/react-native-gifted-charts/src/BarChart/RenderBars.tsx
++++ b/node_modules/react-native-gifted-charts/src/BarChart/RenderBars.tsx
+@@ -1,3 +1,4 @@
++// @ts-nocheck
+ import React, {Component} from 'react';
+ import {View, TouchableOpacity, Animated, Text, ColorValue} from 'react-native';
+ import ThreeDBar from '../Components/ThreeDBar';
+diff --git a/node_modules/react-native-gifted-charts/src/BarChart/RenderStackBars.tsx b/node_modules/react-native-gifted-charts/src/BarChart/RenderStackBars.tsx
+index 1aeffc1..ce9e072 100644
+--- a/node_modules/react-native-gifted-charts/src/BarChart/RenderStackBars.tsx
++++ b/node_modules/react-native-gifted-charts/src/BarChart/RenderStackBars.tsx
+@@ -1,3 +1,4 @@
++// @ts-nocheck
+ import React, {Component} from 'react';
+ import {View, TouchableOpacity, Text, ColorValue} from 'react-native';
+ import LinearGradient from 'react-native-linear-gradient';
+diff --git a/node_modules/react-native-gifted-charts/src/BarChart/index.tsx b/node_modules/react-native-gifted-charts/src/BarChart/index.tsx
+index f9688b6..f655eb0 100644
+--- a/node_modules/react-native-gifted-charts/src/BarChart/index.tsx
++++ b/node_modules/react-native-gifted-charts/src/BarChart/index.tsx
+@@ -1,3 +1,4 @@
++// @ts-nocheck
+ import React, {
+   Fragment,
+   useCallback,
+diff --git a/node_modules/react-native-gifted-charts/src/Components/AnimatedBar/index.tsx b/node_modules/react-native-gifted-charts/src/Components/AnimatedBar/index.tsx
+index 7a85db9..b5740c8 100644
+--- a/node_modules/react-native-gifted-charts/src/Components/AnimatedBar/index.tsx
++++ b/node_modules/react-native-gifted-charts/src/Components/AnimatedBar/index.tsx
+@@ -1,3 +1,4 @@
++// @ts-nocheck
+ import React, {useEffect, useState} from 'react';
+ import {
+   View,
+diff --git a/node_modules/react-native-gifted-charts/src/Components/ThreeDBar/index.tsx b/node_modules/react-native-gifted-charts/src/Components/ThreeDBar/index.tsx
+index 2c7e71d..aa3b39f 100644
+--- a/node_modules/react-native-gifted-charts/src/Components/ThreeDBar/index.tsx
++++ b/node_modules/react-native-gifted-charts/src/Components/ThreeDBar/index.tsx
+@@ -1,3 +1,4 @@
++// @ts-nocheck
+ import React from 'react';
+ import {View, StyleSheet, ColorValue} from 'react-native';
+ import LinearGradient from 'react-native-linear-gradient';
+diff --git a/node_modules/react-native-gifted-charts/src/LineChart/LineChartBicolor.tsx b/node_modules/react-native-gifted-charts/src/LineChart/LineChartBicolor.tsx
+index cc468cc..f67f0c1 100644
+--- a/node_modules/react-native-gifted-charts/src/LineChart/LineChartBicolor.tsx
++++ b/node_modules/react-native-gifted-charts/src/LineChart/LineChartBicolor.tsx
+@@ -1,3 +1,4 @@
++// @ts-nocheck
+ import React, {
+   Fragment,
+   useCallback,
+diff --git a/node_modules/react-native-gifted-charts/src/LineChart/index.tsx b/node_modules/react-native-gifted-charts/src/LineChart/index.tsx
+index 8ef5ecc..35a5bfd 100644
+--- a/node_modules/react-native-gifted-charts/src/LineChart/index.tsx
++++ b/node_modules/react-native-gifted-charts/src/LineChart/index.tsx
+@@ -1,3 +1,4 @@
++// @ts-nocheck
+ import React, {
+   Fragment,
+   useCallback,
+diff --git a/node_modules/react-native-gifted-charts/src/PieChart/index.tsx b/node_modules/react-native-gifted-charts/src/PieChart/index.tsx
+index eae4434..06eaf92 100644
+--- a/node_modules/react-native-gifted-charts/src/PieChart/index.tsx
++++ b/node_modules/react-native-gifted-charts/src/PieChart/index.tsx
+@@ -1,3 +1,4 @@
++// @ts-nocheck
+ import React, {useState} from 'react';
+ import {View, ColorValue} from 'react-native';
+ import {colors} from './colors';
+@@ -97,6 +98,8 @@ export const PieChart = (props: propTypes) => {
+       style={{
+         height: (radius + extraRadiusForFocused) * 2,
+         width: (radius + extraRadiusForFocused) * 2,
++        justifyContent: 'center',
++        alignItems: 'center'
+       }}>
+       {!(
+         props.data.length <= 1 ||
+diff --git a/node_modules/react-native-gifted-charts/src/PieChart/main.tsx b/node_modules/react-native-gifted-charts/src/PieChart/main.tsx
+index d524aa1..b082b48 100644
+--- a/node_modules/react-native-gifted-charts/src/PieChart/main.tsx
++++ b/node_modules/react-native-gifted-charts/src/PieChart/main.tsx
+@@ -1,3 +1,4 @@
++// @ts-nocheck
+ import React from 'react';
+ import {ColorValue, View} from 'react-native';
+ import Svg, {
