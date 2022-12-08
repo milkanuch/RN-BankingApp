@@ -9,9 +9,15 @@ import {
   formatedCardNumber,
 } from '../../../components/Card/CardFooter/cardFooter.helper';
 
+import AppLoadingScreen from '../../AppLoadingScreen/AppLoadingScreen';
+
+import { useUserInfoQuery } from '../../../services';
+
 import styles from './cardSettingsContent.styles';
 import {
   cardExpirationTitle,
+  cardHolderTitle,
+  cardInformationTitle,
   cardNumberIconName,
   cardNumberTitle,
   securityCodeTitle,
@@ -23,15 +29,22 @@ const CardSettingsContent: FC<ICardSettingsContentProps> = ({
   expirationDate,
   securityCode,
 }) => {
+  const { data, isLoading } = useUserInfoQuery();
+  const cardHolderConter = data?.firstName + ' ' + data?.lastName;
+
+  if (isLoading) {
+    return <AppLoadingScreen />;
+  }
+
   return (
     <View style={styles.cardSettingsContainer}>
-      <TitleText text="Card Information" subtitle={true} />
+      <TitleText text={cardInformationTitle} subtitle={true} />
       <CardSettingsItem
         title={cardNumberTitle}
         content={formatedCardNumber(cardNumber!)}
         iconName={cardNumberIconName}
       />
-      <CardSettingsItem title="Card Holder" content="Dorian Gray" />
+      <CardSettingsItem title={cardHolderTitle} content={cardHolderConter} />
       <View style={styles.itemsContainer}>
         <CardSettingsItem
           title={cardExpirationTitle}

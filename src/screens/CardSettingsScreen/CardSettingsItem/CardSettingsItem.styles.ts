@@ -1,7 +1,5 @@
 import { StyleSheet } from 'react-native';
 
-import { responsiveHeight } from '../../../constants/dimensions';
-
 import { eUkraineBold, eUkraineRegular } from './../../../constants/fonts';
 
 import { colors } from './../../../constants/colors';
@@ -10,8 +8,8 @@ const styles = StyleSheet.create({
   container: {
     margin: 10,
     padding: 10,
-    borderBottomWidth: responsiveHeight(0.1),
-    borderBottomColor: colors.grey,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.darkGrey,
   },
   title: {
     fontSize: 14,
