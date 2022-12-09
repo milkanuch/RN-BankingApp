@@ -1,3 +1,5 @@
+import { IIncomeExpensesCardProps } from '../screens/IncomeExpensesScreen/IncomeExpensesCard/incomeExpensesCard.types';
+
 export interface IUserParams {
   firstName: string;
   lastName: string;
@@ -81,4 +83,12 @@ export interface IUserTransactionResponseParams {
   time: Date;
   sum: number;
   profit: boolean;
+}
+
+export interface IIncomeExpensesResponseParams {
+  month: string;
+  sum: number;
+  currency: string;
+  year: string;
+  categories: IIncomeExpensesCardProps[];
 }

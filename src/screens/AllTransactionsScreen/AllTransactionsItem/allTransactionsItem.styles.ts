@@ -19,9 +19,7 @@ const styles = StyleSheet.create({
     marginVertical: 5,
     padding: 10,
     backgroundColor: colors.white,
-    borderWidth: 1,
-    borderRadius: 20,
-    borderColor: colors.black,
+    borderRadius: 6,
     elevation: 5,
   },
   categoryContainer: {

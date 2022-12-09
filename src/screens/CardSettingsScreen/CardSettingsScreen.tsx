@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import { Text, View } from 'react-native';
-
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { ScrollView, Text, View } from 'react-native';
 
 import CardCaroules from '../../components/CardCarousel/CardCarousel';
 
@@ -20,7 +18,7 @@ export default function CardSettingsScreen() {
   }
 
   return (
-    <SafeAreaView style={styles.scren}>
+    <ScrollView style={styles.scren}>
       <Text style={styles.cardSettingsTitle}>Card</Text>
       <CardCaroules
         cards={data?.ok!}
@@ -38,6 +36,6 @@ export default function CardSettingsScreen() {
           <Text style={styles.cardSettingsTitle}>There's no information</Text>
         </View>
       )}
-    </SafeAreaView>
+    </ScrollView>
   );
 }
