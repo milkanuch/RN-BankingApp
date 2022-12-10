@@ -1,8 +1,8 @@
 import { StyleSheet } from 'react-native';
 
-import { colors } from '../../constants/colors';
+import { colors } from 'constants/colors';
 
-import { eUkraineRegular } from './../../constants/fonts';
+import { eUkraineRegular } from 'constants/fonts';
 
 const styles = StyleSheet.create({
   checkBoxBorder: {

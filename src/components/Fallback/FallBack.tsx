@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { SafeAreaView, Text } from 'react-native';
 
-import CustomButton from '../CustomButton/CustomButton';
+import CustomButton from 'components/CustomButton/CustomButton';
 
 import { resetErrorButtonTitle } from './fallBack.settings';
 

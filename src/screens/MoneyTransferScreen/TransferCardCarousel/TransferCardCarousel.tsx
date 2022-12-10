@@ -3,9 +3,9 @@ import React, { FC, useRef } from 'react';
 
 import { FlatList } from 'react-native-gesture-handler';
 
-import { ICardResponseParams } from '../../../services/bankApi.types';
+import { viewConfig } from 'components/CardCarousel/cardCarousel.settings';
 
-import { viewConfig } from '../../../components/CardCarousel/cardCarousel.settings';
+import { ICardResponseParams } from 'services/bankApi.types';
 
 import { ITransferCardCarouselProps } from './transferCardCarousel.types';
 import TransferCardCarouselItem from './TransferCardCarouselItem/TransferCardCarouselItem';

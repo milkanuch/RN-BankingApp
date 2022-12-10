@@ -1,4 +1,4 @@
-import { IIncomeExpensesResponseParams } from './../../../services/bankApi.types';
+import { IIncomeExpensesResponseParams } from 'services/bankApi.types';
 
 export interface IIncomeExpensesPieChartProps
   extends IIncomeExpensesResponseParams {

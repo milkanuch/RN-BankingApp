@@ -8,7 +8,7 @@ import styles from './pinCodeKeyboard.style';
 import { IPinCodeKeyboardProps } from './pinCodeKeyboard.types';
 import getDataList from './pinCodeKeyboard.settings';
 
-const keyExtractor = (item: IPinCodeButtonProps, index: number) =>
+const keyExtractor = (_: IPinCodeButtonProps, index: number) =>
   index.toString();
 
 const renderItem: ListRenderItem<IPinCodeButtonProps> = ({ item }) => {

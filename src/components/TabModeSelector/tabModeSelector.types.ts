@@ -1,6 +1,6 @@
 import { ViewStyle } from 'react-native';
 
-import { SignInMode } from '../../screens/SignInScreen/signInScreen.types';
+import { SignInMode } from 'screens/SignInScreen/signInScreen.types';
 
 import { ITabModeSelectorItemData } from './TabModeSelectorItem/tabModeSelectorItem.types';
 

@@ -1,13 +1,13 @@
-import { ITabModeSelectorItemData } from '../../components/TabModeSelector/TabModeSelectorItem/tabModeSelectorItem.types';
+import { ITabModeSelectorItemData } from 'components/TabModeSelector/TabModeSelectorItem/tabModeSelectorItem.types';
 import {
   personalDataErrorMessage,
   phoneNumberErrorMessage,
-} from '../../constants/errorMesages';
+} from 'constants/errorMesages';
 
 import {
   phoneNumberValidation,
   personalDataValidation,
-} from './../../helpers/validation';
+} from 'helpers/validation';
 
 import { SignInMode } from './signInScreen.types';
 

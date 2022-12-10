@@ -3,19 +3,19 @@ import React, { FC } from 'react';
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import { responsiveHeight } from '../../constants/dimensions';
+import { responsiveHeight } from 'constants/dimensions';
 
-import { TransferStatusScreenProps } from '../../navigation/TransferStackNavigation/transferStackNavigation.types';
+import { TransferStatusScreenProps } from 'navigation/TransferStackNavigation/transferStackNavigation.types';
 
-import CustomButton from '../../components/CustomButton/CustomButton';
-
-import styles from './transactionStatusScreen.styles';
+import CustomButton from 'components/CustomButton/CustomButton';
 
 import {
   buttonText,
   deniedTransferIcon,
   succesTransferIcon,
 } from './transactionStatusScreen.settings';
+
+import styles from './transactionStatusScreen.styles';
 
 const TransactionStatusScreen: FC<TransferStatusScreenProps> = ({
   navigation,

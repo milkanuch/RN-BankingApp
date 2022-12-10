@@ -1,14 +1,14 @@
 import { Text, View } from 'react-native';
 import React from 'react';
 
-import { useGetAllUserTransactionsQuery } from '../../services';
+import AppLoadingScreen from 'screens/AppLoadingScreen/AppLoadingScreen';
 
-import TitleText from '../../components/TitleText/TitleText';
+import TitleText from 'components/TitleText/TitleText';
 
-import AppLoadingScreen from '../AppLoadingScreen/AppLoadingScreen';
+import { useGetAllUserTransactionsQuery } from 'services/index';
 
-import styles from './allTransactionsScreen.styles';
 import AllTransactionsList from './AllTransactionsList/AllTransactionsList';
+import styles from './allTransactionsScreen.styles';
 
 const AllTransactionsScreen = () => {
   const { data, isLoading } = useGetAllUserTransactionsQuery();

@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 
-import { colors } from '../../../constants/colors';
-import { responsiveHeight } from '../../../constants/dimensions';
+import { colors } from 'constants/colors';
+import { responsiveHeight } from 'constants/dimensions';
 
 const styles = StyleSheet.create({
   button: {

@@ -2,30 +2,30 @@ import React, { FC, useState } from 'react';
 
 import { SafeAreaView, ScrollView } from 'react-native';
 
-import CustomButton from '../../../components/CustomButton/CustomButton';
+import CustomButton from 'components/CustomButton/CustomButton';
 
-import CustomTextInput from '../../../components/CustomTextInput/CustomTextInput';
+import CustomTextInput from 'components/CustomTextInput/CustomTextInput';
 
-import Divider from '../Divider/Divider';
-
-import AuthHeader from '../../../components/AuthHeader/AuthHeader';
+import AuthHeader from 'components/AuthHeader/AuthHeader';
 
 import {
   AuthStackScreenTypes,
   GeneralDataScreenProps,
-} from '../../../navigation/AuthStackNavigation/AuthStackNavigation.types';
+} from 'navigation/AuthStackNavigation/AuthStackNavigation.types';
 
 import {
   credentialsValidation,
   passwordValidation,
   phoneNumberValidation,
-} from '../../../helpers/validation';
+} from 'helpers/validation';
 
 import {
   credentialsErrorMessage,
   passwordErrorMessage,
   phoneNumberErrorMessage,
-} from '../../../constants/errorMesages';
+} from 'constants/errorMesages';
+
+import Divider from '../Divider/Divider';
 
 import {
   backButtonTitle,

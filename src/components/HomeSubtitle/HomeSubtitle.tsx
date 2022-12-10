@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-import IconButton from '../IconButton/IconButton';
+import IconButton from 'components/IconButton/IconButton';
 
 import styles from './homeSubtitle.styles';
 import { parametersIconColor } from './homeSubtitle.settings';

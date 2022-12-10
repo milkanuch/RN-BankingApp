@@ -1,38 +1,38 @@
 import React, { FC, useCallback, useEffect, useState } from 'react';
 import { ScrollView } from 'react-native';
 
-import CheckBox from '../../components/CheckBox/CheckBox';
-import CustomButton from '../../components/CustomButton/CustomButton';
+import CheckBox from 'components/CheckBox/CheckBox';
+import CustomButton from 'components/CustomButton/CustomButton';
 
-import CustomTextInput from '../../components/CustomTextInput/CustomTextInput';
+import CustomTextInput from 'components/CustomTextInput/CustomTextInput';
 
-import TabModeSelector from '../../components/TabModeSelector/TabModeSelector';
+import TabModeSelector from 'components/TabModeSelector/TabModeSelector';
 
-import AuthHeader from '../../components/AuthHeader/AuthHeader';
+import AuthHeader from 'components/AuthHeader/AuthHeader';
 
 import {
   AuthStackScreenTypes,
   SignInScreenProps,
-} from '../../navigation/AuthStackNavigation/AuthStackNavigation.types';
+} from 'navigation/AuthStackNavigation/AuthStackNavigation.types';
 
-import { passwordValidation } from '../../helpers/validation';
+import { passwordValidation } from 'helpers/validation';
 
-import { passwordErrorMessage } from '../../constants/errorMesages';
+import { passwordErrorMessage } from 'constants/errorMesages';
 
-import { useUserLoginMutation } from '../../services';
+import { useUserLoginMutation } from 'services/index';
 
-import { showSnackBar } from '../../components/Card/card.helper';
+import { showSnackBar } from 'components/Card/card.helper';
 
-import { useAppDispatch } from '../../store';
+import { useAppDispatch } from 'store/index';
 
-import { setUserIsLogged } from '../../store/user/userSlice';
+import { setUserIsLogged } from 'store/user/userSlice';
 
-import { getItem, setItem } from '../../store/bankStore/store';
+import { getItem, setItem } from 'store/bankStore/store';
 
-import AppLoadingScreen from '../AppLoadingScreen/AppLoadingScreen';
+import AppLoadingScreen from 'screens/AppLoadingScreen/AppLoadingScreen';
 
-import AuthDivider from './AuthDivider/AuthDivider';
-
+import { SignInMode } from './signInScreen.types';
+import { isExpiredDate } from './signInScreen.utils';
 import {
   signInModeItems,
   headerTitle,
@@ -48,10 +48,8 @@ import {
   authErrorMessages,
   loginKey,
 } from './signInScreen.settings';
-
 import styles from './signInScreen.styles';
-import { SignInMode } from './signInScreen.types';
-import { isExpiredDate } from './signInScreen.utils';
+import AuthDivider from './AuthDivider/AuthDivider';
 
 const SignInScreen: FC<SignInScreenProps> = ({ navigation }) => {
   const [signInMode, setSignInMode] = useState(SignInMode.WithPhoneNumber);

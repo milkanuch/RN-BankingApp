@@ -3,12 +3,12 @@ import React, { FC } from 'react';
 
 import { useNavigation } from '@react-navigation/native';
 
-import IconButton from '../../IconButton/IconButton';
-
 import {
   CardSettingsScreenProps,
   HomeStackScreenTypes,
-} from '../../../navigation/HomeStackNavigation/homeStackNavigation.types';
+} from 'navigation/HomeStackNavigation/homeStackNavigation.types';
+
+import IconButton from 'components/IconButton/IconButton';
 
 import {
   detailIconColor,

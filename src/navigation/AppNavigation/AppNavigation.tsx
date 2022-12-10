@@ -1,11 +1,13 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import { useAppSelector } from '../../store';
-import { selectIsLogged } from '../../store/user/userSlice';
+import BottomNavigation from 'navigation/BottomNavigation';
 
-import AuthStackNavigation from '../AuthStackNavigation/AuthStackNavigation';
-import BottomNavigation from '../BottomNavigation';
+import AuthStackNavigation from 'navigation/AuthStackNavigation/AuthStackNavigation';
+
+import { selectIsLogged } from 'store/user/userSlice';
+
+import { useAppSelector } from 'store/index';
 
 import { appTheme } from './appNavigation.settings';
 

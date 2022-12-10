@@ -1,9 +1,9 @@
 import { StackNavigationOptions } from '@react-navigation/stack';
 import React from 'react';
 
-import AppHeader from '../../components/AppHeader/AppHeader';
+import AppHeader from 'components/AppHeader/AppHeader';
 
-import { colors } from '../../constants/colors';
+import { colors } from 'constants/colors';
 
 export const INCOME_EXPENSES_SCREEN_OPTION: StackNavigationOptions = {
   headerShadowVisible: false,

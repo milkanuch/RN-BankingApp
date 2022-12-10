@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import { colors } from '../../../constants/colors';
+import { colors } from 'constants/colors';
 
 import {
   IAllTransactionsItemProps,

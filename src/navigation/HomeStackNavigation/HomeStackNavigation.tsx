@@ -1,24 +1,24 @@
 import { createStackNavigator } from '@react-navigation/stack';
 
-import HomeScreen from '../../screens/HomeScreen/HomeScreen';
+import HomeScreen from 'screens/HomeScreen/HomeScreen';
 
-import NewCardScreen from '../../screens/NewCardScreen/NewCardScreen';
+import NewCardScreen from 'screens/NewCardScreen/NewCardScreen';
 
-import CardSettingsScreen from '../../screens/CardSettingsScreen/CardSettingsScreen';
+import CardSettingsScreen from 'screens/CardSettingsScreen/CardSettingsScreen';
 
-import AllTransactionsScreen from '../../screens/AllTransactionsScreen/AllTransactionsScreen';
+import AllTransactionsScreen from 'screens/AllTransactionsScreen/AllTransactionsScreen';
 
-import ProfileScreen from '../../screens/ProfileScreen/ProfileScreen';
-
-import {
-  HomeStackParamsList,
-  HomeStackScreenTypes,
-} from './homeStackNavigation.types';
+import ProfileScreen from 'screens/ProfileScreen/ProfileScreen';
 
 import {
   HOME_SCREEN_OPTIONS,
   NEW_CARD_SCREEN_OPTIONS,
 } from './homeStackNavigation.settings';
+
+import {
+  HomeStackParamsList,
+  HomeStackScreenTypes,
+} from './homeStackNavigation.types';
 
 const Stack = createStackNavigator<HomeStackParamsList>();
 

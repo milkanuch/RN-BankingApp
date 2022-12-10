@@ -1,17 +1,18 @@
 import { View } from 'react-native';
 import React, { FC } from 'react';
 
-import CardSettingsItem from '../CardSettingsItem/CardSettingsItem';
-import TitleText from '../../../components/TitleText/TitleText';
+import { useUserInfoQuery } from 'services/index';
+
+import TitleText from 'components/TitleText/TitleText';
+
+import AppLoadingScreen from 'screens/AppLoadingScreen/AppLoadingScreen';
 
 import {
   formatDate,
   formatedCardNumber,
-} from '../../../components/Card/CardFooter/cardFooter.helper';
+} from 'components/Card/CardFooter/cardFooter.helper';
 
-import AppLoadingScreen from '../../AppLoadingScreen/AppLoadingScreen';
-
-import { useUserInfoQuery } from '../../../services';
+import CardSettingsItem from '../CardSettingsItem/CardSettingsItem';
 
 import styles from './cardSettingsContent.styles';
 import {

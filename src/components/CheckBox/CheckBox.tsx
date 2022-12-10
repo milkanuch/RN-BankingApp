@@ -3,7 +3,7 @@ import { View } from 'react-native';
 
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 
-import { colors } from '../../constants/colors';
+import { colors } from 'constants/colors';
 
 import styles from './checkBox.styles';
 

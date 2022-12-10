@@ -1,10 +1,11 @@
 import { authenticateAsync, isEnrolledAsync } from 'expo-local-authentication';
 import { useCallback } from 'react';
 
-import { PIN_CODE_OPTIONS } from '../screens/PinCodeScreen/pinCodeScreen.settings';
-import { useUserRefreshMutation } from '../services';
-import { useAppDispatch } from '../store';
-import { setUserIsLogged } from '../store/user/userSlice';
+import { useAppDispatch } from 'store/index';
+import { setUserIsLogged } from 'store/user/userSlice';
+
+import { useUserRefreshMutation } from 'services/index';
+import { PIN_CODE_OPTIONS } from 'screens/PinCodeScreen/pinCodeScreen.settings';
 
 import useRefreshToken from './useRefreshToken';
 

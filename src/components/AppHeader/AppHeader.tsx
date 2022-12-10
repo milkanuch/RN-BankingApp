@@ -3,20 +3,19 @@ import React from 'react';
 
 import { useNavigation } from '@react-navigation/native';
 
-import { useUserInfoQuery, useUserLogoutMutation } from '../../services';
+import { useAppDispatch } from 'store/index';
 
-import { useAppDispatch } from '../../store';
+import { setUserIsLogged } from 'store/user/userSlice';
 
-import { setUserIsLogged } from '../../store/user/userSlice';
-
-import useRefreshToken from '../../hooks/useRefreshToken';
+import useRefreshToken from 'hooks/useRefreshToken';
 
 import {
   AppHeaderProps,
   HomeStackScreenTypes,
-} from '../../navigation/HomeStackNavigation/homeStackNavigation.types';
+} from 'navigation/HomeStackNavigation/homeStackNavigation.types';
 
-import styles from './appHeader.styles';
+import { useUserInfoQuery, useUserLogoutMutation } from 'services/index';
+
 import {
   congratulations,
   date,
@@ -26,6 +25,7 @@ import {
   userIconSize,
 } from './appHeader.settings';
 import AppHeaderButton from './AppHeaderButton/AppHeaderButton';
+import styles from './appHeader.styles';
 
 const AppHeader = () => {
   const { data, isLoading } = useUserInfoQuery();

@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { ScrollView, Text, View } from 'react-native';
 
-import CardCaroules from '../../components/CardCarousel/CardCarousel';
+import { useGetAllCardsQuery } from 'services/index';
 
-import { useGetAllCardsQuery } from '../../services';
+import CardCaroules from 'components/CardCarousel/CardCarousel';
+
 import AppLoadingScreen from '../AppLoadingScreen/AppLoadingScreen';
 
 import styles from './cardSettingsScreen.styles';

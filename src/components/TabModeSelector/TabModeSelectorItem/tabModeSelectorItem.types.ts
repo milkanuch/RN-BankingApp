@@ -1,4 +1,4 @@
-import { SignInMode } from '../../../screens/SignInScreen/signInScreen.types';
+import { SignInMode } from 'screens/SignInScreen/signInScreen.types';
 
 export interface ITabModeSelectorItemProps {
   currentValue: SignInMode;

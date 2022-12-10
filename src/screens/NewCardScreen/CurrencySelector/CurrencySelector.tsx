@@ -1,7 +1,7 @@
 import { View } from 'react-native';
 import React, { FC } from 'react';
 
-import { Currency } from '../../../components/Card/card.types';
+import { Currency } from 'components/Card/card.types';
 
 import { ICurrencySelectorProps } from './currencySelector.types';
 import styles from './currencySelector.styles';

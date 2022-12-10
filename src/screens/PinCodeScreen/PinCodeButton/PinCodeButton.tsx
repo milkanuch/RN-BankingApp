@@ -2,7 +2,7 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import React, { FC } from 'react';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import { colors } from '../../../constants/colors';
+import { colors } from 'constants/colors';
 
 import styles from './pinCodeButton.style';
 

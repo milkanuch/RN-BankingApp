@@ -5,7 +5,7 @@ import IconFeather from 'react-native-vector-icons/Feather';
 
 import { DefaultTheme } from '@react-navigation/native';
 
-import { colors } from '../../constants/colors';
+import { colors } from 'constants/colors';
 
 export const HOME_STACK_OPTIONS: BottomTabNavigationOptions = {
   headerShown: false,

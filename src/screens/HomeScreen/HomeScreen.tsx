@@ -1,16 +1,19 @@
 import React from 'react';
 import { RefreshControl, ScrollView, Text } from 'react-native';
 
-import CardCaroules from '../../components/CardCarousel/CardCarousel';
-import FrequentlyUsedFunctions from '../../components/FrequentlyUsedFunctions/FrequentlyUsedFunctions';
-import DepositWithdrawlsSection from '../../components/DepositWithdrawlsSection/DepositWithdrawlsSection';
+import CardCaroules from 'components/CardCarousel/CardCarousel';
+import FrequentlyUsedFunctions from 'components/FrequentlyUsedFunctions/FrequentlyUsedFunctions';
+import DepositWithdrawlsSection from 'components/DepositWithdrawlsSection/DepositWithdrawlsSection';
+
 import {
   useGetAllCardsQuery,
   useGetAllUserTransactionsQuery,
-} from '../../services';
-import AppLoadingScreen from '../AppLoadingScreen/AppLoadingScreen';
+} from 'services/index';
+
+import AppLoadingScreen from 'screens/AppLoadingScreen/AppLoadingScreen';
 
 import styles from './homeScreen.styles';
+
 import { homeTitle } from './homeScreen.settings';
 
 const HomeScreen = () => {

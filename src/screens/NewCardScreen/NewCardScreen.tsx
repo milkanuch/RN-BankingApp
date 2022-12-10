@@ -3,25 +3,20 @@ import React, { useState } from 'react';
 
 import Snackbar from 'react-native-snackbar';
 
-import TitleText from '../../components/TitleText/TitleText';
+import TitleText from 'components/TitleText/TitleText';
 
-import { useNewCardMutation } from '../../services';
+import { useNewCardMutation } from 'services/index';
 
-import { INewCardParams } from '../../services/bankApi.types';
+import { INewCardParams } from 'services/bankApi.types';
 
-import { showSnackBar } from '../../components/Card/card.helper';
+import { showSnackBar } from 'components/Card/card.helper';
 
-import { colors } from '../../constants/colors';
+import { colors } from 'constants/colors';
 
-import { getItem } from '../../store/bankStore/store';
+import { getItem } from 'store/bankStore/store';
 
-import AppLoadingScreen from '../AppLoadingScreen/AppLoadingScreen';
+import AppLoadingScreen from 'screens/AppLoadingScreen/AppLoadingScreen';
 
-import ProviderSelector from './ProviderSelector/ProviderSelector';
-import styles from './newCardScreen.styles';
-import CurrencySelector from './CurrencySelector/CurrencySelector';
-import CardTypeSelector from './CardTypeSelector/CardTypeSelector';
-import CreateCardButton from './CreateCardButton/CreateCardButton';
 import {
   buttonText,
   cardTypeSubtitle,
@@ -31,6 +26,12 @@ import {
   screenTitle,
   successText,
 } from './newCardScreen.settings';
+
+import CardTypeSelector from './CardTypeSelector/CardTypeSelector';
+import CreateCardButton from './CreateCardButton/CreateCardButton';
+import styles from './newCardScreen.styles';
+import CurrencySelector from './CurrencySelector/CurrencySelector';
+import ProviderSelector from './ProviderSelector/ProviderSelector';
 
 const NewCardScreen = () => {
   const [provider, setProvider] = useState('Visa');

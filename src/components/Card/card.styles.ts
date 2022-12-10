@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 
-import { colors } from '../../constants/colors';
-import { width } from '../../constants/dimensions';
+import { colors } from 'constants/colors';
+import { width } from 'constants/dimensions';
 
 const cardWidth = width - 40;
 const aspectRatio = 1.57;

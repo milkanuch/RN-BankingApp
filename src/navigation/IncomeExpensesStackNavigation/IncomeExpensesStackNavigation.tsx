@@ -1,6 +1,6 @@
 import { createStackNavigator } from '@react-navigation/stack';
 
-import IncomeExpensesScreen from '../../screens/IncomeExpensesScreen/IncomeExpenseScreen';
+import IncomeExpensesScreen from 'screens/IncomeExpensesScreen/IncomeExpenseScreen';
 
 import { INCOME_EXPENSES_SCREEN_OPTION } from './incomeExpensesStackNavigation.settings';
 import { IncomeExpenseStackScreenTypes } from './incomeExpensesStackNavigation.types';

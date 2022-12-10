@@ -1,6 +1,6 @@
 import React from 'react';
 
-import HomeSubtitle from '../HomeSubtitle/HomeSubtitle';
+import HomeSubtitle from 'components/HomeSubtitle/HomeSubtitle';
 
 import FrequentlyUsedButtons from './FrequentlyUsedButtons/FrequentlyUsedButtons';
 

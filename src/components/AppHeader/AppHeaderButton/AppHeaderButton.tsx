@@ -2,7 +2,7 @@ import { TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import React, { FC } from 'react';
 
-import { colors } from '../../../constants/colors';
+import { colors } from 'constants/colors';
 
 import { IAppHeaderButtonProps } from './appHeaderButton.types';
 

@@ -7,10 +7,11 @@ import {
   RefreshControl,
 } from 'react-native';
 
-import DepositWithdrawlsSection from '../../components/DepositWithdrawlsSection/DepositWithdrawlsSection';
-import { useGetAllUserTransactionsQuery } from '../../services';
+import AppLoadingScreen from 'screens/AppLoadingScreen/AppLoadingScreen';
 
-import AppLoadingScreen from '../AppLoadingScreen/AppLoadingScreen';
+import { useGetAllUserTransactionsQuery } from 'services/index';
+
+import DepositWithdrawlsSection from 'components/DepositWithdrawlsSection/DepositWithdrawlsSection';
 
 import IncomeExpensesCard from './IncomeExpensesCard/IncomeExpensesCard';
 import { IIncomeExpensesCardProps } from './IncomeExpensesCard/incomeExpensesCard.types';

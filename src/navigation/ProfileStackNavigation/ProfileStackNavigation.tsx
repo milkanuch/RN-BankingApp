@@ -1,6 +1,6 @@
 import { createStackNavigator } from '@react-navigation/stack';
 
-import ProfileScreen from '../../screens/ProfileScreen/ProfileScreen';
+import ProfileScreen from 'screens/ProfileScreen/ProfileScreen';
 
 import { PROFILE_SCREEN_OPTION } from './profileStackNavigation.settings';
 

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 
-import { getItem } from '../store/bankStore/store';
+import { getItem } from 'store/bankStore/store';
 
 const useRefreshToken = () => {
   const [refreshToken, setRefreshToken] = useState('');

@@ -1,8 +1,8 @@
 import { StackNavigationOptions } from '@react-navigation/stack';
 
-import AppHeader from '../../components/AppHeader/AppHeader';
+import AppHeader from 'components/AppHeader/AppHeader';
 
-import { colors } from '../../constants/colors';
+import { colors } from 'constants/colors';
 
 export const CARD_SETTINGS_SCREEN_OPTION: StackNavigationOptions = {
   headerTitle: () => <AppHeader />,

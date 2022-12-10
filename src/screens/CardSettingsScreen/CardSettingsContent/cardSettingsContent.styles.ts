@@ -1,9 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import {
-  responsiveHeight,
-  responsiveWidth,
-} from '../../../constants/dimensions';
+import { responsiveHeight, responsiveWidth } from 'constants/dimensions';
 
 const styles = StyleSheet.create({
   cardSettingsContainer: {

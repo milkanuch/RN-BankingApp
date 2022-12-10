@@ -1,4 +1,4 @@
-import { IAbstractCard } from '../../Card/card.types';
+import { IAbstractCard } from 'components/Card/card.types';
 
 export interface ICardCarouselIndicatorProps {
   data: IAbstractCard[];

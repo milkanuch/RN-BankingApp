@@ -3,12 +3,12 @@ import React, { FC } from 'react';
 
 import { useNavigation } from '@react-navigation/native';
 
-import HomeSubtitle from '../HomeSubtitle/HomeSubtitle';
+import HomeSubtitle from 'components/HomeSubtitle/HomeSubtitle';
 
 import {
   DepositWidthdrawlsProps,
   HomeStackScreenTypes,
-} from '../../navigation/HomeStackNavigation/homeStackNavigation.types';
+} from 'navigation/HomeStackNavigation/homeStackNavigation.types';
 
 import styles from './depositWithdrawlsSection.styles';
 

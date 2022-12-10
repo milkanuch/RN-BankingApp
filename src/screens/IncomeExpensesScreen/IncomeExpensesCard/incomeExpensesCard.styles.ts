@@ -1,13 +1,10 @@
 import { StyleSheet } from 'react-native';
 
-import {
-  responsiveHeight,
-  responsiveWidth,
-} from '../../../constants/dimensions';
+import { responsiveHeight, responsiveWidth } from 'constants/dimensions';
 
-import { eUkraineRegular } from './../../../constants/fonts';
+import { eUkraineRegular } from 'constants/fonts';
 
-import { colors } from './../../../constants/colors';
+import { colors } from 'constants/colors';
 
 const styles = StyleSheet.create({
   container: {
