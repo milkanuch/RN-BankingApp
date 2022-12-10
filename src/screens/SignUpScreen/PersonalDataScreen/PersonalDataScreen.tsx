@@ -1,26 +1,27 @@
 import { FC, useState } from 'react';
 import { ScrollView } from 'react-native';
 
-import AuthHeader from '../../../components/AuthHeader/AuthHeader';
-import { showSnackBar } from '../../../components/Card/card.helper';
-import CustomButton from '../../../components/CustomButton/CustomButton';
-import CustomTextInput from '../../../components/CustomTextInput/CustomTextInput';
+import AppLoadingScreen from 'screens/AppLoadingScreen/AppLoadingScreen';
+
+import { setItem } from 'store/bankStore/store';
+
+import { useUserRegisterMutation } from 'services/index';
+
+import AuthHeader from 'components/AuthHeader/AuthHeader';
+import { showSnackBar } from 'components/Card/card.helper';
+import CustomButton from 'components/CustomButton/CustomButton';
+import CustomTextInput from 'components/CustomTextInput/CustomTextInput';
 
 import {
   passportDataErrorMessage,
   personalDataErrorMessage,
-} from '../../../constants/errorMesages';
-import {
-  passportValidation,
-  personalDataValidation,
-} from '../../../helpers/validation';
+} from 'constants/errorMesages';
+import { passportValidation, personalDataValidation } from 'helpers/validation';
 import {
   AuthStackScreenTypes,
   PersonalDataScreenProps,
-} from '../../../navigation/AuthStackNavigation/AuthStackNavigation.types';
-import { useUserRegisterMutation } from '../../../services';
-import { setItem } from '../../../store/bankStore/store';
-import AppLoadingScreen from '../../AppLoadingScreen/AppLoadingScreen';
+} from 'navigation/AuthStackNavigation/AuthStackNavigation.types';
+
 import Divider from '../Divider/Divider';
 
 import {
@@ -32,7 +33,6 @@ import {
   text,
   title,
 } from './personalDataScreen.settings';
-
 import styles from './personalDataScreen.styles';
 
 const PersonalDataScreen: FC<PersonalDataScreenProps> = ({

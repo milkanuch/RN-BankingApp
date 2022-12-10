@@ -1,6 +1,6 @@
 import { StackScreenProps } from '@react-navigation/stack';
 
-import { IPersonalDataScreenParams } from '../../screens/SignUpScreen/PersonalDataScreen/personalDataScreen.types';
+import { IPersonalDataScreenParams } from 'screens/SignUpScreen/PersonalDataScreen/personalDataScreen.types';
 
 export enum AuthStackScreenTypes {
   SignIn = 'SignIn',

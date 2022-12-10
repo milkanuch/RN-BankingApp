@@ -1,7 +1,7 @@
 import { View } from 'react-native';
 import React, { FC } from 'react';
 
-import { CardType } from '../../../components/Card/card.types';
+import { CardType } from 'components/Card/card.types';
 
 import styles from './cardTypeSelector.styles';
 import CardTypeSelectorItem from './CardTypeSelectorItem/CardTypeSelectorItem';

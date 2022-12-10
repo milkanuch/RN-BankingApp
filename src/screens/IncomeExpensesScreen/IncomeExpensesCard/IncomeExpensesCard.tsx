@@ -1,9 +1,9 @@
 import { View, Text } from 'react-native';
 import React, { FC } from 'react';
 
-import ProgressBar from '../../../components/ProgressBar/ProgressBar';
+import { currencies } from 'screens/MoneyTransferScreen/TransferCardCarousel/TransferCardCarouselItem/transferCardCarouselItem.settings';
 
-import { currencies } from '../../MoneyTransferScreen/TransferCardCarousel/TransferCardCarouselItem/transferCardCarouselItem.settings';
+import ProgressBar from 'components/ProgressBar/ProgressBar';
 
 import { IIncomeExpensesCardProps } from './incomeExpensesCard.types';
 import styles from './incomeExpensesCard.styles';

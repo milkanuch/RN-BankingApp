@@ -1,12 +1,8 @@
 import { StyleSheet } from 'react-native';
 
-import { colors } from '../../../constants/colors';
+import { colors } from 'constants/colors';
 
-import {
-  eUkraineThin,
-  eUkraineRegular,
-  eUkraineBold,
-} from './../../../constants/fonts';
+import { eUkraineThin, eUkraineRegular, eUkraineBold } from 'constants/fonts';
 
 const styles = StyleSheet.create({
   container: {

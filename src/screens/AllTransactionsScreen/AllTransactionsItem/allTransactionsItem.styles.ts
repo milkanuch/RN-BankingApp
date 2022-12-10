@@ -1,14 +1,14 @@
 import { StyleSheet } from 'react-native';
 
-import { responsiveHeight } from '../../../constants/dimensions';
+import { responsiveHeight } from 'constants/dimensions';
 
 import {
   eUkraineBold,
   eUkraineUltraLight,
   eUkraineRegular,
-} from './../../../constants/fonts';
+} from 'constants/fonts';
 
-import { colors } from './../../../constants/colors';
+import { colors } from 'constants/colors';
 
 const styles = StyleSheet.create({
   container: {

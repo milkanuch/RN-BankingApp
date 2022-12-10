@@ -2,9 +2,9 @@ import { View } from 'react-native';
 import React, { FC } from 'react';
 import { PieChart } from 'react-native-gifted-charts';
 
-import IconButton from '../../../components/IconButton/IconButton';
+import { colors } from 'constants/colors';
 
-import { colors } from '../../../constants/colors';
+import IconButton from 'components/IconButton/IconButton';
 
 import CenterLabelProps from './CenterLabelComponent/CenterLabelComponent';
 import {

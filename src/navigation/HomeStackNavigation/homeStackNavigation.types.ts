@@ -1,7 +1,7 @@
 import { CompositeNavigationProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 
-import { BottomTypeProps } from '../AppNavigation/appNavigation.types';
+import { BottomTypeProps } from 'navigation/AppNavigation/appNavigation.types';
 
 export enum HomeStackScreenTypes {
   Home = 'Home',

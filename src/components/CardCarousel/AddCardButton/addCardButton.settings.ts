@@ -1,4 +1,4 @@
-import { colors } from '../../../constants/colors';
+import { colors } from 'constants/colors';
 
 export const activeOpacity = 0.6;
 

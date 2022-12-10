@@ -1,7 +1,8 @@
 import { createStackNavigator } from '@react-navigation/stack';
 
-import MoneyTransferScreen from '../../screens/MoneyTransferScreen/MoneyTransferScreen';
-import TransactionStatusScreen from '../../screens/TransactionStatusScreen/TransactionStatusScreen';
+import MoneyTransferScreen from 'screens/MoneyTransferScreen/MoneyTransferScreen';
+
+import TransactionStatusScreen from 'screens/TransactionStatusScreen/TransactionStatusScreen';
 
 import {
   TRANSFER_SCREEN_OPTION,

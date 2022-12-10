@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import { responsiveWidth } from '../../../constants/dimensions';
+import { responsiveWidth } from 'constants/dimensions';
 
 const styles = StyleSheet.create({
   container: {

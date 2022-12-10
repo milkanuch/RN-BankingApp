@@ -5,35 +5,37 @@ import { RefreshControl, ScrollView } from 'react-native-gesture-handler';
 
 import { QueryStatus } from '@reduxjs/toolkit/dist/query';
 
-import { ITransactionParams } from '../../services/bankApi.types';
-
-import TitleText from '../../components/TitleText/TitleText';
-
-import CustomTextInput from '../../components/CustomTextInput/CustomTextInput';
-
-import CustomButton from '../../components/CustomButton/CustomButton';
-
 import {
   cardNumberValidation,
   credentialsValidation,
   moneyValidation,
-} from '../../helpers/validation';
+} from 'helpers/validation';
+
+import { ITransactionParams } from 'services/bankApi.types';
+
+import TitleText from 'components/TitleText/TitleText';
+
+import CustomTextInput from 'components/CustomTextInput/CustomTextInput';
+
+import CustomButton from 'components/CustomButton/CustomButton';
 
 import {
   cardNumberErrorMessage,
   credentialsErrorMessage,
   moneyErrorMessage,
-} from '../../constants/errorMesages';
+} from 'constants/errorMesages';
 
-import { useGetAllCardsQuery, useTransactionMutation } from '../../services';
+import { useGetAllCardsQuery, useTransactionMutation } from 'services/index';
 
 import {
   TransferScreenProps,
   TransferStackScreenTypes,
-} from '../../navigation/TransferStackNavigation/transferStackNavigation.types';
+} from 'navigation/TransferStackNavigation/transferStackNavigation.types';
 
-import AppLoadingScreen from '../AppLoadingScreen/AppLoadingScreen';
+import AppLoadingScreen from 'screens/AppLoadingScreen/AppLoadingScreen';
 
+import TransferCardCarousel from './TransferCardCarousel/TransferCardCarousel';
+import styles from './moneyTransferScreen.styles';
 import {
   buttonText,
   cardCarouselTitle,
@@ -46,10 +48,6 @@ import {
   nameTitle,
   screenTitle,
 } from './moneyTransferScreen.settings';
-
-import TransferCardCarousel from './TransferCardCarousel/TransferCardCarousel';
-
-import styles from './moneyTransferScreen.styles';
 
 const MoneyTransferScreen: FC<TransferScreenProps> = ({ navigation }) => {
   const [selectedCardIndex, selectCard] = useState(0);

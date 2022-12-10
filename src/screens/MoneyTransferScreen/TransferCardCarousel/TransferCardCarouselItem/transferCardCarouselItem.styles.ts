@@ -1,9 +1,9 @@
 import { StyleSheet } from 'react-native';
 
-import { colors } from '../../../../constants/colors';
+import { colors } from 'constants/colors';
 
-import { width } from '../../../../constants/dimensions';
-import { eUkraineRegular } from '../../../../constants/fonts';
+import { width } from 'constants/dimensions';
+import { eUkraineRegular } from 'constants/fonts';
 
 const containerWidth = width - 40;
 

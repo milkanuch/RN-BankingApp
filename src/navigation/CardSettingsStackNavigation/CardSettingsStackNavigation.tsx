@@ -1,7 +1,8 @@
 import { createStackNavigator } from '@react-navigation/stack';
 
-import CardSettingsScreen from '../../screens/CardSettingsScreen/CardSettingsScreen';
-import NewCardScreen from '../../screens/NewCardScreen/NewCardScreen';
+import CardSettingsScreen from 'screens/CardSettingsScreen/CardSettingsScreen';
+
+import NewCardScreen from 'screens/NewCardScreen/NewCardScreen';
 
 import { CARD_SETTINGS_SCREEN_OPTION } from './cardSettingsStackNavigation.settings';
 

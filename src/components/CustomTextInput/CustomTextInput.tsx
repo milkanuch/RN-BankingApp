@@ -2,7 +2,7 @@ import { Text, TextInput, View } from 'react-native';
 
 import { FC, useState } from 'react';
 
-import IconButton from '../IconButton/IconButton';
+import IconButton from 'components/IconButton/IconButton';
 
 import { ICustomTextInputProps } from './customTextInput.types';
 

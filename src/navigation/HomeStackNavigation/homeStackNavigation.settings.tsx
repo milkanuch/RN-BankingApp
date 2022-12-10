@@ -1,7 +1,7 @@
 import { StackNavigationOptions } from '@react-navigation/stack';
 
-import AppHeader from '../../components/AppHeader/AppHeader';
-import { colors } from '../../constants/colors';
+import AppHeader from 'components/AppHeader/AppHeader';
+import { colors } from 'constants/colors';
 
 export const HOME_SCREEN_OPTIONS: StackNavigationOptions = {
   headerTitle: () => <AppHeader />,

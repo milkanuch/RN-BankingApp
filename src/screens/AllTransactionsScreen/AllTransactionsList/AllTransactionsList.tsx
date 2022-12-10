@@ -2,7 +2,8 @@ import React, { FC } from 'react';
 import { ListRenderItem } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 
-import { IUserTransactionResponseParams } from '../../../services/bankApi.types';
+import { IUserTransactionResponseParams } from 'services/bankApi.types';
+
 import AllTransactionsItem from '../AllTransactionsItem/AllTransactionsItem';
 
 import { IAllTransactionListProps } from './allTransactionsList.types';

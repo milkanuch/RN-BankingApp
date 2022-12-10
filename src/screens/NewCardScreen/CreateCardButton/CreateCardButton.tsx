@@ -1,7 +1,7 @@
 import { View } from 'react-native';
 import React, { FC } from 'react';
 
-import CustomButton from '../../../components/CustomButton/CustomButton';
+import CustomButton from 'components/CustomButton/CustomButton';
 
 import styles from './createCardButton.styles';
 

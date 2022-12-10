@@ -1,8 +1,9 @@
 import { FlatList, ListRenderItem, ViewToken } from 'react-native';
 import React, { FC, useRef, useState } from 'react';
 
-import Card from '../Card/Card';
-import { IAbstractCard, ICardProps } from '../Card/card.types';
+import { IAbstractCard, ICardProps } from 'components/Card/card.types';
+
+import Card from 'components/Card/Card';
 
 import AddCardButton from './AddCardButton/AddCardButton';
 

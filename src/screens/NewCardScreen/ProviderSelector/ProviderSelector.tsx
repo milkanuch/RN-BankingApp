@@ -1,7 +1,7 @@
 import { View } from 'react-native';
 import React, { FC } from 'react';
 
-import { CardProvider } from '../../../components/Card/card.types';
+import { CardProvider } from 'components/Card/card.types';
 
 import ProviderSelectorItem from './ProviderSelectorItem/ProviderSelectorItem';
 import styles from './providerSelector.styles';

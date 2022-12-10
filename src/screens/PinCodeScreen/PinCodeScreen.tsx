@@ -5,33 +5,33 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import {
   AuthStackScreenTypes,
   PinCodeScreenProps,
-} from '../../navigation/AuthStackNavigation/AuthStackNavigation.types';
+} from 'navigation/AuthStackNavigation/AuthStackNavigation.types';
 
-import { setUserIsLogged } from '../../store/user/userSlice';
+import { setUserIsLogged } from 'store/user/userSlice';
 
-import { useAppDispatch } from '../../store';
+import { useAppDispatch } from 'store/index';
 
-import { useFingerPrint } from '../../hooks/useFingerPrint';
+import { useFingerPrint } from 'hooks/useFingerPrint';
 
-import { useShakeAnimation } from '../../hooks/useShakeAnimation';
+import { useShakeAnimation } from 'hooks/useShakeAnimation';
 
-import { getItem, setItem } from '../../store/bankStore/store';
+import { getItem, setItem } from 'store/bankStore/store';
 
-import { useUserRefreshMutation } from '../../services';
+import { useUserRefreshMutation } from 'services/index';
 
-import useRefreshToken from '../../hooks/useRefreshToken';
+import useRefreshToken from 'hooks/useRefreshToken';
 
-import AppLoadingScreen from '../AppLoadingScreen/AppLoadingScreen';
+import AppLoadingScreen from 'screens/AppLoadingScreen/AppLoadingScreen';
 
-import { PinCodeContainer } from './PinCodeContainer/PinCodeContainer';
-import PinCodeFooter from './PinCodeFooter/PinCodeFooter';
-import PinCodeHeader from './PinCodeHeader/PinCodeHeader';
-import { PinCodeKeyboard } from './PinCodeKeyboard/PinCodeKeyboard';
-import { IPinCodeFunctions } from './PinCodeKeyboard/pinCodeKeyboard.types';
+import { isEqual } from './pinCodeScreen.utils';
 
 import styles from './pinCodeScreen.styles';
 import { PIN_CODE_LENGTH } from './pinCodeScreen.settings';
-import { isEqual } from './pinCodeScreen.utils';
+import { PinCodeKeyboard } from './PinCodeKeyboard/PinCodeKeyboard';
+import { IPinCodeFunctions } from './PinCodeKeyboard/pinCodeKeyboard.types';
+import PinCodeFooter from './PinCodeFooter/PinCodeFooter';
+import PinCodeHeader from './PinCodeHeader/PinCodeHeader';
+import { PinCodeContainer } from './PinCodeContainer/PinCodeContainer';
 
 const PinCodeScreen: FC<PinCodeScreenProps> = ({ navigation }) => {
   const dispatch = useAppDispatch();

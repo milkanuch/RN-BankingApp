@@ -1,14 +1,10 @@
 import { StyleSheet } from 'react-native';
 
-import { responsiveWidth } from '../../../../constants/dimensions';
+import { responsiveWidth } from 'constants/dimensions';
 
-import {
-  eUkraineRegular,
-  eUkraineBold,
-  eUkraineThin,
-} from './../../../../constants/fonts';
+import { eUkraineRegular, eUkraineBold, eUkraineThin } from 'constants/fonts';
 
-import { colors } from './../../../../constants/colors';
+import { colors } from 'constants/colors';
 
 const styles = StyleSheet.create({
   centerLabelContainer: {

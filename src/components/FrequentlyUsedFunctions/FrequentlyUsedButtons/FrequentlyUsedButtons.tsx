@@ -3,12 +3,12 @@ import React from 'react';
 
 import { useNavigation } from '@react-navigation/native';
 
-import { showSnackBar } from '../../Card/card.helper';
-
 import {
   BottomTabsScreenTypes,
   FrequentlyUsedButtonProps,
-} from '../../../navigation/AppNavigation/appNavigation.types';
+} from 'navigation/AppNavigation/appNavigation.types';
+
+import { showSnackBar } from 'components/Card/card.helper';
 
 import styles from './frequentlyUsedButtons.styles';
 import FrequentlyUsedButton from './FrequentlyUsedButton/FrequentlyUsedButton';

@@ -1,12 +1,17 @@
 import { createStackNavigator } from '@react-navigation/stack';
 
-import PinCodeScreen from '../../screens/PinCodeScreen/PinCodeScreen';
+import PinCodeScreen from 'screens/PinCodeScreen/PinCodeScreen';
 
-import SignInScreen from '../../screens/SignInScreen/SignInScreen';
+import SignInScreen from 'screens/SignInScreen/SignInScreen';
 
-import GeneralDataScreen from '../../screens/SignUpScreen/GeneralDataScreen/GeneralDataScreen';
+import GeneralDataScreen from 'screens/SignUpScreen/GeneralDataScreen/GeneralDataScreen';
 
-import PersonalDataScreen from '../../screens/SignUpScreen/PersonalDataScreen/PersonalDataScreen';
+import PersonalDataScreen from 'screens/SignUpScreen/PersonalDataScreen/PersonalDataScreen';
+
+import {
+  AuthStackScreenParamsList,
+  AuthStackScreenTypes,
+} from './AuthStackNavigation.types';
 
 import {
   GENERAL_DATA_SCREEN_OPTIONS,
@@ -14,10 +19,6 @@ import {
   PINCODE_SCREEN_OPTIONS,
   SIGNIN_SCREEN_OPTIONS,
 } from './AuthStackNavigation.settings';
-import {
-  AuthStackScreenParamsList,
-  AuthStackScreenTypes,
-} from './AuthStackNavigation.types';
 
 const Stack = createStackNavigator<AuthStackScreenParamsList>();
 

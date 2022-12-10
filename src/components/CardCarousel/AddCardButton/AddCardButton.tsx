@@ -10,7 +10,7 @@ import { useNavigation } from '@react-navigation/native';
 import {
   HomeStackScreenTypes,
   NewCardScreenProps,
-} from '../../../navigation/HomeStackNavigation/homeStackNavigation.types';
+} from 'navigation/HomeStackNavigation/homeStackNavigation.types';
 
 import styles from './addCardButton.styles';
 import { IAddCardButtonProps } from './addCardButton.types';

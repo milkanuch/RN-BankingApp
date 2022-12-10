@@ -5,12 +5,9 @@ import IconFeather from 'react-native-vector-icons/Feather';
 
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-import { colors } from '../../../constants/colors';
+import { copyTextToClipboard, showSnackBar } from 'components/Card/card.helper';
 
-import {
-  copyTextToClipboard,
-  showSnackBar,
-} from '../../../components/Card/card.helper';
+import { colors } from 'constants/colors';
 
 import { ICardSettingsItemProps } from './CardSettingsItem.type';
 
