@@ -10,6 +10,21 @@ module.exports = {
   plugins: ['@typescript-eslint', 'react', 'react-native', 'import'],
   settings: {
     'import/ignore': ['react-native', 'node_modules'],
+    'import/resolver': {
+      alias: {
+        map: [
+          ['components', './src/components'],
+          ['constants', './src/constants'],
+          ['screens', './src/screens'],
+          ['services', './src/services'],
+          ['navigation', './src/navigation'],
+          ['store', './src/store'],
+          ['hooks', './src/hooks'],
+          ['helpers', './src/helpers'],
+        ],
+        extensions: ['.tsx', '.ts', '.jsx', '.js', '.json'],
+      },
+    },
   },
   overrides: [
     {
@@ -35,7 +50,14 @@ module.exports = {
         'import/order': [
           'error',
           {
-            groups: ['builtin', 'external', 'parent', 'sibling', 'index'],
+            groups: [
+              'builtin',
+              'external',
+              'internal',
+              'parent',
+              'sibling',
+              'index',
+            ],
             'newlines-between': 'always-and-inside-groups',
           },
         ],
