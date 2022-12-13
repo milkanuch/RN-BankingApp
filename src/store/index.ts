@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/dist/query';
 import { useDispatch, useSelector, TypedUseSelectorHook } from 'react-redux';
 
-import { bankApi } from './../services/index';
+import { bankApi } from 'services/index';
 
 import { userReducer } from './user/userSlice';
 
