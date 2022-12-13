@@ -3,10 +3,10 @@ import React, { FC } from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import { colors } from 'constants/colors';
+import { formatDate, showCardNumber } from 'helpers/card';
 
 import styles from './cardFooter.styles';
 import { ICardFooterInnerProps } from './cardFooter.types';
-import { formatDate, showCardNumber } from './cardFooter.helper';
 import { cardProviderIconName, iconSize } from './cardFooter.settings';
 
 const CardFooter: FC<ICardFooterInnerProps> = ({

@@ -1,16 +1,13 @@
 import { View } from 'react-native';
 import React, { FC } from 'react';
 
+import { formatDate, formatedCardNumber } from 'helpers/card';
+
 import { useUserInfoQuery } from 'services/index';
 
 import TitleText from 'components/TitleText/TitleText';
 
 import AppLoadingScreen from 'screens/AppLoadingScreen/AppLoadingScreen';
-
-import {
-  formatDate,
-  formatedCardNumber,
-} from 'components/Card/CardFooter/cardFooter.helper';
 
 import CardSettingsItem from '../CardSettingsItem/CardSettingsItem';
 
@@ -31,7 +28,7 @@ const CardSettingsContent: FC<ICardSettingsContentProps> = ({
   securityCode,
 }) => {
   const { data, isLoading } = useUserInfoQuery();
-  const cardHolderConter = data?.firstName + ' ' + data?.lastName;
+  const cardHolderContet = data?.firstName + ' ' + data?.lastName;
 
   if (isLoading) {
     return <AppLoadingScreen />;
@@ -45,7 +42,7 @@ const CardSettingsContent: FC<ICardSettingsContentProps> = ({
         content={formatedCardNumber(cardNumber!)}
         iconName={cardNumberIconName}
       />
-      <CardSettingsItem title={cardHolderTitle} content={cardHolderConter} />
+      <CardSettingsItem title={cardHolderTitle} content={cardHolderContet} />
       <View style={styles.itemsContainer}>
         <CardSettingsItem
           title={cardExpirationTitle}
