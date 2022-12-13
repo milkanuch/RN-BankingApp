@@ -1,8 +1,7 @@
 import { View } from 'react-native';
 import React, { FC } from 'react';
 
-import { Currency } from 'components/Card/card.types';
-
+import { currencies } from './currencySelector.settings';
 import { ICurrencySelectorProps } from './currencySelector.types';
 import styles from './currencySelector.styles';
 import CurrencySelectorItem from './CurrencySelectorItem/CurrencySelectorItem';
@@ -11,10 +10,9 @@ const CurrencySelector: FC<ICurrencySelectorProps> = ({
   currentCurrency,
   setCurrency,
 }) => {
-  const currencies = Object.keys(Currency);
   return (
     <View style={styles.container}>
-      {currencies.map(currency => (
+      {currencies.map((currency: string) => (
         <CurrencySelectorItem
           key={currency}
           currency={currency}
