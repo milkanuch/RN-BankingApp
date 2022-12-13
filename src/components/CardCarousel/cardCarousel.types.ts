@@ -1,4 +1,4 @@
-import { ICardResponseParams } from '../../services/bankApi.types';
+import { ICardResponseParams } from 'services/bankApi.types';
 
 export interface ICardCarouselProps {
   cards: ICardResponseParams[];
