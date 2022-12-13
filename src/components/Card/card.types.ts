@@ -11,12 +11,6 @@ export interface ICardProps
   blocked?: boolean;
 }
 
-export enum Currency {
-  UAH = 'UAH',
-  USD = 'USD',
-  EUR = 'EUR',
-}
-
 export enum CardProvider {
   Visa = 'Visa',
   Mastercard = 'Mastercard',

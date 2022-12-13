@@ -26,11 +26,13 @@ const Card: FC<ICardProps> = ({
   blocked,
 }) => {
   const [isSecured, setSecured] = useState(true);
+
   const handleLongPress = () => {
     setSecured(!isSecured);
     copyTextToClipboard(cardNumber);
     showSnackBar(snackbarMessage);
   };
+
   return (
     <TouchableOpacity
       onLongPress={handleLongPress}
