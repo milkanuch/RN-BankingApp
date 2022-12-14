@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { AppState } from '..';
+import { bankApi } from 'services/index';
 
-import { bankApi } from './../../services/index';
+import { AppState } from 'store/index';
 
 import { UserState } from './user.types';
 import { deleteUserTokens, setUsersTokens } from './userSlice.utils';

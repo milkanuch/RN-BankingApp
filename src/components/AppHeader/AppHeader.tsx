@@ -3,6 +3,8 @@ import React from 'react';
 
 import { useNavigation } from '@react-navigation/native';
 
+import { useUserInfoQuery, useUserLogoutMutation } from 'services/index';
+
 import { useAppDispatch } from 'store/index';
 
 import { setUserIsLogged } from 'store/user/userSlice';
@@ -14,10 +16,7 @@ import {
   HomeStackScreenTypes,
 } from 'navigation/HomeStackNavigation/homeStackNavigation.types';
 
-import { useUserInfoQuery, useUserLogoutMutation } from 'services/index';
-
 import {
-  congratulations,
   date,
   logoutIconName,
   logoutIconSize,
@@ -26,6 +25,7 @@ import {
 } from './appHeader.settings';
 import AppHeaderButton from './AppHeaderButton/AppHeaderButton';
 import styles from './appHeader.styles';
+import { congratulations } from './appHeader.helpers';
 
 const AppHeader = () => {
   const { data, isLoading } = useUserInfoQuery();
@@ -60,9 +60,7 @@ const AppHeader = () => {
         <View>
           <Text style={styles.dateFont}>{date}</Text>
           <Text style={styles.congratulations}>
-            {data && data?.firstName
-              ? `${congratulations} ${data?.firstName}!`
-              : `${congratulations} , stop... Who are you?`}
+            {congratulations(data?.firstName)}
           </Text>
         </View>
       </View>

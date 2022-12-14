@@ -1,7 +1,7 @@
 import { View, Text } from 'react-native';
 import React, { FC } from 'react';
 
-import { currencies } from 'screens/MoneyTransferScreen/TransferCardCarousel/TransferCardCarouselItem/transferCardCarouselItem.settings';
+import { currencies } from 'constants/card';
 
 import styles from './centerLabelComponent.styles';
 import { ICenterLabelProps } from './centerLabelComponent.types';

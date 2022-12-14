@@ -1,4 +1,4 @@
-import { IIncomeExpensesCardProps } from '../screens/IncomeExpensesScreen/IncomeExpensesCard/incomeExpensesCard.types';
+import { IIncomeExpensesCardProps } from 'screens/IncomeExpensesScreen/IncomeExpensesCard/incomeExpensesCard.types';
 
 export interface IUserParams {
   firstName: string;

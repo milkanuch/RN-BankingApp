@@ -3,10 +3,11 @@ import React, { FC } from 'react';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 
+import { currencies } from 'constants/card';
+
 import { ITransferCardCarouselItemProps } from './transferCardCarouselItem.types';
 import styles from './transferCardCarouselItem.styles';
 import {
-  currencies,
   iconColor,
   iconSize,
   providerIconName,

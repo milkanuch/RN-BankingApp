@@ -1,7 +1,7 @@
 import { Config } from 'react-native-config';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import { getItem } from './../store/bankStore/store';
+import { getItem } from 'store/bankStore/store';
 
 import {
   IAllCardsResponseParams,
