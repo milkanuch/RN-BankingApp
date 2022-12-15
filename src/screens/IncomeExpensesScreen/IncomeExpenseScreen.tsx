@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import {
   ListRenderItem,
   Text,
@@ -9,9 +9,14 @@ import {
 
 import AppLoadingScreen from 'screens/AppLoadingScreen/AppLoadingScreen';
 
-import { useGetAllUserTransactionsQuery } from 'services/index';
+import {
+  useGetAllUserTransactionsQuery,
+  useGetUserExpensesQuery,
+} from 'services/index';
 
 import DepositWithdrawlsSection from 'components/DepositWithdrawlsSection/DepositWithdrawlsSection';
+
+import TitleText from 'components/TitleText/TitleText';
 
 import IncomeExpensesCard from './IncomeExpensesCard/IncomeExpensesCard';
 import { IIncomeExpensesCardProps } from './IncomeExpensesCard/incomeExpensesCard.types';
@@ -20,75 +25,16 @@ import IncomeExpensesPieChart from './IncomeExpensesPieChart/IncomeExpensesPieCh
 
 import styles from './incomeExpensesScreen.styles';
 
-const dummyData = [
-  {
-    month: 'November',
-    year: '2022',
-    sum: 1448,
-    currency: 'USD',
-    categories: [
-      {
-        category: 'Food',
-        totalSpendPerMonth: 500,
-        currency: 'USD',
-        totalSum: 1448,
-      },
-      {
-        category: 'Other',
-        totalSpendPerMonth: 888,
-        currency: 'USD',
-        totalSum: 1448,
-      },
-      {
-        category: 'Transport',
-        totalSpendPerMonth: 995,
-        currency: 'USD',
-        totalSum: 1448,
-      },
-      {
-        category: 'Clothes',
-        totalSpendPerMonth: 444,
-        currency: 'USD',
-        totalSum: 1448,
-      },
-    ],
-  },
-  {
-    month: 'December',
-    year: '2022',
-    sum: 8881,
-    currency: 'USD',
-    categories: [
-      {
-        category: 'Food',
-        totalSpendPerMonth: 7000,
-        currency: 'USD',
-        totalSum: 8881,
-      },
-      {
-        category: 'Other',
-        totalSpendPerMonth: 700,
-        currency: 'USD',
-        totalSum: 8881,
-      },
-      {
-        category: 'Transport',
-        totalSpendPerMonth: 1500,
-        currency: 'USD',
-        totalSum: 8881,
-      },
-      {
-        category: 'Clothes',
-        totalSpendPerMonth: 2000,
-        currency: 'USD',
-        totalSum: 8881,
-      },
-    ],
-  },
-];
-
 const IncomeExpensesScreen = () => {
   const [monthIndex, setMonthIndex] = useState(0);
+  const listRef = useRef<FlatList>(null);
+
+  const {
+    data: expensesData,
+    isLoading: fetchingExpenses,
+    refetch: refetchingExpenses,
+    isFetching: isRefetchingExpenses,
+  } = useGetUserExpensesQuery();
 
   const {
     data: transactionsData,
@@ -97,23 +43,35 @@ const IncomeExpensesScreen = () => {
     isFetching: isRefetchingTransactions,
   } = useGetAllUserTransactionsQuery();
 
+  const listScrollToStart = () => {
+    if (listRef.current) {
+      listRef.current.scrollToIndex({
+        index: 0,
+        animated: true,
+      });
+    }
+  };
+
   const handleLeftButton = () => {
     setMonthIndex(monthIndex - 1 < 0 ? monthIndex : monthIndex - 1);
+    listScrollToStart();
   };
 
   const handleRightButton = () => {
     setMonthIndex(
-      monthIndex + 1 >= dummyData.length ? monthIndex : monthIndex + 1,
+      monthIndex + 1 >= expensesData!.length ? monthIndex : monthIndex + 1,
     );
+    listScrollToStart();
   };
 
   const onRefresh = () => {
     refetchingTransactions();
+    refetchingExpenses();
   };
 
   const refreshControl = (
     <RefreshControl
-      refreshing={isRefetchingTransactions}
+      refreshing={isRefetchingTransactions && isRefetchingExpenses}
       onRefresh={onRefresh}
     />
   );
@@ -130,7 +88,7 @@ const IncomeExpensesScreen = () => {
     />
   );
 
-  if (fetchingTransactions) {
+  if (fetchingTransactions || fetchingExpenses) {
     return <AppLoadingScreen />;
   }
 
@@ -140,23 +98,30 @@ const IncomeExpensesScreen = () => {
       nestedScrollEnabled
       refreshControl={refreshControl}>
       <Text style={styles.screenTitle}>Budget</Text>
-      <IncomeExpensesPieChart
-        sum={dummyData[monthIndex].sum}
-        year={dummyData[monthIndex].year}
-        month={dummyData[monthIndex].month}
-        currency={dummyData[monthIndex].currency}
-        categories={dummyData[monthIndex].categories}
-        leftButtonOnpress={handleLeftButton}
-        rightButtonOnPress={handleRightButton}
-      />
-      <FlatList
-        data={dummyData[monthIndex].categories}
-        keyExtractor={keyExtractor}
-        renderItem={renderItem}
-        showsHorizontalScrollIndicator={false}
-        horizontal
-      />
-      <DepositWithdrawlsSection transactions={transactionsData!} />
+      {expensesData && transactionsData ? (
+        <>
+          <IncomeExpensesPieChart
+            sum={expensesData[monthIndex].sum}
+            year={expensesData[monthIndex].year}
+            month={expensesData[monthIndex].month}
+            currency={expensesData[monthIndex].currency}
+            categories={expensesData[monthIndex].categories}
+            leftButtonOnpress={handleLeftButton}
+            rightButtonOnPress={handleRightButton}
+          />
+          <FlatList
+            ref={listRef}
+            data={expensesData[monthIndex].categories}
+            keyExtractor={keyExtractor}
+            renderItem={renderItem}
+            showsHorizontalScrollIndicator={false}
+            horizontal
+          />
+          <DepositWithdrawlsSection transactions={transactionsData!} />
+        </>
+      ) : (
+        <TitleText text={"You don't have expenses"} />
+      )}
     </ScrollView>
   );
 };
