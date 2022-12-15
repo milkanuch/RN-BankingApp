@@ -5,6 +5,7 @@ import { getItem } from 'store/bankStore/store';
 
 import {
   IAllCardsResponseParams,
+  IIncomeExpensesResponseParams,
   INewCardParams,
   INewCardResponseParams,
   ITransactionParams,
@@ -26,7 +27,7 @@ const anonymousEndpoints = [
 
 export const bankApi = createApi({
   reducerPath: 'bankApi',
-  tagTypes: ['Cards', 'Transactions'],
+  tagTypes: ['Cards', 'Transactions', 'Expenses'],
   baseQuery: fetchBaseQuery({
     baseUrl: Config.API_URL,
     prepareHeaders: async (headers, { endpoint }) => {
@@ -107,6 +108,7 @@ export const bankApi = createApi({
         receiverName,
         sum,
         purpose,
+        category,
       }) => ({
         url: '/user/transactions/new',
         method: 'POST',
@@ -116,6 +118,7 @@ export const bankApi = createApi({
           receiverName,
           sum,
           purpose,
+          category,
         },
         headers: {
           'Content-type': 'application/json',
@@ -143,6 +146,27 @@ export const bankApi = createApi({
               { type: 'Cards', id: 'LIST' },
             ]
           : [{ type: 'Cards', id: 'LIST' }],
+    }),
+    getUserExpenses: builder.query<IIncomeExpensesResponseParams[], void>({
+      query: () => {
+        return {
+          url: '/user/transactions/summaries',
+          method: 'GET',
+          headers: {
+            'Content-type': 'application/json',
+          },
+        };
+      },
+      providesTags: result =>
+        result
+          ? [
+              ...result.map(({ sum }) => ({
+                type: 'Expenses' as const,
+                sum,
+              })),
+              { type: 'Expenses', id: 'LIST' },
+            ]
+          : [{ type: 'Expenses', id: 'LIST' }],
     }),
     getAllUserTransactions: builder.query<
       IUserTransactionResponseParams[],
@@ -177,6 +201,7 @@ export const {
   useUserLogoutMutation,
   useNewCardMutation,
   useTransactionMutation,
+  useGetUserExpensesQuery,
   useGetAllCardsQuery,
   useGetAllUserTransactionsQuery,
 } = bankApi;
