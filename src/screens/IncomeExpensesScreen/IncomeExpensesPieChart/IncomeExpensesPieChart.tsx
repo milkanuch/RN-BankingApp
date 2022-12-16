@@ -2,7 +2,7 @@ import { View } from 'react-native';
 import React, { FC } from 'react';
 import { PieChart } from 'react-native-gifted-charts';
 
-import { colors } from 'constants/colors';
+import { COLORS } from 'constants/colors';
 
 import IconButton from 'components/IconButton/IconButton';
 
@@ -46,7 +46,7 @@ const IncomeExpensesPieChart: FC<IIncomeExpensesPieChartProps> = ({
         <IconButton
           iconName={leftButtonIconName}
           size={leftButtonIconSize}
-          color={colors.black}
+          color={COLORS.black}
           onPress={leftButtonOnpress}
         />
       </View>
@@ -62,7 +62,7 @@ const IncomeExpensesPieChart: FC<IIncomeExpensesPieChartProps> = ({
         <IconButton
           iconName={rightButtonIconName}
           size={rightButtonIconSize}
-          color={colors.black}
+          color={COLORS.black}
           onPress={rightButtonOnPress}
         />
       </View>

@@ -2,27 +2,27 @@ import { StyleSheet } from 'react-native';
 
 import { responsiveHeight } from 'constants/dimensions';
 
-import { eUkraineBold, eUkraineRegular } from 'constants/fonts';
+import { E_UKRAINE_BOLD, E_UKRAINE_REGULAR } from 'constants/fonts';
 
-import { colors } from 'constants/colors';
+import { COLORS } from 'constants/colors';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     marginHorizontal: 20,
-    backgroundColor: colors.white,
+    backgroundColor: COLORS.white,
   },
   title: {
     fontSize: 48,
-    fontFamily: eUkraineBold,
+    fontFamily: E_UKRAINE_BOLD,
     paddingBottom: responsiveHeight(2),
-    color: colors.black,
+    color: COLORS.black,
   },
   subtitle: {
     fontSize: 32,
-    fontFamily: eUkraineRegular,
-    color: colors.black,
+    fontFamily: E_UKRAINE_REGULAR,
+    color: COLORS.black,
   },
   error: {
     paddingVertical: responsiveHeight(2),

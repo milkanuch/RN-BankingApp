@@ -1,18 +1,18 @@
 import { StyleSheet } from 'react-native';
 
-import { colors } from 'constants/colors';
+import { COLORS } from 'constants/colors';
 
 const styles = StyleSheet.create({
   progressBarContainer: {
     width: '100%',
     height: '13%',
     marginBottom: 5,
-    backgroundColor: colors.lightGrey,
+    backgroundColor: COLORS.lightGrey,
     borderRadius: 10,
     overflow: 'hidden',
   },
   progressBar: {
-    backgroundColor: colors.black,
+    backgroundColor: COLORS.black,
     height: '100%',
     borderRadius: 10,
   },

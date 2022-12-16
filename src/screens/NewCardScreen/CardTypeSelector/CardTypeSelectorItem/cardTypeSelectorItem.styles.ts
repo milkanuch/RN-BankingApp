@@ -1,9 +1,9 @@
 import { StyleSheet } from 'react-native';
 
-import { colors } from 'constants/colors';
+import { COLORS } from 'constants/colors';
 
 import { responsiveWidth } from 'constants/dimensions';
-import { eUkraineRegular } from 'constants/fonts';
+import { E_UKRAINE_REGULAR } from 'constants/fonts';
 
 const styles = StyleSheet.create({
   container: {
@@ -11,22 +11,22 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     paddingVertical: 10,
     marginVertical: 5,
-    borderColor: colors.black,
+    borderColor: COLORS.black,
     borderWidth: 2,
     borderRadius: 16,
     justifyContent: 'center',
     alignItems: 'center',
   },
   selectedContainer: {
-    backgroundColor: colors.black,
+    backgroundColor: COLORS.black,
   },
   text: {
-    fontFamily: eUkraineRegular,
+    fontFamily: E_UKRAINE_REGULAR,
     fontSize: 16,
-    color: colors.black,
+    color: COLORS.black,
   },
   selectedText: {
-    color: colors.white,
+    color: COLORS.white,
   },
 });
 

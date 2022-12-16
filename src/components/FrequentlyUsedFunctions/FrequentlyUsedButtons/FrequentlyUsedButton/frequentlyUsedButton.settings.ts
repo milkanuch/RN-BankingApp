@@ -1,4 +1,4 @@
-import { colors } from 'constants/colors';
+import { COLORS } from 'constants/colors';
 
-export const iconColor = colors.white;
+export const iconColor = COLORS.white;
 export const iconSize = 32;

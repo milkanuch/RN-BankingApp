@@ -2,7 +2,7 @@ import { View, Text } from 'react-native';
 import React, { FC } from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-import { colors } from 'constants/colors';
+import { COLORS } from 'constants/colors';
 import { formatDate, showCardNumber } from 'helpers/card';
 
 import styles from './cardFooter.styles';
@@ -22,7 +22,7 @@ const CardFooter: FC<ICardFooterInnerProps> = ({
       <Icon
         name={cardProviderIconName[cardProvider]}
         style={styles.icon}
-        color={colors.white}
+        color={COLORS.white}
         size={iconSize}
       />
     </View>

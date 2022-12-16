@@ -17,7 +17,7 @@ import {
 
 import { passwordValidation } from 'helpers/validation';
 
-import { passwordErrorMessage } from 'constants/errorMesages';
+import { PASSWORD_ERROR_MESSAGE } from 'constants/errorMessages';
 
 import { useUserLoginMutation } from 'services/index';
 
@@ -127,7 +127,7 @@ const SignInScreen: FC<SignInScreenProps> = ({ navigation }) => {
         secureTextEntry={true}
         value={password}
         setValue={setPassword}
-        errorText={passwordErrorMessage}
+        errorText={PASSWORD_ERROR_MESSAGE}
         validation={passwordValidation}
       />
       <CheckBox

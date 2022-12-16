@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 
-import { colors } from 'constants/colors';
-import { eUkraineLight } from 'constants/fonts';
+import { COLORS } from 'constants/colors';
+import { E_UKRAINE_LIGHT } from 'constants/fonts';
 
 const styles = StyleSheet.create({
   screen: {
@@ -9,10 +9,10 @@ const styles = StyleSheet.create({
   },
   screenTitle: {
     fontSize: 26,
-    color: colors.black,
+    color: COLORS.black,
     marginHorizontal: 20,
     marginVertical: 10,
-    fontFamily: eUkraineLight,
+    fontFamily: E_UKRAINE_LIGHT,
   },
 });
 

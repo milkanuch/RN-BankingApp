@@ -1,4 +1,4 @@
-import { colors } from 'constants/colors';
+import { COLORS } from 'constants/colors';
 
 export const providerIconName: { [key: string]: string } = {
   ['Visa']: 'cc-visa',
@@ -7,4 +7,4 @@ export const providerIconName: { [key: string]: string } = {
 
 export const iconSize = 40;
 
-export const iconColor = colors.black;
+export const iconColor = COLORS.black;

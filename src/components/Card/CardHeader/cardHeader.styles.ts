@@ -1,8 +1,8 @@
 import { StyleSheet } from 'react-native';
 
-import { colors } from 'constants/colors';
+import { COLORS } from 'constants/colors';
 
-import { eUkraineRegular } from 'constants/fonts';
+import { E_UKRAINE_REGULAR } from 'constants/fonts';
 
 const styles = StyleSheet.create({
   container: {
@@ -11,8 +11,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   text: {
-    fontFamily: eUkraineRegular,
-    color: colors.white,
+    fontFamily: E_UKRAINE_REGULAR,
+    color: COLORS.white,
   },
 });
 

@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 
-import { colors } from 'constants/colors';
-import { eUkraineBold } from 'constants/fonts';
+import { COLORS } from 'constants/colors';
+import { E_UKRAINE_BOLD } from 'constants/fonts';
 
 const styles = StyleSheet.create({
   container: {
@@ -16,14 +16,14 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
   },
   titleText: {
-    fontFamily: eUkraineBold,
+    fontFamily: E_UKRAINE_BOLD,
     fontSize: 28,
-    color: colors.black,
+    color: COLORS.black,
   },
   subtitleText: {
-    fontFamily: eUkraineBold,
+    fontFamily: E_UKRAINE_BOLD,
     fontSize: 18,
-    color: colors.darkGrey,
+    color: COLORS.darkGrey,
   },
 });
 

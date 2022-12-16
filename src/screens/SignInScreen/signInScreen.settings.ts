@@ -1,8 +1,8 @@
 import { ITabModeSelectorItemData } from 'components/TabModeSelector/TabModeSelectorItem/tabModeSelectorItem.types';
 import {
-  personalDataErrorMessage,
-  phoneNumberErrorMessage,
-} from 'constants/errorMesages';
+  PERSONAL_DATA_ERROR_MESSAGE,
+  PHONE_NUMBER_ERROR_MESSAGE,
+} from 'constants/errorMessages';
 
 import {
   phoneNumberValidation,
@@ -47,8 +47,8 @@ export const authValidation = {
 };
 
 export const authErrorMessages = {
-  [SignInMode.WithPhoneNumber]: phoneNumberErrorMessage,
-  [SignInMode.WithPaymentBill]: personalDataErrorMessage,
+  [SignInMode.WithPhoneNumber]: PHONE_NUMBER_ERROR_MESSAGE,
+  [SignInMode.WithPaymentBill]: PERSONAL_DATA_ERROR_MESSAGE,
 };
 
 export const passwordTextInputTitle = 'Password';

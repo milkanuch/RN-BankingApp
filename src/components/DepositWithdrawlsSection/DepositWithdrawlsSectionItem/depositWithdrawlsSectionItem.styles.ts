@@ -1,8 +1,12 @@
 import { StyleSheet } from 'react-native';
 
-import { colors } from 'constants/colors';
+import { COLORS } from 'constants/colors';
 
-import { eUkraineThin, eUkraineRegular, eUkraineBold } from 'constants/fonts';
+import {
+  E_UKRAINE_THIN,
+  E_UKRAINE_REGULAR,
+  E_UKRAINE_BOLD,
+} from 'constants/fonts';
 
 const styles = StyleSheet.create({
   container: {
@@ -11,7 +15,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     padding: 10,
     borderBottomWidth: 1,
-    borderBottomColor: colors.lightGrey,
+    borderBottomColor: COLORS.lightGrey,
   },
   card: {
     flex: 1,
@@ -23,20 +27,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   date: {
-    fontFamily: eUkraineThin,
+    fontFamily: E_UKRAINE_THIN,
   },
   cardProvider: {
     fontStyle: 'italic',
     fontWeight: 'bold',
-    fontFamily: eUkraineRegular,
+    fontFamily: E_UKRAINE_REGULAR,
   },
   total: {
-    color: colors.black,
-    fontFamily: eUkraineRegular,
+    color: COLORS.black,
+    fontFamily: E_UKRAINE_REGULAR,
   },
   currency: {
-    color: colors.black,
-    fontFamily: eUkraineBold,
+    color: COLORS.black,
+    fontFamily: E_UKRAINE_BOLD,
     marginLeft: 5,
   },
 });

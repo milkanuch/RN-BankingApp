@@ -3,12 +3,12 @@ import { StyleSheet } from 'react-native';
 import { responsiveHeight } from 'constants/dimensions';
 
 import {
-  eUkraineBold,
-  eUkraineUltraLight,
-  eUkraineRegular,
+  E_UKRAINE_BOLD,
+  E_UKRAINE_ULTRA_LIGHT,
+  E_UKRAINE_REGULAR,
 } from 'constants/fonts';
 
-import { colors } from 'constants/colors';
+import { COLORS } from 'constants/colors';
 
 const styles = StyleSheet.create({
   container: {
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     marginVertical: 5,
     padding: 10,
-    backgroundColor: colors.white,
+    backgroundColor: COLORS.white,
     borderRadius: 6,
     elevation: 5,
   },
@@ -30,14 +30,14 @@ const styles = StyleSheet.create({
   cardProvider: {
     paddingHorizontal: 10,
     fontSize: 16,
-    fontFamily: eUkraineUltraLight,
+    fontFamily: E_UKRAINE_ULTRA_LIGHT,
   },
   transactionDate: {
-    fontFamily: eUkraineRegular,
+    fontFamily: E_UKRAINE_REGULAR,
   },
   transactionSum: {
-    fontFamily: eUkraineBold,
-    color: colors.black,
+    fontFamily: E_UKRAINE_BOLD,
+    color: COLORS.black,
   },
 });
 

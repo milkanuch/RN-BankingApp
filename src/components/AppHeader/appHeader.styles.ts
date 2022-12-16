@@ -1,8 +1,8 @@
 import { StyleSheet } from 'react-native';
 
-import { colors } from 'constants/colors';
+import { COLORS } from 'constants/colors';
 
-import { eUkraineLight } from 'constants/fonts';
+import { E_UKRAINE_LIGHT } from 'constants/fonts';
 
 const styles = StyleSheet.create({
   container: {
@@ -20,11 +20,11 @@ const styles = StyleSheet.create({
   },
   dateFont: {
     fontSize: 10,
-    fontFamily: eUkraineLight,
+    fontFamily: E_UKRAINE_LIGHT,
   },
   congratulations: {
-    color: colors.darkGrey,
-    fontFamily: eUkraineLight,
+    color: COLORS.darkGrey,
+    fontFamily: E_UKRAINE_LIGHT,
   },
 });
 

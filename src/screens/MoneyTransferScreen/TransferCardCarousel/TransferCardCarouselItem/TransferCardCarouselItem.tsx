@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-import { currencies } from 'constants/card';
+import { CURRENCIES } from 'constants/card';
 
 import { ITransferCardCarouselItemProps } from './transferCardCarouselItem.types';
 import styles from './transferCardCarouselItem.styles';
@@ -21,6 +21,7 @@ const TransferCardCarouselItem: FC<ITransferCardCarouselItemProps> = ({
   currency,
 }) => {
   const cardLastNumbers = cardNumber.slice(12, 16);
+
   return (
     <View style={styles.container}>
       <Icon
@@ -33,7 +34,7 @@ const TransferCardCarouselItem: FC<ITransferCardCarouselItemProps> = ({
           {cardLastNumbers + ' ' + type}
         </Text>
         <Text adjustsFontSizeToFit numberOfLines={1} style={styles.moneyText}>
-          {sum.toFixed(2) + ' ' + currencies[currency]}
+          {sum.toFixed(2) + ' ' + CURRENCIES[currency]}
         </Text>
       </View>
     </View>

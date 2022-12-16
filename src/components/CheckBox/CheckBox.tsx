@@ -3,7 +3,7 @@ import { View } from 'react-native';
 
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 
-import { colors } from 'constants/colors';
+import { COLORS } from 'constants/colors';
 
 import styles from './checkBox.styles';
 
@@ -21,7 +21,7 @@ const CheckBox: FC<ICheckBoxProps> = ({
         innerIconStyle={styles.checkBoxBorder}
         iconStyle={styles.fillContainer}
         iconImageStyle={styles.icon}
-        fillColor={colors.black}
+        fillColor={COLORS.black}
         text={text}
         textStyle={styles.text}
         isChecked={isChecked}

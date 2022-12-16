@@ -1,8 +1,8 @@
 import { StyleSheet } from 'react-native';
 
-import { colors } from 'constants/colors';
+import { COLORS } from 'constants/colors';
 import { responsiveHeight } from 'constants/dimensions';
-import { eUkraineLight } from 'constants/fonts';
+import { E_UKRAINE_LIGHT } from 'constants/fonts';
 
 const styles = StyleSheet.create({
   section: {
@@ -14,15 +14,15 @@ const styles = StyleSheet.create({
     fontSize: 18,
     paddingBottom: 10,
     alignSelf: 'baseline',
-    color: colors.darkGrey,
-    fontFamily: eUkraineLight,
+    color: COLORS.darkGrey,
+    fontFamily: E_UKRAINE_LIGHT,
   },
   container: {
     elevation: 10,
     padding: 10,
     paddingVertical: 10,
     marginHorizontal: 30,
-    backgroundColor: colors.white,
+    backgroundColor: COLORS.white,
     borderRadius: 10,
     justifyContent: 'center',
     minHeight: responsiveHeight(18.5),

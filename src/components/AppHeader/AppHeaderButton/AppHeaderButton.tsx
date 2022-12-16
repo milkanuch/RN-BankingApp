@@ -2,7 +2,7 @@ import { TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import React, { FC } from 'react';
 
-import { colors } from 'constants/colors';
+import { COLORS } from 'constants/colors';
 
 import { IAppHeaderButtonProps } from './appHeaderButton.types';
 
@@ -15,7 +15,7 @@ const AppHeaderButton: FC<IAppHeaderButtonProps> = ({
   return (
     <View style={style}>
       <TouchableOpacity onPress={onPress}>
-        <Icon name={iconName} size={iconSize} color={colors.darkGrey} />
+        <Icon name={iconName} size={iconSize} color={COLORS.darkGrey} />
       </TouchableOpacity>
     </View>
   );
