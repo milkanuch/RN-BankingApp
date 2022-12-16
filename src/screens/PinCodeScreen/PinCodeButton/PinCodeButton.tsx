@@ -2,9 +2,9 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import React, { FC } from 'react';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import { colors } from 'constants/colors';
+import { COLORS } from 'constants/colors';
 
-import styles from './pinCodeButton.style';
+import styles from './pinCodeButton.styles';
 
 import { IPinCodeButtonProps } from './pinCodeButton.types';
 
@@ -19,7 +19,7 @@ const PinCodeButton: FC<IPinCodeButtonProps> = ({
       <TouchableOpacity onPress={onPress} disabled={isDisabled}>
         <View style={[styles.container, !!iconName && styles.iconContainer]}>
           {iconName ? (
-            <Icon name={iconName} size={40} color={colors.white} />
+            <Icon name={iconName} size={40} color={COLORS.white} />
           ) : (
             <Text style={styles.button}>{title}</Text>
           )}

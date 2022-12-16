@@ -4,7 +4,7 @@ import { FlatList, ListRenderItem } from 'react-native';
 import PinCodeButton from '../PinCodeButton/PinCodeButton';
 import { IPinCodeButtonProps } from '../PinCodeButton/pinCodeButton.types';
 
-import styles from './pinCodeKeyboard.style';
+import styles from './pinCodeKeyboard.styles';
 import { IPinCodeKeyboardProps } from './pinCodeKeyboard.types';
 import getDataList from './pinCodeKeyboard.settings';
 

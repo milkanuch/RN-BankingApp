@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import { colors } from 'constants/colors';
+import { COLORS } from 'constants/colors';
 
 import {
   IAllTransactionsItemProps,
@@ -28,7 +28,7 @@ const AlllTransactionsItem: FC<IAllTransactionsItemProps> = ({
       activeOpacity={activeOpacityValue}
       onPress={handleTransactionFullDescription}>
       <View style={styles.categoryContainer}>
-        <Icon name={category} size={IconSize} color={colors.black} />
+        <Icon name={category} size={IconSize} color={COLORS.black} />
         <Text style={styles.cardProvider}>{provider}</Text>
       </View>
       <View>

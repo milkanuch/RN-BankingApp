@@ -11,7 +11,7 @@ import { INewCardParams } from 'services/bankApi.types';
 
 import { showSnackBar } from 'components/Card/card.helper';
 
-import { colors } from 'constants/colors';
+import { COLORS } from 'constants/colors';
 
 import { getItem } from 'store/bankStore/store';
 
@@ -63,7 +63,7 @@ const NewCardScreen = () => {
   } else if (data) {
     Snackbar.show({
       text: successText,
-      backgroundColor: colors.green,
+      backgroundColor: COLORS.green,
     });
     reset();
   }

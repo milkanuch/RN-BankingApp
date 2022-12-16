@@ -20,10 +20,10 @@ import CustomTextInput from 'components/CustomTextInput/CustomTextInput';
 import CustomButton from 'components/CustomButton/CustomButton';
 
 import {
-  cardNumberErrorMessage,
-  credentialsErrorMessage,
-  moneyErrorMessage,
-} from 'constants/errorMesages';
+  CARD_NUMBER_ERROR_MESSAGE,
+  CREDENTIALS_ERROR_MESSAGE,
+  MONEY_ERROR_MESSAGE,
+} from 'constants/errorMessages';
 
 import { useGetAllCardsQuery, useTransactionMutation } from 'services/index';
 
@@ -146,7 +146,7 @@ const MoneyTransferScreen: FC<TransferScreenProps> = ({ navigation }) => {
           keyboardType={moneyKeyboardType}
           textContentType={cardNumberContentType}
           validation={cardNumberValidation}
-          errorText={cardNumberErrorMessage}
+          errorText={CARD_NUMBER_ERROR_MESSAGE}
         />
         <CustomTextInput
           value={receiverName}
@@ -154,7 +154,7 @@ const MoneyTransferScreen: FC<TransferScreenProps> = ({ navigation }) => {
           title={nameTitle}
           style={styles.textInputContainer}
           validation={credentialsValidation}
-          errorText={credentialsErrorMessage}
+          errorText={CREDENTIALS_ERROR_MESSAGE}
         />
         <CustomTextInput
           value={amountOfMoney.toString()}
@@ -163,7 +163,7 @@ const MoneyTransferScreen: FC<TransferScreenProps> = ({ navigation }) => {
           style={styles.textInputContainer}
           keyboardType={moneyKeyboardType}
           validation={moneyValidation}
-          errorText={moneyErrorMessage}
+          errorText={MONEY_ERROR_MESSAGE}
         />
         <CustomTextInput
           value={messageText}

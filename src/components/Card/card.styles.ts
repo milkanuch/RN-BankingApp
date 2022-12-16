@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import { colors } from 'constants/colors';
+import { COLORS } from 'constants/colors';
 import { width } from 'constants/dimensions';
 
 const cardWidth = width - 40;
@@ -15,18 +15,18 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     marginHorizontal: 20,
     marginVertical: 20,
-    backgroundColor: colors.black,
+    backgroundColor: COLORS.black,
     overflow: 'hidden',
   },
   triangle: {
     position: 'absolute',
     right: 0,
     borderTopWidth: cardHeight * 0.5,
-    borderTopColor: colors.transparent,
+    borderTopColor: COLORS.transparent,
     borderBottomWidth: cardHeight * 0.5,
-    borderBottomColor: colors.transparent,
+    borderBottomColor: COLORS.transparent,
     borderRightWidth: cardHeight * 0.9,
-    borderRightColor: colors.light.primary[200],
+    borderRightColor: COLORS.light.primary[200],
     opacity: 0.1,
   },
   rectangle: {
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     right: 0,
     width: '32%',
     height: '100%',
-    backgroundColor: colors.light.primary[200],
+    backgroundColor: COLORS.light.primary[200],
     opacity: 0.1,
   },
   circle: {
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     width: '64%',
     height: '100%',
     borderRadius: 1000,
-    backgroundColor: colors.light.primary[200],
+    backgroundColor: COLORS.light.primary[200],
     opacity: 0.1,
   },
   blocked: {

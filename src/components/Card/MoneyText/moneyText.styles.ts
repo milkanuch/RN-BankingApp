@@ -1,8 +1,8 @@
 import { StyleSheet } from 'react-native';
 
-import { colors } from 'constants/colors';
+import { COLORS } from 'constants/colors';
 
-import { eUkraineThin } from 'constants/fonts';
+import { E_UKRAINE_THIN } from 'constants/fonts';
 
 const styles = StyleSheet.create({
   container: {
@@ -15,9 +15,9 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
   },
   text: {
-    fontFamily: eUkraineThin,
+    fontFamily: E_UKRAINE_THIN,
     fontSize: 27,
-    color: colors.white,
+    color: COLORS.white,
   },
 });
 

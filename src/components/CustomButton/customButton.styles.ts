@@ -1,14 +1,14 @@
 import { StyleSheet } from 'react-native';
 
-import { colors } from 'constants/colors';
+import { COLORS } from 'constants/colors';
 import { responsiveHeight } from 'constants/dimensions';
 
-import { eUkraineRegular } from 'constants/fonts';
+import { E_UKRAINE_REGULAR } from 'constants/fonts';
 
 const styles = StyleSheet.create({
   button: {
     height: responsiveHeight(7),
-    backgroundColor: colors.black,
+    backgroundColor: COLORS.black,
     borderWidth: 1,
     borderRadius: 12,
     flexDirection: 'row',
@@ -16,18 +16,18 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   whiteButton: {
-    backgroundColor: colors.white,
+    backgroundColor: COLORS.white,
   },
   icon: {
     marginRight: 5,
   },
   text: {
-    fontFamily: eUkraineRegular,
-    color: colors.white,
+    fontFamily: E_UKRAINE_REGULAR,
+    color: COLORS.white,
     fontSize: 14,
   },
   whiteButtonText: {
-    color: colors.black,
+    color: COLORS.black,
   },
   underlayContainer: {
     borderRadius: 12,

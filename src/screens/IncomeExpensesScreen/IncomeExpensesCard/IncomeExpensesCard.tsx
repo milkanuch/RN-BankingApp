@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 
 import ProgressBar from 'components/ProgressBar/ProgressBar';
 
-import { currencies } from 'constants/card';
+import { CURRENCIES } from 'constants/card';
 
 import { IIncomeExpensesCardProps } from './incomeExpensesCard.types';
 import styles from './incomeExpensesCard.styles';
@@ -24,7 +24,7 @@ const IncomeExpensesCard: FC<IIncomeExpensesCardProps> = ({
         {category}
       </Text>
       <Text style={styles.totalSpendTitle}>
-        {totalSpendPerMonth + currencies[currency]}
+        {totalSpendPerMonth + CURRENCIES[currency]}
       </Text>
       <ProgressBar progressLimit={totalSum} progressLine={totalSpendPerMonth} />
     </View>

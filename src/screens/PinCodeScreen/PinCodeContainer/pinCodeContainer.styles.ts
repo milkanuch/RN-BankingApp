@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import { colors } from 'constants/colors';
+import { COLORS } from 'constants/colors';
 import { responsiveHeight } from 'constants/dimensions';
 
 const styles = StyleSheet.create({
@@ -15,21 +15,21 @@ const styles = StyleSheet.create({
     height: responsiveHeight(1.7),
     borderRadius: 13,
     borderWidth: 1,
-    borderColor: colors.grey,
+    borderColor: COLORS.grey,
   },
   codeFull: {
     width: responsiveHeight(1.7),
     height: responsiveHeight(1.7),
     borderRadius: 20,
     borderWidth: 1,
-    backgroundColor: colors.white,
-    borderColor: colors.white,
+    backgroundColor: COLORS.white,
+    borderColor: COLORS.white,
   },
   container: {
     marginTop: responsiveHeight(8),
   },
   text: {
-    color: colors.white,
+    color: COLORS.white,
     fontSize: 17,
   },
 });

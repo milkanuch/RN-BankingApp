@@ -1,29 +1,29 @@
 import { StyleSheet } from 'react-native';
 
-import { colors } from 'constants/colors';
+import { COLORS } from 'constants/colors';
 
-import { eUkraineRegular } from 'constants/fonts';
+import { E_UKRAINE_REGULAR } from 'constants/fonts';
 
 const styles = StyleSheet.create({
   container: {
     paddingVertical: 14.25,
     paddingHorizontal: 20,
     borderRadius: 30,
-    backgroundColor: colors.white,
+    backgroundColor: COLORS.white,
   },
   selectedContainer: {
-    backgroundColor: colors.black,
+    backgroundColor: COLORS.black,
   },
   underlayContainer: {
     borderRadius: 30,
   },
   title: {
-    color: colors.black,
+    color: COLORS.black,
     fontSize: 11,
-    fontFamily: eUkraineRegular,
+    fontFamily: E_UKRAINE_REGULAR,
   },
   selectedTitle: {
-    color: colors.white,
+    color: COLORS.white,
   },
 });
 

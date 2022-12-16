@@ -1,22 +1,22 @@
 import { StyleSheet } from 'react-native';
 
-import { colors } from 'constants/colors';
+import { COLORS } from 'constants/colors';
 import { responsiveHeight } from 'constants/dimensions';
-import { eUkraineLight, eUkraineThin } from 'constants/fonts';
+import { E_UKRAINE_LIGHT, E_UKRAINE_THIN } from 'constants/fonts';
 
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'flex-end',
   },
   titleText: {
-    fontFamily: eUkraineLight,
+    fontFamily: E_UKRAINE_LIGHT,
     fontSize: 24,
-    color: colors.black,
+    color: COLORS.black,
   },
   text: {
-    fontFamily: eUkraineThin,
+    fontFamily: E_UKRAINE_THIN,
     fontSize: 13,
-    color: colors.black,
+    color: COLORS.black,
     paddingVertical: responsiveHeight(1),
   },
 });

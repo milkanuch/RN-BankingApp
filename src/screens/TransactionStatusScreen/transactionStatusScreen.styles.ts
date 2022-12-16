@@ -1,24 +1,24 @@
 import { StyleSheet } from 'react-native';
 
-import { colors } from 'constants/colors';
+import { COLORS } from 'constants/colors';
 import { responsiveHeight, width } from 'constants/dimensions';
-import { eUkraineRegular } from 'constants/fonts';
+import { E_UKRAINE_REGULAR } from 'constants/fonts';
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.darkGrey,
+    backgroundColor: COLORS.darkGrey,
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
   icon: {
     marginBottom: 20,
-    color: colors.white,
+    color: COLORS.white,
   },
   text: {
-    fontFamily: eUkraineRegular,
+    fontFamily: E_UKRAINE_REGULAR,
     fontSize: responsiveHeight(2.5),
-    color: colors.white,
+    color: COLORS.white,
     textAlign: 'center',
   },
   buttonContainer: {

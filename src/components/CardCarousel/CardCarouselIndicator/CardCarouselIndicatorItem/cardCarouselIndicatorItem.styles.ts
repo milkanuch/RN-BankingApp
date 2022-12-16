@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import { colors } from 'constants/colors';
+import { COLORS } from 'constants/colors';
 
 const size = 12;
 
@@ -10,10 +10,10 @@ const styles = StyleSheet.create({
     height: size,
     borderRadius: 50,
     marginHorizontal: 5,
-    backgroundColor: colors.grey,
+    backgroundColor: COLORS.grey,
   },
   selected: {
-    backgroundColor: colors.black,
+    backgroundColor: COLORS.black,
   },
 });
 

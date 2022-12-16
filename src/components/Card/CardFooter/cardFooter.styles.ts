@@ -1,17 +1,17 @@
 import { StyleSheet } from 'react-native';
 
-import { colors } from 'constants/colors';
+import { COLORS } from 'constants/colors';
 
-import { eUkraineThin } from 'constants/fonts';
+import { E_UKRAINE_THIN } from 'constants/fonts';
 
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'flex-end',
   },
   text: {
-    fontFamily: eUkraineThin,
+    fontFamily: E_UKRAINE_THIN,
     fontSize: 13,
-    color: colors.white,
+    color: COLORS.white,
   },
   icon: {
     position: 'absolute',

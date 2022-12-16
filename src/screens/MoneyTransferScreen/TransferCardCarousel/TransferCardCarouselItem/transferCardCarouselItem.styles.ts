@@ -1,9 +1,9 @@
 import { StyleSheet } from 'react-native';
 
-import { colors } from 'constants/colors';
+import { COLORS } from 'constants/colors';
 
 import { width } from 'constants/dimensions';
-import { eUkraineRegular } from 'constants/fonts';
+import { E_UKRAINE_REGULAR } from 'constants/fonts';
 
 const containerWidth = width - 40;
 
@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     padding: 20,
     borderWidth: 2,
-    borderColor: colors.black,
+    borderColor: COLORS.black,
     borderRadius: 16,
     flexDirection: 'row',
     justifyContent: 'flex-start',
@@ -24,14 +24,14 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
   },
   text: {
-    color: colors.grey,
+    color: COLORS.grey,
     fontSize: 14,
-    fontFamily: eUkraineRegular,
+    fontFamily: E_UKRAINE_REGULAR,
   },
   moneyText: {
-    color: colors.black,
+    color: COLORS.black,
     fontSize: 17,
-    fontFamily: eUkraineRegular,
+    fontFamily: E_UKRAINE_REGULAR,
   },
 });
 

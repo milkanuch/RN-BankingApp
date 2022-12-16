@@ -1,13 +1,13 @@
 import { StyleSheet } from 'react-native';
 
-import { colors } from 'constants/colors';
+import { COLORS } from 'constants/colors';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: colors.light.primary[200],
+    backgroundColor: COLORS.light.primary[200],
   },
   loader: {
     height: 150,
@@ -17,13 +17,13 @@ const styles = StyleSheet.create({
     elevation: 70,
   },
   dark: {
-    shadowColor: colors.black,
-    borderColor: colors.black,
+    shadowColor: COLORS.black,
+    borderColor: COLORS.black,
   },
   light: {
-    backgroundColor: colors.black,
-    shadowColor: colors.white,
-    borderColor: colors.white,
+    backgroundColor: COLORS.black,
+    shadowColor: COLORS.white,
+    borderColor: COLORS.white,
   },
 });
 

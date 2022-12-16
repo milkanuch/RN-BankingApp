@@ -1,17 +1,17 @@
 import { StyleSheet } from 'react-native';
 
-import { colors } from 'constants/colors';
+import { COLORS } from 'constants/colors';
 import { responsiveHeight } from 'constants/dimensions';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: 20,
-    backgroundColor: colors.white,
+    backgroundColor: COLORS.white,
     justifyContent: 'center',
   },
   screen: {
-    backgroundColor: colors.white,
+    backgroundColor: COLORS.white,
     paddingHorizontal: 20,
   },
   checkBox: {
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     height: responsiveHeight(20),
   },
   error: {
-    borderColor: colors.red,
+    borderColor: COLORS.red,
   },
 });
 

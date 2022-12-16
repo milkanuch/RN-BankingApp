@@ -2,9 +2,9 @@ import { StyleSheet } from 'react-native';
 
 import { responsiveHeight, responsiveWidth } from 'constants/dimensions';
 
-import { eUkraineRegular } from 'constants/fonts';
+import { E_UKRAINE_REGULAR } from 'constants/fonts';
 
-import { colors } from 'constants/colors';
+import { COLORS } from 'constants/colors';
 
 const styles = StyleSheet.create({
   container: {
@@ -14,18 +14,18 @@ const styles = StyleSheet.create({
     padding: 10,
     margin: 15,
     borderRadius: 8,
-    backgroundColor: colors.white,
+    backgroundColor: COLORS.white,
     elevation: 5,
   },
   categoryTitle: {
-    fontFamily: eUkraineRegular,
+    fontFamily: E_UKRAINE_REGULAR,
     fontSize: 16,
     textAlign: 'center',
   },
   totalSpendTitle: {
-    fontFamily: eUkraineRegular,
+    fontFamily: E_UKRAINE_REGULAR,
     fontSize: 18,
-    color: colors.black,
+    color: COLORS.black,
     textAlign: 'center',
   },
 });

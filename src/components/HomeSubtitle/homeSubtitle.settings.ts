@@ -1,3 +1,3 @@
-import { colors } from 'constants/colors';
+import { COLORS } from 'constants/colors';
 
-export const parametersIconColor = colors.darkGrey;
+export const parametersIconColor = COLORS.darkGrey;

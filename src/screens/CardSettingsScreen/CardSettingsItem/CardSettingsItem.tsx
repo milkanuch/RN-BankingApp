@@ -7,7 +7,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 
 import { copyTextToClipboard, showSnackBar } from 'components/Card/card.helper';
 
-import { colors } from 'constants/colors';
+import { COLORS } from 'constants/colors';
 
 import { ICardSettingsItemProps } from './CardSettingsItem.type';
 
@@ -32,7 +32,7 @@ const CardSettingsItem: FC<ICardSettingsItemProps> = ({
         <Text style={styles.contentText}>{content}</Text>
         {iconName && (
           <TouchableOpacity onPress={handleCopyCardNumber}>
-            <IconFeather name={iconName} size={iconSize} color={colors.black} />
+            <IconFeather name={iconName} size={iconSize} color={COLORS.black} />
           </TouchableOpacity>
         )}
       </View>

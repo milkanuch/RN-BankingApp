@@ -1,12 +1,12 @@
 import { StyleSheet } from 'react-native';
 
-import { colors } from 'constants/colors';
-import { eUkraineRegular } from 'constants/fonts';
+import { COLORS } from 'constants/colors';
+import { E_UKRAINE_REGULAR } from 'constants/fonts';
 
 const styles = StyleSheet.create({
   text: {
-    fontFamily: eUkraineRegular,
-    color: colors.grey,
+    fontFamily: E_UKRAINE_REGULAR,
+    color: COLORS.grey,
   },
 });
 

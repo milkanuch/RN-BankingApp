@@ -1,13 +1,13 @@
 import { StyleSheet } from 'react-native';
 
-import { colors } from 'constants/colors';
+import { COLORS } from 'constants/colors';
 
-import { eUkraineRegular } from 'constants/fonts';
+import { E_UKRAINE_REGULAR } from 'constants/fonts';
 
 const styles = StyleSheet.create({
   checkBoxBorder: {
     borderRadius: 4,
-    borderColor: colors.black,
+    borderColor: COLORS.black,
   },
   fillContainer: {
     borderRadius: 4,
@@ -17,9 +17,9 @@ const styles = StyleSheet.create({
     height: 15,
   },
   text: {
-    fontFamily: eUkraineRegular,
+    fontFamily: E_UKRAINE_REGULAR,
     fontSize: 13,
-    color: colors.black,
+    color: COLORS.black,
     textDecorationLine: 'none',
   },
 });

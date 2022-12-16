@@ -13,9 +13,9 @@ import CustomButton from 'components/CustomButton/CustomButton';
 import CustomTextInput from 'components/CustomTextInput/CustomTextInput';
 
 import {
-  passportDataErrorMessage,
-  personalDataErrorMessage,
-} from 'constants/errorMesages';
+  PASSPORT_DATA_ERROR_MESSAGE,
+  PERSONAL_DATA_ERROR_MESSAGE,
+} from 'constants/errorMessages';
 import { passportValidation, personalDataValidation } from 'helpers/validation';
 import {
   AuthStackScreenTypes,
@@ -84,14 +84,14 @@ const PersonalDataScreen: FC<PersonalDataScreenProps> = ({
         placeHolder={passportNumberTextInput.hint}
         value={passportNumber}
         validation={passportValidation}
-        errorText={passportDataErrorMessage}
+        errorText={PASSPORT_DATA_ERROR_MESSAGE}
         setValue={setPassportNumber}
       />
       <CustomTextInput
         title={paymentBillTextInput.title}
         placeHolder={paymentBillTextInput.hint}
         validation={personalDataValidation}
-        errorText={personalDataErrorMessage}
+        errorText={PERSONAL_DATA_ERROR_MESSAGE}
         value={paymentBill}
         setValue={setPaymentBill}
       />

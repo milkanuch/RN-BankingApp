@@ -1,7 +1,7 @@
 import { View, Text, Animated } from 'react-native';
 import React, { FC } from 'react';
 
-import styles from './pinCodeContainer.style';
+import styles from './pinCodeContainer.styles';
 import { IPinCodeContainerProps } from './pinCodeContainer.types';
 import {
   EnterPinCodeText,

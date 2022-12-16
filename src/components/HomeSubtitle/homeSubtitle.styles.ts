@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 
-import { colors } from 'constants/colors';
-import { eUkraineLight } from 'constants/fonts';
+import { COLORS } from 'constants/colors';
+import { E_UKRAINE_LIGHT } from 'constants/fonts';
 
 const styles = StyleSheet.create({
   container: {
@@ -12,13 +12,13 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
   },
   title: {
-    color: colors.darkGrey,
-    fontFamily: eUkraineLight,
+    color: COLORS.darkGrey,
+    fontFamily: E_UKRAINE_LIGHT,
     fontSize: 18,
     marginTop: 10,
   },
   buttonTitle: {
-    fontFamily: eUkraineLight,
+    fontFamily: E_UKRAINE_LIGHT,
   },
 });
 

@@ -2,9 +2,13 @@ import { StyleSheet } from 'react-native';
 
 import { responsiveWidth } from 'constants/dimensions';
 
-import { eUkraineRegular, eUkraineBold, eUkraineThin } from 'constants/fonts';
+import {
+  E_UKRAINE_REGULAR,
+  E_UKRAINE_BOLD,
+  E_UKRAINE_THIN,
+} from 'constants/fonts';
 
-import { colors } from 'constants/colors';
+import { COLORS } from 'constants/colors';
 
 const styles = StyleSheet.create({
   centerLabelContainer: {
@@ -14,22 +18,22 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     paddingHorizontal: responsiveWidth(8.4),
     borderWidth: 2,
-    borderColor: colors.lightGrey,
+    borderColor: COLORS.lightGrey,
     borderRadius: 360,
   },
   monthText: {
-    fontFamily: eUkraineRegular,
+    fontFamily: E_UKRAINE_REGULAR,
     fontSize: 14,
   },
   yearText: {
-    fontFamily: eUkraineBold,
-    color: colors.black,
+    fontFamily: E_UKRAINE_BOLD,
+    color: COLORS.black,
     textAlign: 'center',
     fontSize: 22,
   },
   totalSpendText: {
-    fontFamily: eUkraineThin,
-    color: colors.black,
+    fontFamily: E_UKRAINE_THIN,
+    color: COLORS.black,
     fontSize: 18,
     textAlign: 'center',
     marginTop: 5,

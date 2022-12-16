@@ -20,10 +20,10 @@ import {
 } from 'helpers/validation';
 
 import {
-  credentialsErrorMessage,
-  passwordErrorMessage,
-  phoneNumberErrorMessage,
-} from 'constants/errorMesages';
+  CREDENTIALS_ERROR_MESSAGE,
+  PASSWORD_ERROR_MESSAGE,
+  PHONE_NUMBER_ERROR_MESSAGE,
+} from 'constants/errorMessages';
 
 import Divider from '../Divider/Divider';
 
@@ -79,7 +79,7 @@ const GeneralDataScreen: FC<GeneralDataScreenProps> = ({ navigation }) => {
           value={firstName}
           setValue={setFirstName}
           validation={credentialsValidation}
-          errorText={credentialsErrorMessage}
+          errorText={CREDENTIALS_ERROR_MESSAGE}
         />
         <CustomTextInput
           title={lastNameTextInput.title}
@@ -87,13 +87,13 @@ const GeneralDataScreen: FC<GeneralDataScreenProps> = ({ navigation }) => {
           value={lastName}
           setValue={setLastName}
           validation={credentialsValidation}
-          errorText={credentialsErrorMessage}
+          errorText={CREDENTIALS_ERROR_MESSAGE}
         />
         <CustomTextInput
           title={phoneNumberTextInput.title}
           placeHolder={phoneNumberTextInput.hint}
           value={phoneNumber}
-          errorText={phoneNumberErrorMessage}
+          errorText={PHONE_NUMBER_ERROR_MESSAGE}
           validation={phoneNumberValidation}
           setValue={setPhoneNumber}
         />
@@ -101,7 +101,7 @@ const GeneralDataScreen: FC<GeneralDataScreenProps> = ({ navigation }) => {
           title={passwordTextInputTitle}
           value={password}
           setValue={setPassword}
-          errorText={passwordErrorMessage}
+          errorText={PASSWORD_ERROR_MESSAGE}
           validation={passwordValidation}
           secureTextEntry={true}
         />
@@ -110,7 +110,7 @@ const GeneralDataScreen: FC<GeneralDataScreenProps> = ({ navigation }) => {
           value={confirmPassword}
           setValue={setConfirmPassword}
           validation={passwordValidation}
-          errorText={passwordErrorMessage}
+          errorText={PASSWORD_ERROR_MESSAGE}
           secureTextEntry={true}
         />
         <CustomButton
