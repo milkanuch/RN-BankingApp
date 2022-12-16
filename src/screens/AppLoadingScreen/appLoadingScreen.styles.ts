@@ -7,13 +7,14 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: colors.light.primary[200],
   },
   loader: {
     height: 150,
     width: 150,
     borderRadius: 75,
-    borderWidth: 15,
-    position: 'absolute',
+    borderWidth: 10,
+    elevation: 70,
   },
   dark: {
     shadowColor: colors.black,

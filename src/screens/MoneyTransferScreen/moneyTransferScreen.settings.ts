@@ -17,3 +17,12 @@ export const messageTitle = 'Message';
 export const buttonText = 'Send';
 
 export const errorText = 'Transaction Failed';
+
+export const categories = [
+  'Food',
+  'Other',
+  'Transport',
+  'Games',
+  'Technique',
+  'Fuel',
+];

@@ -41,6 +41,7 @@ import {
   cardCarouselTitle,
   cardNumberContentType,
   cardNumberTitle,
+  categories,
   errorText,
   messageTitle,
   moneyKeyboardType,
@@ -48,6 +49,7 @@ import {
   nameTitle,
   screenTitle,
 } from './moneyTransferScreen.settings';
+import { getRandomIntInclusive } from './moneyTransferScreen.helpers';
 
 const MoneyTransferScreen: FC<TransferScreenProps> = ({ navigation }) => {
   const [selectedCardIndex, selectCard] = useState(0);
@@ -107,12 +109,14 @@ const MoneyTransferScreen: FC<TransferScreenProps> = ({ navigation }) => {
       return;
     }
     const selectedCard = cardsData.ok[selectedCardIndex];
+
     const transactionData: ITransactionParams = {
       senderCardNumber: selectedCard.cardNumber,
       receiverCardNumber,
       receiverName,
-      sum: +amountOfMoney,
+      sum: Number(amountOfMoney),
       purpose: messageText,
+      category: categories[getRandomIntInclusive(0, 5)],
     };
     try {
       await sendTransaction(transactionData).unwrap();

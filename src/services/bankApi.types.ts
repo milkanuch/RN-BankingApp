@@ -63,6 +63,7 @@ export interface IUserRefreshParams {
 }
 
 export interface ITransactionParams {
+  category?: string;
   accessToken?: string;
   senderCardNumber: string;
   receiverCardNumber: string;
