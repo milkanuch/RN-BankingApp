@@ -84,6 +84,7 @@ export interface IUserTransactionResponseParams {
   time: Date;
   sum: number;
   profit: boolean;
+  category: string;
 }
 
 export interface IIncomeExpensesResponseParams {
