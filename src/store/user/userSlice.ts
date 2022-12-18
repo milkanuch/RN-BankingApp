@@ -8,10 +8,6 @@ import { UserState } from './user.types';
 import { deleteUserTokens, setUsersTokens } from './userSlice.utils';
 
 const initialState: UserState = {
-  firstName: '',
-  lastName: '',
-  phoneNumber: '',
-  isPremium: false,
   isLogged: false,
   isLoading: false,
 };
@@ -68,6 +64,8 @@ export const userSlice = createSlice({
 });
 
 export const selectIsLogged = (state: AppState) => state.user.isLogged;
+
+export const selectIsLoading = (state: AppState) => state.user.isLoading;
 
 export const { setUserIsLogged, setIsLoading } = userSlice.actions;
 

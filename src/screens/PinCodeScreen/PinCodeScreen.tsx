@@ -7,7 +7,7 @@ import {
   PinCodeScreenProps,
 } from 'navigation/AuthStackNavigation/AuthStackNavigation.types';
 
-import { setUserIsLogged } from 'store/user/userSlice';
+import { setIsLoading, setUserIsLogged } from 'store/user/userSlice';
 
 import { useAppDispatch } from 'store/index';
 
@@ -20,8 +20,6 @@ import { getItem, setItem } from 'store/bankStore/store';
 import { useUserRefreshMutation } from 'services/index';
 
 import useRefreshToken from 'hooks/useRefreshToken';
-
-import AppLoadingScreen from 'screens/AppLoadingScreen/AppLoadingScreen';
 
 import { isEqual } from './pinCodeScreen.utils';
 
@@ -39,7 +37,6 @@ const PinCodeScreen: FC<PinCodeScreenProps> = ({ navigation }) => {
   const [pinCode, setPinCode] = useState<string[]>([]);
   const [confirmationPin, setConfirmationPin] = useState<string[]>([]);
   const [isLogin, setIsLogin] = useState(true);
-  const [isLoaded, setIsLoaded] = useState(false);
   const [refresh] = useUserRefreshMutation();
 
   const { animation, shake } = useShakeAnimation();
@@ -54,7 +51,6 @@ const PinCodeScreen: FC<PinCodeScreenProps> = ({ navigation }) => {
       setPinCode([...tempCode]);
       setIsLogin(false);
     }
-    setIsLoaded(true);
   }, []);
 
   const tryLogin = useCallback(() => {
@@ -82,18 +78,14 @@ const PinCodeScreen: FC<PinCodeScreenProps> = ({ navigation }) => {
 
   useEffect(() => {
     fetchPinCode();
-    if (isLoaded && !isLogin) {
+    if (!isLogin) {
       onFingerprint();
     }
-  }, [fetchPinCode, onFingerprint, isLoaded, isLogin]);
+  }, [fetchPinCode, onFingerprint, isLogin]);
 
   useEffect(() => {
     tryLogin();
   }, [confirmationPin, tryLogin]);
-
-  if (!isLoaded) {
-    return <AppLoadingScreen />;
-  }
 
   const addNumber = (num: string) => {
     if (pinCode.length < PIN_CODE_LENGTH) {
@@ -112,6 +104,7 @@ const PinCodeScreen: FC<PinCodeScreenProps> = ({ navigation }) => {
   };
 
   const handlePhoneNumberLogin = () => {
+    dispatch(setIsLoading(true));
     navigation.navigate(AuthStackScreenTypes.SignIn);
   };
 

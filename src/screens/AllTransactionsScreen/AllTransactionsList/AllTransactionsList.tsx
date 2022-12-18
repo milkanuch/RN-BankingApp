@@ -17,6 +17,7 @@ const renderItem: ListRenderItem<IUserTransactionResponseParams> = ({
     provider={item.provider}
     time={item.time}
     profit={item.profit}
+    category={item.category}
   />
 );
 const keyExtractor = (item: IUserTransactionResponseParams, index: number) =>

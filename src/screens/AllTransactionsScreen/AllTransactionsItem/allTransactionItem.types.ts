@@ -1,5 +1,5 @@
 export interface IAllTransactionsItemProps {
-  category?: string;
+  category: string;
   time: Date;
   provider: string;
   sum: number;
@@ -7,6 +7,11 @@ export interface IAllTransactionsItemProps {
   profit: boolean;
 }
 
-export enum TransactionsCategory {
-  Food = 'food',
-}
+export const TransactionsCategory: { [key: string]: string } = {
+  ['Food']: 'food',
+  ['Games']: 'gamepad-variant',
+  ['Other']: 'folder-open',
+  ['Transport']: 'car',
+  ['Fuel']: 'fuel',
+  ['Technique']: 'tablet-cellphone',
+};

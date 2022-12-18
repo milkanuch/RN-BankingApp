@@ -13,7 +13,7 @@ import styles from './allTransactionsItem.styles';
 import { activeOpacityValue, IconSize } from './allTransactionItem.settings';
 
 const AllTransactionsItem: FC<IAllTransactionsItemProps> = ({
-  category = TransactionsCategory.Food,
+  category,
   currency,
   provider,
   profit,
@@ -28,7 +28,11 @@ const AllTransactionsItem: FC<IAllTransactionsItemProps> = ({
       activeOpacity={activeOpacityValue}
       onPress={handleTransactionFullDescription}>
       <View style={styles.categoryContainer}>
-        <Icon name={category} size={IconSize} color={COLORS.black} />
+        <Icon
+          name={TransactionsCategory[category]}
+          size={IconSize}
+          color={COLORS.black}
+        />
         <Text style={styles.cardProvider}>{provider}</Text>
       </View>
       <View>
