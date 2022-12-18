@@ -23,9 +23,13 @@ import { useUserLoginMutation } from 'services/index';
 
 import { showSnackBar } from 'components/Card/card.helper';
 
-import { useAppDispatch } from 'store/index';
+import { useAppDispatch, useAppSelector } from 'store/index';
 
-import { setUserIsLogged } from 'store/user/userSlice';
+import {
+  selectIsLoading,
+  setIsLoading,
+  setUserIsLogged,
+} from 'store/user/userSlice';
 
 import { getItem, setItem } from 'store/bankStore/store';
 
@@ -56,24 +60,26 @@ const SignInScreen: FC<SignInScreenProps> = ({ navigation }) => {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const [savePassword, setSavePassword] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
 
-  const [signIn, { isLoading }] = useUserLoginMutation();
+  const [signIn, { isLoading: loginLoading }] = useUserLoginMutation();
+
+  const dispatch = useAppDispatch();
+
+  const isLoading = useAppSelector(selectIsLoading);
 
   const fetchPinCode = useCallback(async () => {
     const refreshExperiDate = await getItem('RefreshExpireDate');
 
     if (refreshExperiDate && isExpiredDate(refreshExperiDate)) {
       navigation.navigate(AuthStackScreenTypes.PinCode);
+    } else {
+      dispatch(setIsLoading(true));
     }
-    setIsLoaded(true);
-  }, [navigation]);
+  }, [navigation, dispatch]);
 
   useEffect(() => {
     fetchPinCode();
   }, [fetchPinCode]);
-
-  const dispatch = useAppDispatch();
 
   const handleSignIn = async () => {
     const res = await signIn({
@@ -98,12 +104,12 @@ const SignInScreen: FC<SignInScreenProps> = ({ navigation }) => {
 
   const handleCheckBoxState = (newValue: boolean) => setSavePassword(newValue);
 
-  if (isLoading || !isLoaded) {
-    return <AppLoadingScreen />;
-  }
-
   const isValid =
     authValidation[signInMode](login) && passwordValidation(password);
+
+  if (!isLoading || loginLoading) {
+    return <AppLoadingScreen />;
+  }
 
   return (
     <ScrollView style={styles.screen}>
