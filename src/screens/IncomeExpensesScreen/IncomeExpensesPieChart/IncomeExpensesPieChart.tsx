@@ -31,7 +31,7 @@ const IncomeExpensesPieChart: FC<IIncomeExpensesPieChartProps> = ({
 }) => {
   const pieData = categories.map((category, index) => {
     return {
-      value: getPercentage(category.totalSum, category.totalSpendPerMonth),
+      value: getPercentage(category.totalSpendPerMonth, category.totalSum),
       color: pieDataColors[index],
     };
   });
