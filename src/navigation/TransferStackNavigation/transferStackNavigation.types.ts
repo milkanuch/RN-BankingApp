@@ -1,24 +1,16 @@
 import { StackScreenProps } from '@react-navigation/stack';
 
+import { ITransactionStatusScreenProps } from 'screens/TransactionStatusScreen/transactionStatusScreen.types';
+
 export enum TransferStackScreenTypes {
   Transfer = 'Transfer',
-  TransferStatus = 'TransferStatus',
+  TransactionStatus = 'TransactionStatus',
 }
 
 export type TransferStackParamsList = {
   [TransferStackScreenTypes.Transfer]: undefined;
-  [TransferStackScreenTypes.TransferStatus]: ITransactionStatusScreenPorps;
+  [TransferStackScreenTypes.TransactionStatus]: ITransactionStatusScreenProps;
 };
-
-export interface ITransactionStatusScreenPorps {
-  isSuccess: boolean;
-  message?: string;
-}
-
-export type TransferStatusScreenProps = StackScreenProps<
-  TransferStackParamsList,
-  TransferStackScreenTypes.TransferStatus
->;
 
 export type TransferScreenProps = StackScreenProps<
   TransferStackParamsList,
