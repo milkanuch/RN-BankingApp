@@ -1,10 +1,16 @@
 export interface IAllTransactionsItemProps {
-  category: string;
-  time: Date;
-  provider: string;
+  id: number;
   sum: number;
-  currency: string;
+  time: Date;
   profit: boolean;
+  provider: string;
+  currency: string;
+  category: string;
+  senderCardNumber: string;
+  receiverCardNumber: string;
+  senderName: string;
+  receiverName: string;
+  purpose?: string;
 }
 
 export const TransactionsCategory: { [key: string]: string } = {

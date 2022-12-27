@@ -98,7 +98,7 @@ const IncomeExpensesScreen = () => {
       nestedScrollEnabled
       refreshControl={refreshControl}>
       <Text style={styles.screenTitle}>Budget</Text>
-      {expensesData && transactionsData ? (
+      {expensesData?.length && transactionsData?.length ? (
         <>
           <IncomeExpensesPieChart
             sum={expensesData[monthIndex].sum}

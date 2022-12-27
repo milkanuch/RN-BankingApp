@@ -1,13 +1,13 @@
 import { CompositeNavigationProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 
-import { BottomTypeProps } from 'navigation/AppNavigation/appNavigation.types';
+import { BottomTabsTypeProps } from 'navigation/AppNavigation/appNavigation.types';
 
 export enum HomeStackScreenTypes {
   Home = 'Home',
   NewCard = 'NewCard',
   HomeTransfer = 'HomeTransfer',
-  IncomуExpense = 'IncomуExpense',
+  IncomyExpense = 'IncomyExpense',
   CardSettings = 'CardSettings',
   AllTransfers = 'AllTransfers',
   Profile = 'Profile',
@@ -19,25 +19,25 @@ export type HomeStackParamsList = {
   [HomeStackScreenTypes.CardSettings]: undefined;
   [HomeStackScreenTypes.AllTransfers]: undefined;
   [HomeStackScreenTypes.Profile]: undefined;
-  [HomeStackScreenTypes.IncomуExpense]: undefined;
+  [HomeStackScreenTypes.IncomyExpense]: undefined;
 };
 
 export type NewCardScreenProps = CompositeNavigationProp<
-  BottomTypeProps,
+  BottomTabsTypeProps,
   StackNavigationProp<HomeStackParamsList>
 >;
 
 export type CardSettingsScreenProps = CompositeNavigationProp<
-  BottomTypeProps,
+  BottomTabsTypeProps,
   StackNavigationProp<HomeStackParamsList>
 >;
 
 export type AppHeaderProps = CompositeNavigationProp<
-  BottomTypeProps,
+  BottomTabsTypeProps,
   StackNavigationProp<HomeStackParamsList>
 >;
 
 export type DepositWidthdrawlsProps = CompositeNavigationProp<
-  BottomTypeProps,
+  BottomTabsTypeProps,
   StackNavigationProp<HomeStackParamsList>
 >;

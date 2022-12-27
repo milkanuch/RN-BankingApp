@@ -3,7 +3,19 @@ import React, { FC } from 'react';
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
+import { useNavigation } from '@react-navigation/native';
+
 import { COLORS } from 'constants/colors';
+
+import {
+  AllTransactionItemProps,
+  AppStackNavigationTypes,
+} from 'navigation/AppStackNavigation/appStackNavigation.types';
+
+import {
+  getTransactionDate,
+  getTransactionSum,
+} from '../allTransactions.helpers';
 
 import {
   IAllTransactionsItemProps,
@@ -13,14 +25,42 @@ import styles from './allTransactionsItem.styles';
 import { activeOpacityValue, IconSize } from './allTransactionItem.settings';
 
 const AllTransactionsItem: FC<IAllTransactionsItemProps> = ({
+  id,
   category,
   currency,
   provider,
   profit,
   sum,
   time,
+  purpose,
+  receiverCardNumber,
+  senderCardNumber,
+  receiverName,
+  senderName,
 }) => {
-  const handleTransactionFullDescription = () => {};
+  const { navigate } = useNavigation<AllTransactionItemProps>();
+
+  const transactionDetailItemProps = {
+    id,
+    category,
+    currency,
+    profit,
+    sum,
+    time,
+    provider,
+    purpose,
+    receiverCardNumber,
+    senderCardNumber,
+    receiverName,
+    senderName,
+  };
+
+  const handleTransactionFullDescription = () => {
+    navigate(
+      AppStackNavigationTypes.TransactionDetailInfo,
+      transactionDetailItemProps,
+    );
+  };
 
   return (
     <TouchableOpacity
@@ -37,11 +77,9 @@ const AllTransactionsItem: FC<IAllTransactionsItemProps> = ({
       </View>
       <View>
         <Text style={styles.transactionSum}>
-          {(profit ? 1 : -1) * Number(sum.toFixed(0)) + ` ${currency}`}
+          {getTransactionSum(profit, sum, currency)}
         </Text>
-        <Text style={styles.transactionDate}>
-          {new Date(time).toLocaleDateString()}
-        </Text>
+        <Text style={styles.transactionDate}>{getTransactionDate(time)}</Text>
       </View>
     </TouchableOpacity>
   );

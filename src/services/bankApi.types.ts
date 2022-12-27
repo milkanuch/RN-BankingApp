@@ -85,6 +85,11 @@ export interface IUserTransactionResponseParams {
   sum: number;
   profit: boolean;
   category: string;
+  senderCardNumber: string;
+  receiverCardNumber: string;
+  senderName: string;
+  receiverName: string;
+  purpose?: string;
 }
 
 export interface IIncomeExpensesResponseParams {

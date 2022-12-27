@@ -18,3 +18,11 @@ export const NEW_CARD_SCREEN_OPTIONS: StackNavigationOptions = {
   },
   headerShadowVisible: false,
 };
+
+export const ALL_TRANSACTIONS_OPTIONS: StackNavigationOptions = {
+  headerTitle: () => <AppHeader />,
+  headerStyle: {
+    backgroundColor: COLORS.white,
+  },
+  headerShadowVisible: false,
+};

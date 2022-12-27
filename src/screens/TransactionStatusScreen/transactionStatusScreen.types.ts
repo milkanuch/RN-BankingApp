@@ -1,3 +1,4 @@
-export interface ITransactionStatusScreenPorps {
-  isSucces: boolean;
+export interface ITransactionStatusScreenProps {
+  isSuccess: boolean;
+  message?: string;
 }

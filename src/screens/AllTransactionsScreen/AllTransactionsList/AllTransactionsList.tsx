@@ -12,12 +12,18 @@ const renderItem: ListRenderItem<IUserTransactionResponseParams> = ({
   item,
 }) => (
   <AllTransactionsItem
+    id={item.id}
     currency={item.currency}
     sum={item.sum}
     provider={item.provider}
     time={item.time}
     profit={item.profit}
     category={item.category}
+    purpose={item.purpose}
+    senderName={item.senderName}
+    receiverName={item.receiverName}
+    senderCardNumber={item.senderCardNumber}
+    receiverCardNumber={item.receiverCardNumber}
   />
 );
 const keyExtractor = (item: IUserTransactionResponseParams, index: number) =>

@@ -6,10 +6,11 @@ import { COLORS } from 'constants/colors';
 
 const styles = StyleSheet.create({
   container: {
-    margin: 10,
+    marginHorizontal: 10,
+    marginVertical: 5,
     padding: 10,
     borderBottomWidth: 1,
-    borderBottomColor: COLORS.darkGrey,
+    borderBottomColor: COLORS.grey,
   },
   title: {
     fontSize: 14,
@@ -17,8 +18,8 @@ const styles = StyleSheet.create({
     color: COLORS.black,
   },
   contentText: {
-    paddingVertical: 8,
-    fontSize: 12,
+    paddingVertical: 4,
+    fontSize: 14,
     fontFamily: E_UKRAINE_REGULAR,
   },
   wrapper: {

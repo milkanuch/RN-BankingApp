@@ -97,7 +97,7 @@ const MoneyTransferScreen: FC<TransferScreenProps> = ({ navigation }) => {
         status === QueryStatus.fulfilled
           ? transactionSendData!.message
           : errorText;
-      navigation.navigate(TransferStackScreenTypes.TransferStatus, {
+      navigation.navigate(TransferStackScreenTypes.TransactionStatus, {
         isSuccess,
         message,
       });
