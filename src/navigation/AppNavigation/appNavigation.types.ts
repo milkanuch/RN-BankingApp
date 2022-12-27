@@ -18,12 +18,12 @@ export type BottomTabsParamsList = {
   [BottomTabsScreenTypes.ProfileStack]: undefined;
 };
 
-export type BottomTypeProps = BottomTabNavigationProp<
+export type BottomTabsTypeProps = BottomTabNavigationProp<
   BottomTabsParamsList,
   BottomTabsScreenTypes.HomeStack
 >;
 
 export type FrequentlyUsedButtonProps = CompositeNavigationProp<
-  BottomTypeProps,
+  BottomTabsTypeProps,
   StackNavigationProp<BottomTabsParamsList>
 >;
