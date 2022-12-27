@@ -6,11 +6,12 @@ import NewCardScreen from 'screens/NewCardScreen/NewCardScreen';
 
 import CardSettingsScreen from 'screens/CardSettingsScreen/CardSettingsScreen';
 
-import AllTransactionsScreen from 'screens/AllTransactionsScreen/AllTransactionsScreen';
-
 import ProfileScreen from 'screens/ProfileScreen/ProfileScreen';
 
+import AllTransactionsScreen from 'screens/AllTransactionsScreen/AllTransactionsScreen';
+
 import {
+  ALL_TRANSACTIONS_OPTIONS,
   HOME_SCREEN_OPTIONS,
   NEW_CARD_SCREEN_OPTIONS,
 } from './homeStackNavigation.settings';
@@ -36,11 +37,6 @@ const HomeStackNavigation = () => {
         options={HOME_SCREEN_OPTIONS}
       />
       <Stack.Screen
-        name={HomeStackScreenTypes.AllTransfers}
-        component={AllTransactionsScreen}
-        options={HOME_SCREEN_OPTIONS}
-      />
-      <Stack.Screen
         name={HomeStackScreenTypes.NewCard}
         component={NewCardScreen}
         options={NEW_CARD_SCREEN_OPTIONS}
@@ -49,6 +45,11 @@ const HomeStackNavigation = () => {
         name={HomeStackScreenTypes.Profile}
         component={ProfileScreen}
         options={HOME_SCREEN_OPTIONS}
+      />
+      <Stack.Screen
+        name={HomeStackScreenTypes.AllTransfers}
+        component={AllTransactionsScreen}
+        options={ALL_TRANSACTIONS_OPTIONS}
       />
     </Stack.Navigator>
   );
