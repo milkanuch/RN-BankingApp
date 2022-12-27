@@ -5,9 +5,9 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import { responsiveHeight } from 'constants/dimensions';
 
-import { TransferStatusScreenProps } from 'navigation/TransferStackNavigation/transferStackNavigation.types';
-
 import CustomButton from 'components/CustomButton/CustomButton';
+
+import { TransactionStatusScreenProps } from 'navigation/AppStackNavigation/appStackNavigation.types';
 
 import {
   buttonText,
@@ -17,12 +17,12 @@ import {
 
 import styles from './transactionStatusScreen.styles';
 
-const TransactionStatusScreen: FC<TransferStatusScreenProps> = ({
+const TransactionStatusScreen: FC<TransactionStatusScreenProps> = ({
   navigation,
   route,
 }) => {
-  const isSuccess = route.params.isSuccess;
-  const message = route.params.message;
+  const { isSuccess, message } = route.params;
+
   const iconName = isSuccess ? succesTransferIcon : deniedTransferIcon;
   const handleBack = () => {
     navigation.pop();
